@@ -4,8 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 import {resolve, dirname} from 'path'
 import {fileURLToPath} from 'url'
 
-import { resolve } from "path";
-
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
