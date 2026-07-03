@@ -1,9 +1,57 @@
 import { useRef } from "react";
 import { dockApps } from "../constants";
 import {Tooltip} from "react-tooltip";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Dock = () => {
     const dockRef = useRef(null);
+
+    useGSAP(() => {
+        const dock = dockRef.current;
+        if (!dock) return () => {};
+
+        const icons = dock.querySelectorAll(".dock-icon");
+
+        const animateIcon = (mouseX) => {
+            const { left } = dock.getBoundingClientRect();
+            icons.forEach((icon) => {
+                const { left: iconLeft, width} = icon.getBoundingClientRect();
+                const center = iconLeft - left + width / 2;
+                const distance = Math.abs(mouseX - center);
+                const intensity = Math.exp(-(distance ** 3) / 10000);
+
+                gsap.to(icon, {
+                    duration: 0.2,
+                    ease: "power1.out",
+                    y: -15 * intensity,
+                    scale: 1 + intensity * 0.25,
+                });
+            });
+        };
+
+        const handleMouseMove = (e) => {
+            const { left } = dock.getBoundingClientRect();
+            const mouseX = e.clientX - left;
+            animateIcon(mouseX);
+        }
+
+        const resetIcons = () => icons.forEach((icon) => gsap.to(icon, { 
+            duration: 0.3,
+            ease: "power1.out",
+            y: 0,
+            scale: 1,
+        }));
+
+        dock.addEventListener("mousemove", handleMouseMove);
+        dock.addEventListener("mouseleave", resetIcons);
+
+        return () => {
+            dock.removeEventListener("mousemove", handleMouseMove);
+            dock.removeEventListener("mouseleave", resetIcons);
+        }
+    }, []);
+
 
     const toggleApp = (app) => {}
 
