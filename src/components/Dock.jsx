@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { dockApps } from "../constants";
+import {Tooltip} from "react-tooltip";
 
 const Dock = () => {
     const dockRef = useRef(null);
@@ -18,8 +19,8 @@ const Dock = () => {
                         data-tooltip-id="dock-tooltip"
                         data-tooltip-content={name}
                         data-tooltip-delay-show={150}
-                        disabked={!canOpen}
-                        onclick={() => toggleApp(id, canOpen)}
+                        disabled={!canOpen}
+                        onClick={() => toggleApp(id, canOpen)}
                     >
                         <img 
                         src={`images/${icon}`}
@@ -29,6 +30,7 @@ const Dock = () => {
                     </button>
                 </div>
             ))}
+            <Tooltip id="dock-tooltip" place="top" className="tooltip"/>
         </div>
     </section>
   );
