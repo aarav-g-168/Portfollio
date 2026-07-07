@@ -1,3 +1,6 @@
+import useWindowStore from '../store/window';
+import { useRef } from 'react';
+
 const WindowWrapper = (Component, windowKey) => {
     const wrapped = (props) => {
         const { focusWindow, windows } = useWindowStore();
@@ -5,13 +8,13 @@ const WindowWrapper = (Component, windowKey) => {
         const ref = useRef(null);
 
         return (
-            <secion
+            <section
                 id={windowKey}
                 ref={ref}
                 style={{ zIndex }}
                 className={"absolute"}>
                     <Component {...props} />
-            </secion>
+            </section>
         );
     };
 
