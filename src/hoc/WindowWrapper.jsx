@@ -24,7 +24,9 @@ const WindowWrapper = (Component, windowKey) => {
             const el = ref.current;
             if (!el) return;
 
-            Draggable.create(el, { onPress: () => focusWindow(windowKey) });
+            // only keeps the track of the current window position
+            const [instance] = Draggable.create(el, { onPress: () => focusWindow(windowKey) });
+            return () => instance.kill();
         }, []);
 
         useLayoutEffect(() => {
