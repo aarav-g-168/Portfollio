@@ -1,5 +1,11 @@
+// manages the state of all the windows
+
+// stores the application states
 import { create } from 'zustand'
+
+// updates the state more easily and immutably
 import { immer } from 'zustand/middleware/immer'
+
 import { INITIAL_Z_INDEX, WINDOW_CONFIG } from "../constants"
 
 const useWindowStore = create(immer((set) => ({
