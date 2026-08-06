@@ -62,11 +62,7 @@ const Dock = () => {
 
         if (!dock || !windowEl || !dockIcon) return;
 
-        // Set animating state
-        setGenieAnimating(windowKey, true);
-
         // Get positions
-        const dockRect = dock.getBoundingClientRect();
         const iconRect = dockIcon.getBoundingClientRect();
         const windowRect = windowEl.getBoundingClientRect();
 
@@ -77,9 +73,15 @@ const Dock = () => {
         const windowCenterY = windowRect.top + windowRect.height / 2;
 
         if (isOpening) {
-            // Opening: animate from dock icon to window position
-            windowEl.style.display = 'block';
-            windowEl.style.opacity = '0';
+            // FIRST: open window in store so element is mounted and visible
+            openWindow(windowKey);
+
+            // Wait for React to render the window (next frame)
+            await new Promise(r => requestAnimationFrame(r));
+
+            // NOW set animating state and run genie animation on visible element
+            setGenieAnimating(windowKey, true);
+
             windowEl.style.transformOrigin = 'center center';
 
             // Set initial state at dock icon position
@@ -103,8 +105,13 @@ const Dock = () => {
                     windowEl.style.transformOrigin = '';
                 }
             });
+
+            // Genie animation complete - clear animating flag
+            setGenieAnimating(windowKey, false);
         } else {
             // Closing: animate from window position to dock icon (genie effect)
+            setGenieAnimating(windowKey, true);
+
             await gsap.to(windowEl, {
                 duration: 0.4,
                 ease: "power3.inOut",
@@ -123,12 +130,7 @@ const Dock = () => {
             // Close window in store after animation
             closeWindow(windowKey);
             setGenieAnimating(windowKey, false);
-            return;
         }
-
-        // Open window in store after opening animation
-        openWindow(windowKey);
-        setGenieAnimating(windowKey, false);
     }, [openWindow, closeWindow, setGenieAnimating]);
 
     const toggleApp = (windowKey) => {
