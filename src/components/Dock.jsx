@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
 import { dockApps } from "../constants";
 import {Tooltip} from "react-tooltip";
 import gsap from "gsap";
@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 import useWindowStore from "../store/window";
 
 const Dock = () => {
-    const { openWindow, closeWindow, windows } = useWindowStore();
+    const { openWindow, closeWindow, setGenieAnimating, windows } = useWindowStore();
     const dockRef = useRef(null);
 
     useGSAP(() => {
@@ -38,7 +38,7 @@ const Dock = () => {
             animateIcon(mouseX);
         }
 
-        const resetIcons = () => icons.forEach((icon) => gsap.to(icon, { 
+        const resetIcons = () => icons.forEach((icon) => gsap.to(icon, {
             duration: 0.3,
             ease: "power1.out",
             y: 0,
@@ -54,21 +54,97 @@ const Dock = () => {
         }
     }, []);
 
+    // Genie effect animation for opening/closing windows
+    const animateGenieEffect = useCallback(async (windowKey, isOpening) => {
+        const dock = dockRef.current;
+        const windowEl = document.getElementById(windowKey);
+        const dockIcon = dock?.querySelector(`[aria-label="${dockApps.find(a => a.id === windowKey)?.name}"]`);
+
+        if (!dock || !windowEl || !dockIcon) return;
+
+        // Set animating state
+        setGenieAnimating(windowKey, true);
+
+        // Get positions
+        const dockRect = dock.getBoundingClientRect();
+        const iconRect = dockIcon.getBoundingClientRect();
+        const windowRect = windowEl.getBoundingClientRect();
+
+        // Calculate start and end positions relative to viewport
+        const iconCenterX = iconRect.left + iconRect.width / 2;
+        const iconCenterY = iconRect.top + iconRect.height / 2;
+        const windowCenterX = windowRect.left + windowRect.width / 2;
+        const windowCenterY = windowRect.top + windowRect.height / 2;
+
+        if (isOpening) {
+            // Opening: animate from dock icon to window position
+            windowEl.style.display = 'block';
+            windowEl.style.opacity = '0';
+            windowEl.style.transformOrigin = 'center center';
+
+            // Set initial state at dock icon position
+            gsap.set(windowEl, {
+                x: iconCenterX - windowCenterX,
+                y: iconCenterY - windowCenterY,
+                scale: 0.1,
+                rotation: 0,
+                opacity: 0
+            });
+
+            // Animate to window position with genie effect
+            await gsap.to(windowEl, {
+                duration: 0.5,
+                ease: "power3.inOut",
+                x: 0,
+                y: 0,
+                scale: 1,
+                opacity: 1,
+                onComplete: () => {
+                    windowEl.style.transformOrigin = '';
+                }
+            });
+        } else {
+            // Closing: animate from window position to dock icon (genie effect)
+            await gsap.to(windowEl, {
+                duration: 0.4,
+                ease: "power3.inOut",
+                x: iconCenterX - windowCenterX,
+                y: iconCenterY - windowCenterY,
+                scale: 0.1,
+                opacity: 0,
+                rotation: 15,
+                onComplete: () => {
+                    windowEl.style.display = 'none';
+                    windowEl.style.transformOrigin = '';
+                    gsap.set(windowEl, { x: 0, y: 0, scale: 1, opacity: 1, rotation: 0 });
+                }
+            });
+
+            // Close window in store after animation
+            closeWindow(windowKey);
+            setGenieAnimating(windowKey, false);
+            return;
+        }
+
+        // Open window in store after opening animation
+        openWindow(windowKey);
+        setGenieAnimating(windowKey, false);
+    }, [openWindow, closeWindow, setGenieAnimating]);
 
     const toggleApp = (windowKey) => {
-    const window = windows[windowKey];
+        const window = windows[windowKey];
 
-    if (!window) {
-        console.error(`Window with id ${windowKey} not found.`);
-        return;
-    }
+        if (!window) {
+            console.error(`Window with id ${windowKey} not found.`);
+            return;
+        }
 
-    if (window.isOpen) {
-        closeWindow(windowKey);
-    } else {
-        openWindow(windowKey);
-    }
-};
+        if (window.isOpen) {
+            animateGenieEffect(windowKey, false);
+        } else {
+            animateGenieEffect(windowKey, true);
+        }
+    };
 
     return (
     <section id="dock">
@@ -83,7 +159,7 @@ const Dock = () => {
                         data-tooltip-content={name}
                         data-tooltip-delay-show={150}
                         disabled={!canOpen}
-                        onClick={() => toggleApp(id, canOpen)}
+                        onClick={() => toggleApp(id)}
                     >
                         <img 
                         src={`images/${icon}`}

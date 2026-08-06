@@ -1,4 +1,5 @@
 import WindowWrapper from '../hoc/WindowWrapper'
+import WindowControls from '../components/WindowControls'
 import { techStack } from '../constants'
 import { Check, Flag } from 'react-feather'
 
@@ -6,7 +7,7 @@ const Terminal = () => {
   return (
     <>
       <div id="window-header">
-        <p>Window Controls</p>
+        <WindowControls windowKey="terminal" />
         <h2>Tech Stack</h2>
       </div>
 

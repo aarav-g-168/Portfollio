@@ -101,16 +101,37 @@ body {
   #window-controls {
     @apply flex gap-2;
 
+    button {
+      @apply size-3.5 rounded-full flex items-center justify-center cursor-pointer;
+      @apply text-transparent transition-colors duration-150;
+
+      .control-icon {
+        @apply size-[10px] leading-none;
+      }
+    }
+
     .close {
-      @apply size-3.5 rounded-full bg-[#ff6157] cursor-pointer;
+      @apply bg-[#ff6157];
+
+      &:hover {
+        @apply bg-[#ff463f] text-white;
+      }
     }
 
     .minimize {
-      @apply size-3.5 rounded-full bg-[#ffc030];
+      @apply bg-[#ffc030];
+
+      &:hover {
+        @apply bg-[#ffbd14] text-black;
+      }
     }
 
     .maximize {
-      @apply size-3.5 rounded-full bg-[#2acb42];
+      @apply bg-[#2acb42];
+
+      &:hover {
+        @apply bg-[#00c234] text-white;
+      }
     }
   }
 
