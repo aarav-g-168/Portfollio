@@ -2,6 +2,8 @@ import dayjs from "dayjs";
 import { navLinks, navIcons } from "../constants";
 
 const Navbar = () => {
+  const { OpenWindow } = useWindowStore();
+
   return (
     <nav className=" fixed top-0 left-0 right-0 z-50 h-11 px-5 flex items-center justify-between bg-[#d6d1f5]/80 backdrop-blur-xl border-b border-white/20 ">
       {/* left */}
@@ -18,9 +20,10 @@ const Navbar = () => {
         </div>
 
         <ul className="flex items-center gap-6">
-          {navLinks.map(({ id, name }) => (
+          {navLinks.map(({ id, name, type }) => (
             <li
               key={id}
+              onClick={() => OpenWindow(type)}
               className="text-sm cursor-pointer hover:text-black/70 transition-colors"
             >
               {name}

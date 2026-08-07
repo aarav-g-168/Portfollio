@@ -4,6 +4,7 @@ import Welcome from './components/Welcome'
 import Dock from './components/Dock'
 import TerminalWindow from './windows/Terminal'
 import SafariWindow from './windows/Safari'
+import ResumeWindow from './windows/Resume'
 
 import GSAP from 'gsap';
 import {Draggable} from "gsap/Draggable";
@@ -18,6 +19,7 @@ const App = () => {
 
       <TerminalWindow />
       <SafariWindow />
+      <ResumeWindow />
     </main>
   )
 }
