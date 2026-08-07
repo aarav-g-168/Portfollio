@@ -1,6 +1,6 @@
 import WindowControls from '../components/WindowControls';
 import WindowWrapper from '../hoc/WindowWrapper';
-import { PanelLeft, ChevronLeft, ChevronRight, Search, Copy, ShieldHalf, Share, Plus } from 'lucide-react';
+import { PanelLeft, ChevronLeft, ChevronRight, ShieldHalf, Search, Share, Plus, Copy } from 'lucide-react';
 
 const Safari = () => {
   return (
