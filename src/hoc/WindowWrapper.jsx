@@ -1,7 +1,6 @@
 import { useGSAP } from '@gsap/react';
 import useWindowStore from '../store/window';
 import { useRef, useLayoutEffect, useEffect } from 'react';
-import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 
 const WindowWrapper = (Component, windowKey) => {
@@ -10,33 +9,13 @@ const WindowWrapper = (Component, windowKey) => {
         const { isOpen, zIndex, maximized, genieAnimating } = windows[windowKey];
         const ref = useRef(null);
         const draggableRef = useRef(null);
-        const genieJustCompleted = useRef(false);
 
         useGSAP(() => {
             const el = ref.current;
             if (!el || !isOpen || genieAnimating) return;
 
-            // Skip opening animation if genie effect just completed
-            if (genieJustCompleted.current) {
-                genieJustCompleted.current = false;
-                el.style.display = 'block';
-                return;
-            }
-
             el.style.display = 'block';
-
-            // opening animation
-            gsap.fromTo(el, { opacity: 0, scale: 0.8, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.3, ease: 'power3.out' });
         }, [isOpen, genieAnimating]);
-
-        // Track when genie animation completes so we can skip next opening animation
-        useEffect(() => {
-            if (!genieAnimating && isOpen) {
-                // genieAnimating went from true -> false while window is open
-                // This means genie effect just completed
-                genieJustCompleted.current = true;
-            }
-        }, [genieAnimating, isOpen]);
 
         // Manage draggable lifecycle based on maximized state
         useEffect(() => {
