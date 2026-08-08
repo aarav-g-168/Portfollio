@@ -14,7 +14,7 @@ const Resume = () => {
   return (
     <>
       <div id="window-header">
-        <WindowControls target="resume" />
+        <WindowControls windowKey="resume" />
         <h2>Resume.pdf</h2>
 
         <a href="files/resume.pdf" download className="cursor-pointer" title="Download Resume">

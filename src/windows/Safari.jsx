@@ -6,7 +6,7 @@ const Safari = () => {
   return (
     <>
         <div id="window-header">
-            <WindowControls />
+            <WindowControls windowKey="safari" />
             <PanelLeft className="ml-10 icon" />
             <div className="flex items-center gap-1 ml-5">
                 <ChevronLeft className="icon" />
