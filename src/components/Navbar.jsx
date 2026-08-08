@@ -3,7 +3,7 @@ import { navLinks, navIcons } from "../constants";
 import useWindowStore from "../store/window";
 
 const Navbar = () => {
-  const { OpenWindow } = useWindowStore();
+  const { openWindow } = useWindowStore();
 
   return (
     <nav className=" fixed top-0 left-0 right-0 z-50 h-11 px-5 flex items-center justify-between bg-[#d6d1f5]/80 backdrop-blur-xl border-b border-white/20 ">
@@ -24,7 +24,7 @@ const Navbar = () => {
           {navLinks.map(({ id, name, type }) => (
             <li
               key={id}
-              onClick={() => OpenWindow(type)}
+              onClick={() => openWindow(type)}
               className="text-sm cursor-pointer hover:text-black/70 transition-colors"
             >
               {name}
