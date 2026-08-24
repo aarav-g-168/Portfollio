@@ -3,46 +3,41 @@ import WindowControls from '../components/WindowControls'
 import WindowWrapper from '../hoc/WindowWrapper'
 import useLocationStore from '../store/location'
 import { locations } from '../constants/index'
+import clsx from 'clsx'
 
 const Finder = () => {
 
   const { activeLocation, setActiveLocation } = useLocationStore();
 
+  const renderList = (name, items) => (
+    <div>
+      <h3>{name}</h3>
+      <ul>
+        {items.map((item) => (
+          <li key={item.id} onClick={() => setActiveLocation(item)} className={clsx(item.id === activeLocation.id ? "active" : "not-active")}>
+            <img src={item.icon} className="w-4" alt={item.name} />
+            <p className="text-sm font-medium truncate">{item.name}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+
   return (
     <>
-        <div id="window-header">
-            <WindowControls windowKey="finder" />
-            <Search className="icon" />
+      <div id="window-header">
+        <WindowControls windowKey="finder" />
+        <Search className="icon" />
+      </div>
+
+      <div className="bg-white flex h-full">
+        <div className="sidebar">
+          {renderList("Favorites", Object.values(locations))}
+          {renderList("Work", locations.work.children)}
         </div>
+      </div>
 
-        <div className="bg-white flex h-full">
-          <div className="sidebar">
-
-            <div>
-              <h3>Favorites</h3>
-              <ul>
-                {Object.values(locations).map((item) => (
-                  <li key={item.id} onClick={() => setActiveLocation(item)}>
-                    <img src={item.icon} className="w-4" alt={item.name} />
-                    <p className="text-sm font-medium truncate">{item.name}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3>Work</h3>
-              <ul>
-                {Object.values(locations).map((item) => (
-                  <li key={item.id} onClick={() => setActiveLocation(item)}>
-                    {item.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-          </div>
-        </div>
+      
     </>
   )
 }
