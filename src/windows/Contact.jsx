@@ -12,50 +12,50 @@ const Contact = () => {
         <h2>Contact Me</h2>
       </div>
 
-      <div className="p-5 space-y-6 bg-white">
-        {/* Profile */}
+      <div className="p-4 bg-white space-y-4">
+        {/* Intro */}
         <div className="flex items-center gap-4">
           <img
             src="/images/aarav.jpeg"
             alt="Aarav"
-            className="size-24 rounded-full object-cover"
+            className="size-20 rounded-full object-cover"
           />
 
           <div>
-            <h3 className="text-xl font-semibold">Let's Connect</h3>
+            <h3 className="text-lg font-semibold">Let's Connect</h3>
             <p className="mt-1 text-sm text-gray-600">
               Have an idea or want to talk tech? Let's chat.
             </p>
           </div>
         </div>
 
-        {/* Social Links */}
-        <ul className="grid grid-cols-2 gap-3">
+        {/* Socials */}
+        <ul className="grid grid-cols-2 gap-2">
           {socials.map(({ id, bg, link, icon, text }) => (
             <li
               key={id}
               style={{ backgroundColor: bg }}
-              className="rounded-xl overflow-hidden transition-transform duration-200 hover:scale-[1.02]"
+              className="rounded-lg overflow-hidden"
             >
               <a
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
                 title={text}
-                className="flex items-center gap-3 p-4 text-white"
+                className="flex items-center gap-3 px-3 py-3 text-white"
               >
-                <div className="flex size-9 items-center justify-center rounded-lg bg-white/20">
+                <div className="flex size-8 shrink-0 items-center justify-center rounded-md bg-white/20">
                   <img
                     src={icon}
                     alt={text}
-                    className="size-5"
+                    className="size-4"
                   />
                 </div>
 
-                <div>
-                  <p className="font-semibold">{text}</p>
-                  <p className="text-xs opacity-80">
-                    Visit profile →
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold">{text}</p>
+                  <p className="text-[11px] opacity-80">
+                    Open profile →
                   </p>
                 </div>
               </a>

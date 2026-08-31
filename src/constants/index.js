@@ -136,24 +136,24 @@ const socials = [
   },
   {
     id: 2,
-    text: "Platform",
-    icon: "/icons/atom.svg",
-    bg: "#4bcb63",
-    link: "https://jsmastery.com/",
+    text: "LinkedIn",
+    icon: "/icons/linkedin.svg",
+    bg: "#05b6f6",
+    link: "https://www.linkedin.com/in/aaravgupta168/",
   },
   {
     id: 3,
     text: "Twitter/X",
     icon: "/icons/twitter.svg",
-    bg: "#ff866b",
+    bg: "#4bcb63",
     link: "https://x.com/aarav_g_168",
   },
   {
     id: 4,
-    text: "LinkedIn",
-    icon: "/icons/linkedin.svg",
-    bg: "#05b6f6",
-    link: "https://www.linkedin.com/in/aaravgupta168/",
+    text: "Instagram",
+    icon: "/icons/instagram.png",
+    bg: "#ff866b",
+    link: "https://www.instagram.com/aarav_g_168/",
   },
 ];
 
