@@ -223,53 +223,60 @@ const WORK_LOCATION = {
   kind: "folder",
   children: [
     // ▶ Project 1
+    // ▶ Project 1 — Contest Manager
+
     {
       id: 5,
-      name: "Nike Ecommerce Website Application",
+      name: "Contest Manager",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-10 left-5", // icon position inside Finder
-      windowPosition: "top-[5vh] left-5", // optional: Finder window position
+      position: "top-10 left-5",
+      windowPosition: "top-[5vh] left-5",
+
       children: [
         {
           id: 1,
-          name: "Nike Project.txt",
+          name: "Contest Manager.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
+
           description: [
-            "The Nike eCommerce website is a sleek and modern platform designed for shopping the latest Nike collections.",
-            "Instead of a simple online store, it delivers an immersive experience with bold visuals, interactive product displays, and smooth navigation.",
-            "Think of it like walking into a flagship Nike store—but right from your phone or laptop.",
-            "It's built with Next.js and Tailwind, ensuring fast performance, responsive design, and a clean, premium look.",
+            "A full-stack competitive programming contest aggregator that brings upcoming contests from multiple platforms into a single dashboard.",
+            "Integrated the CLIST API to centralize contest discovery across platforms such as Codeforces, CodeChef, LeetCode, and others.",
+            "Implemented server-side fetching and optimized filtering to display contests within a defined time window, with real-time countdown timers and timezone-aware scheduling.",
+            "Built with Next.js, TypeScript, Express, PostgreSQL, and Drizzle ORM, with Firebase Authentication for secure user login and personalized contest tracking."
           ],
         },
+
         {
           id: 2,
-          name: "nike.com",
+          name: "contest-manager.vercel.app",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "",
+          href: "https://contest-manager.vercel.app/",
           position: "top-10 right-20",
         },
+
         {
           id: 4,
-          name: "nike.png",
+          name: "contest-manager.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
           position: "top-52 right-80",
-          imageUrl: "/images/project-1.png",
+          imageUrl: "/images/image.png",
         },
+
         {
           id: 5,
-          name: "Design.fig",
-          icon: "/images/plain.png",
+          name: "GitHub",
+          icon: "/images/github.png",
           kind: "file",
-          fileType: "fig",
-          href: "",
+          fileType: "url",
+          href: "https://github.com/aarav-g-168/ContestManager",
           position: "top-60 right-20",
         },
       ],
