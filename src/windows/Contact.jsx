@@ -26,6 +26,7 @@ const Contact = () => {
             <p className="mt-1 text-sm text-gray-600">
               Have an idea or want to talk tech? Let's chat.
             </p>
+            <p>guptaaarav987@gmail.com</p>
           </div>
         </div>
 
