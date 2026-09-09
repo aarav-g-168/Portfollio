@@ -261,7 +261,7 @@ const WORK_LOCATION = {
         {
           id: 4,
           name: "contest-manager.png",
-          icon: "/images/image.png",
+          icon: "/images/image1.png",
           kind: "file",
           fileType: "img",
           position: "top-52 right-80",
@@ -280,55 +280,61 @@ const WORK_LOCATION = {
       ],
     },
 
-    // ▶ Project 2
+    // ▶ Project 2 — iOS Fusion 8.0
+
     {
       id: 6,
-      name: "AI Resume Analyzer",
+      name: "iOS Fusion 8.0",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-52 right-80",
       windowPosition: "top-[20vh] left-7",
+
       children: [
         {
           id: 1,
-          name: "AI Resume Analyzer Project.txt",
+          name: "iOS Fusion 8.0.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 right-10",
+
           description: [
-            "AI Resume Analyzer is a smart tool that helps you perfect your resume with instant feedback.",
-            "Instead of guessing what recruiters want, you get AI-powered insights on keywords, formatting, and overall impact.",
-            "Think of it like having a career coach—pointing out strengths, fixing weaknesses, and boosting your chances of landing interviews.",
-            "It's built with Next.js and Tailwind, so it runs fast, looks professional, and works seamlessly on any device.",
+            "A modern event website built for iOS Fusion 8.0, the flagship event of the Advanced Developer Group (ADG) held during VIT's Gravitas technical fest.",
+            "Designed to showcase the event, workshops, Appathon, speakers, partners, timeline, and registration experience through an immersive and interactive interface.",
+            "Features a custom CSS-built MacBook experience on the landing page, along with dedicated sections for the event timeline, competition tracks, partners, and FAQs.",
+            "The event focuses on iOS development and Machine Learning, with tracks spanning HealthTech, AgriTech, Smart Mobility, Green AI & Sustainability, FinTech, and Open Innovation."
           ],
         },
+
         {
           id: 2,
-          name: "ai-resume-analyzer.com",
+          name: "ios-fusion-2025.vercel.app",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "",
+          href: "https://ios-fusion-2025.vercel.app/",
           position: "top-20 left-20",
         },
+
         {
           id: 4,
-          name: "ai-resume-analyzer.png",
-          icon: "/images/image.png",
+          name: "ios-fusion.png",
+          icon: "/images/image2.png",
           kind: "file",
           fileType: "img",
           position: "top-52 left-80",
-          imageUrl: "/images/project-2.png",
+          imageUrl: "/images/image2.png",
         },
+
         {
           id: 5,
-          name: "Design.fig",
-          icon: "/images/plain.png",
+          name: "GitHub",
+          icon: "/images/github.png",
           kind: "file",
-          fileType: "fig",
-          href: "m",
-          position: "top-60 left-5",
+          fileType: "url",
+          href: "https://github.com/ADG-VITV/IOS-Fusion-2025",
+          position: "top-60 right-80",
         },
       ],
     },
