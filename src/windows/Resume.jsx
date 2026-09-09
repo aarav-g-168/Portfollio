@@ -17,12 +17,12 @@ const Resume = () => {
         <WindowControls windowKey="resume" />
         <h2>Resume.pdf</h2>
 
-        <a href="files/resume.pdf" download className="cursor-pointer" title="Download Resume">
+        <a href="/resume.pdf" download className="cursor-pointer" title="Download Resume">
           <Download className="icon" />
         </a>
       </div>
 
-      <Document file="files/resume.pdf">
+      <Document file="/resume.pdf">
         <Page pageNumber={1} renderTextLayer renderAnnotationLayer />
       </Document>
     </>

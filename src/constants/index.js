@@ -222,9 +222,7 @@ const WORK_LOCATION = {
   icon: "/icons/work.svg",
   kind: "folder",
   children: [
-    // ▶ Project 1
     // ▶ Project 1 — Contest Manager
-
     {
       id: 5,
       name: "Contest Manager",
@@ -456,8 +454,7 @@ const RESUME_LOCATION = {
       icon: "/images/pdf.png",
       kind: "file",
       fileType: "pdf",
-      // you can add `href` if you want to open a hosted resume
-      // href: "/your/resume/path.pdf",
+      href: "/resume.pdf",
     },
   ],
 };
