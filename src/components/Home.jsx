@@ -3,8 +3,8 @@ import { locations } from '../constants/index'
 import clsx from 'clsx'
 import { useGSAP } from '@gsap/react'
 import { Draggable } from 'gsap/Draggable'
-import { useWindowStore } from '../store/window'
-import { useLocationStore } from '../store/location'
+import useWindowStore from '../store/window'
+import useLocationStore from '../store/location'
 
 const projects = locations.work?.children ?? [];
 
