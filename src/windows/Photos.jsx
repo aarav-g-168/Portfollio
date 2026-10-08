@@ -1,9 +1,9 @@
 import { Mail, Search } from "lucide-react";
 
-import WindowWrapper from "#hoc/WindowWrapper";
-import WindowControls from "#components/WindowControls";
-import { gallery, photosLinks } from "#constants";
-import useWindowStore from "#store/window";
+import WindowWrapper from "../hoc/WindowWrapper";
+import WindowControls from "../components/WindowControls";
+import { gallery, photosLinks } from "../constants/index";
+import useWindowStore from '../store/window';
 
 const Photos = () => {
     const { openWindow } = useWindowStore();
@@ -11,7 +11,7 @@ const Photos = () => {
     return (
         <div id="window-content">
             <div id="window-header">
-                <WindowControls target="photos" />
+                <WindowControls windowKey="photos" />
 
                 <div className="w-full flex justify-end items-center gap-3 text-gray-500">
                     <Mail className="icon" />
@@ -62,4 +62,6 @@ const Photos = () => {
     );
 };
 
-export default WindowWrapper("photos", Photos);
+const PhotosWindow = WindowWrapper(Photos, "photos");
+
+export default PhotosWindow;
