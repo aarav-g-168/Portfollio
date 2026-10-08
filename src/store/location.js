@@ -16,4 +16,4 @@ const useLocationStore = create(immer((set) => ({
 })),
 );
 
-export default useLocationStore;
+export default useLocationStore
