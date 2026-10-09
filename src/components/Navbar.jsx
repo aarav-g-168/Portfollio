@@ -6,7 +6,7 @@ const Navbar = () => {
   const { openWindow } = useWindowStore();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 h-11 px-5 flex items-center justify-between text-white bg-black/30 backdrop-blur-2xl backdrop-saturate-150 border-b border-white/10">
+    <nav id="desktop-navbar" className="fixed top-0 left-0 right-0 z-50 h-11 px-5 flex items-center justify-between text-white bg-black/30 backdrop-blur-2xl backdrop-saturate-150 border-b border-white/10">
       {/* left */}
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-3">

@@ -164,16 +164,6 @@ const photosLinks = [
     title: "Library",
   },
   {
-    id: 2,
-    icon: "/icons/gicon2.svg",
-    title: "Memories",
-  },
-  {
-    id: 3,
-    icon: "/icons/file.svg",
-    title: "Places",
-  },
-  {
     id: 4,
     icon: "/icons/gicon4.svg",
     title: "People",
@@ -188,19 +178,24 @@ const photosLinks = [
 const gallery = [
   {
     id: 1,
-    img: "/images/gal1.png",
+    img: "/images/aarav.jpeg",
+    name: "Aarav",
+    isPeople: true,
   },
   {
     id: 2,
-    img: "/images/gal2.png",
+    img: "/images/image1.png",
+    name: "Contest Manager",
   },
   {
     id: 3,
-    img: "/images/gal3.png",
+    img: "/images/image2.png",
+    name: "iOS Fusion 8.0",
   },
   {
     id: 4,
-    img: "/images/gal4.png",
+    img: "/images/HackGrid.png",
+    name: "HackGrid",
   },
 ];
 

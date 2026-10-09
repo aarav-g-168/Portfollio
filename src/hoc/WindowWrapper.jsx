@@ -31,7 +31,10 @@ const WindowWrapper = (Component, windowKey) => {
             } else {
                 // Create draggable when not maximized
                 if (!draggableRef.current) {
-                    const [instance] = Draggable.create(el, { onPress: () => focusWindow(windowKey) });
+                    const [instance] = Draggable.create(el, {
+                        trigger: el.querySelector('[id="window-header"]') || el,
+                        onPress: () => focusWindow(windowKey),
+                    });
                     draggableRef.current = instance;
                 }
             }
@@ -53,7 +56,11 @@ const WindowWrapper = (Component, windowKey) => {
         return (
             <section
                 id={windowKey}
+                data-maximized={maximized || undefined}
                 ref={ref}
+                onPointerDownCapture={(event) => {
+                    if (!event.target.closest('#window-controls')) focusWindow(windowKey);
+                }}
                 style={{ zIndex }}
                 className="absolute">
                 <Component {...props} />
