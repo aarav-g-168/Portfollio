@@ -7,7 +7,7 @@ import useWindowStore from '../store/window';
 
 const Photos = () => {
     const { openWindow } = useWindowStore();
-    const [section, setSection] = useState("Library");
+    const [section, setSection] = useState("Personal");
     const [query, setQuery] = useState("");
     const searchRef = useRef(null);
     const [favorites, setFavorites] = useState(() => {
@@ -21,10 +21,11 @@ const Photos = () => {
             localStorage.setItem("portfolio-photo-favorites", JSON.stringify(favorites));
         } catch { /* Favorites still work when browser storage is unavailable. */ }
     }, [favorites]);
+    const activeCategory = photosLinks.find((link) => link.title === section)?.category;
     const visiblePhotos = gallery.filter((photo) => {
-        const inSection = section === "Library"
-            || (section === "People" && photo.isPeople === true)
-            || (section === "Favorites" && favorites.includes(photo.id));
+        const inSection = section === "Favorites"
+            ? favorites.includes(photo.id)
+            : photo.category === activeCategory;
         return inSection && photo.name
             .toLowerCase().includes(query.trim().toLowerCase());
     });
@@ -97,7 +98,9 @@ const Photos = () => {
                         </ul>
                     ) : (
                         <p className="py-10 text-center text-sm text-gray-500" role="status">
-                            {query ? "No photos match your search." : "No favorites yet. Click a photo's heart to add it here."}
+                            {query ? "No photos match your search." : section === "Favorites"
+                                ? "No favorites yet. Click a photo's heart to add it here."
+                                : `No photos in ${section} yet.`}
                         </p>
                     )}
                 </div>

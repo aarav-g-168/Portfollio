@@ -161,12 +161,14 @@ const photosLinks = [
   {
     id: 1,
     icon: "/icons/gicon1.svg",
-    title: "Library",
+    title: "Personal",
+    category: "personal",
   },
   {
     id: 4,
     icon: "/icons/gicon4.svg",
-    title: "People",
+    title: "Social",
+    category: "social",
   },
   {
     id: 5,
@@ -175,27 +177,55 @@ const photosLinks = [
   },
 ];
 
+// Set category to "personal" or "social" to choose a photo's section.
 const gallery = [
   {
     id: 1,
     img: "/images/aarav.jpeg",
     name: "Aarav",
-    isPeople: true,
+    category: "personal",
   },
   {
-    id: 2,
-    img: "/images/image1.png",
-    name: "Contest Manager",
+    id: 5,
+    img: "/images/formal.jpeg",
+    name: "Aarav",
+    category: "personal",
   },
   {
-    id: 3,
-    img: "/images/image2.png",
-    name: "iOS Fusion 8.0",
+    id: 6,
+    img: "/images/poc.jpeg",
+    name: "Event-POC",
+    category: "personal",
   },
   {
-    id: 4,
-    img: "/images/HackGrid.png",
-    name: "HackGrid",
+    id: 7,
+    img: "/images/sharktech.jpeg",
+    name: "SharkTech-OC",
+    category: "social",
+  },
+  {
+    id: 8,
+    img: "/images/riviera.jpeg",
+    name: "Riviera-Events Committee",
+    category: "social",
+  },
+  {
+    id: 9,
+    img: "/images/iosfusion.jpeg",
+    name: "iOS Fusion-OC",
+    category: "social",
+  },
+  {
+    id: 10,
+    img: "/images/guest.jpeg",
+    name: "iOS Fusion-Guest Speaker",
+    category: "social",
+  },
+  {
+    id: 11,
+    img: "/images/speaker.jpeg",
+    name: "SharkTech-Guest Speaker",
+    category: "social",
   },
 ];
 
