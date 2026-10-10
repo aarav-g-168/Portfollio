@@ -3,6 +3,7 @@ import { ArrowUpRight, BriefcaseBusiness, Code2, FileText, LayoutGrid, Mail, Moo
 import MenuBarGlyph from './MenuBarGlyph';
 import useWindowStore from "../store/window";
 import { socials } from "../constants";
+import useMusicStore from '../store/music';
 
 const ControlCenter = ({ expanded, onToggle, onClose, onOpenMusic }) => {
   const [focusMode, setFocusMode] = useState(false);
@@ -11,6 +12,9 @@ const ControlCenter = ({ expanded, onToggle, onClose, onOpenMusic }) => {
   const triggerRef = useRef(null);
   const { openWindow, minimizeWindow, windows } = useWindowStore();
   const github = socials.find((social) => social.text === "Github");
+  const { activity } = useMusicStore();
+  const musicLabel = activity.track ? `${activity.status === 'playing' && !activity.stale ? 'Listening now' : 'Last played'} · ${activity.track.artist}`
+    : activity.status === 'unconfigured' ? 'Spotify · Not connected' : 'Spotify · Listening activity';
 
   useEffect(() => {
     document.documentElement.dataset.desktopFocus = String(focusMode);
@@ -92,7 +96,7 @@ const ControlCenter = ({ expanded, onToggle, onClose, onOpenMusic }) => {
 
           <button type="button" className="cc-music cc-tile" onClick={onOpenMusic}>
             <span className="cc-music-art"><Music2 size={24} /></span>
-            <span><strong>Your soundtrack</strong><small>Spotify · Coming soon</small></span>
+            <span className="cc-music-copy"><strong title={activity.track?.title}>{activity.track?.title || 'Aarav’s soundtrack'}</strong><small title={musicLabel}>{musicLabel}</small></span>
             <ArrowUpRight size={17} aria-hidden="true" />
           </button>
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import { locations } from '../constants/index'
 import clsx from 'clsx'
 import { useGSAP } from '@gsap/react'
@@ -19,16 +18,19 @@ const Home = () => {
     };
 
     useGSAP(() => {
-        Draggable.create(".folder");
+        const folders = Draggable.create(".folder", { bounds: "main" });
+        return () => folders.forEach((folder) => folder.kill());
     }, [])
 
     return (
         <section id="home">
         <ul>
             {projects.map((project) => (
-            <li key={project.id} className={clsx("group folder", project.windowPosition)} onClick={() => handleOpenProjectFinder(project)}>
-                <img src="/images/folder.png" alt={project.name} />
+            <li key={project.id} className={clsx("group folder", project.windowPosition)}>
+              <button type="button" onClick={() => handleOpenProjectFinder(project)} aria-label={`Open ${project.name} project`}>
+                <img src="/images/folder.png" alt="" />
                 <p>{project.name}</p>
+              </button>
             </li>
             ))}
         </ul>

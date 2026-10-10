@@ -34,6 +34,18 @@ npm run refresh:coding
 
 Solved totals add each platform's count; problems appearing on multiple platforms are counted separately. Codeforces reports a solved count only while its complete submission history fits the request limit.
 
+## Spotify listening activity
+
+The black menu-bar notch shows current or most recent listening activity from Last.fm, with artist, available artwork, a Spotify search link, and refresh. Control Center uses the same activity. Last.fm provides listening history, not Spotify playback control or precise progress.
+
+1. Connect **Spotify Scrobbling** in [Last.fm’s application settings](https://www.last.fm/settings/applications).
+2. Copy `.env.example` to `.env.local`, then set `LASTFM_API_KEY` to your Last.fm API key. `LASTFM_USERNAME` is `aarav-g-168`. No Shared Secret is needed.
+3. Start or restart `npm run dev`, play something on Spotify, and open the notch. The client checks every 30 seconds while the tab is visible; Last.fm may take a little longer to report a listen.
+
+The API key stays on the server. Never prefix it with `VITE_`, commit `.env.local`, or place it in client source. `GET /api/music` caches Last.fm results for 20 seconds, coalesces concurrent requests, and backs off on failures. If refresh fails, the last known track is marked stale rather than shown as live.
+
+Development and `npm run preview` serve the API through Vite. Vercel can use the root `api/music.js` handler with `LASTFM_API_KEY` and `LASTFM_USERNAME` configured as server environment variables. A different production host needs an equivalent server route; uploading `dist/` alone cannot serve live music. Static hosting shows a graceful unavailable state. The Node runtime must support `fetch` and `AbortSignal.timeout`.
+
 ## Contact form
 
 The existing Contact window (both navbar and dock) submits name, reply email, subject, and message to `guptaaarav987@gmail.com` using [FormSubmit AJAX](https://formsubmit.co/ajax-documentation). There are no email credentials in the client.

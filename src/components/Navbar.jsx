@@ -6,11 +6,21 @@ import useWindowStore from "../store/window";
 import SpotifyNotch from "./SpotifyNotch";
 import ControlCenter from "./ControlCenter";
 import Spotlight from "./Spotlight";
+import useMusicStore from '../store/music';
 
 const Navbar = () => {
   const { openWindow } = useWindowStore();
   const [now, setNow] = useState(() => new Date());
   const [openPanel, setOpenPanel] = useState(null);
+  const refreshMusic = useMusicStore((state) => state.refresh);
+
+  useEffect(() => {
+    const refreshWhenVisible = () => { if (!document.hidden) void refreshMusic(); };
+    refreshWhenVisible();
+    const timer = setInterval(refreshWhenVisible, 30000);
+    document.addEventListener('visibilitychange', refreshWhenVisible);
+    return () => { clearInterval(timer); document.removeEventListener('visibilitychange', refreshWhenVisible); };
+  }, [refreshMusic]);
 
   useEffect(() => {
     const timer = setInterval(() => setNow(new Date()), 30000);

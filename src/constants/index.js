@@ -208,7 +208,7 @@ const gallery = [
   {
     id: 5,
     img: "/images/formal.jpeg",
-    name: "Aarav",
+    name: "Formal portrait",
     category: "personal",
   },
   {
@@ -309,7 +309,7 @@ const WORK_LOCATION = {
           kind: "file",
           fileType: "img",
           position: "top-52 right-80",
-          imageUrl: "/images/image.png",
+          imageUrl: "/images/image1.png",
         },
 
         {
@@ -408,7 +408,7 @@ const WORK_LOCATION = {
         },
         {
           id: 2,
-          name: "project-url.com",
+          name: "HackGrid live",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
@@ -422,7 +422,7 @@ const WORK_LOCATION = {
           kind: "file",
           fileType: "img",
           position: "top-52 right-80",
-          imageUrl: "/images/project-3.png",
+          imageUrl: "/images/HackGrid.png",
         },
         {
           id: 5,
@@ -447,30 +447,30 @@ const ABOUT_LOCATION = {
   children: [
     {
       id: 1,
-      name: "me.png",
-      icon: "/images/image.png",
+      name: "aarav.jpeg",
+      icon: "/images/aarav.jpeg",
       kind: "file",
       fileType: "img",
       position: "top-10 left-5",
-      imageUrl: "/images/aarav.jpg",
+      imageUrl: "/images/aarav.jpeg",
     },
     {
       id: 2,
-      name: "casual-me.png",
-      icon: "/images/image.png",
+      name: "formal.jpeg",
+      icon: "/images/formal.jpeg",
       kind: "file",
       fileType: "img",
       position: "top-28 right-72",
-      imageUrl: "/images/aarav-2.jpg",
+      imageUrl: "/images/formal.jpeg",
     },
     {
       id: 3,
-      name: "conference-me.png",
-      icon: "/images/image.png",
+      name: "poc.jpeg",
+      icon: "/images/poc.jpeg",
       kind: "file",
       fileType: "img",
       position: "top-52 left-80",
-      imageUrl: "/images/aarav-3.jpg",
+      imageUrl: "/images/poc.jpeg",
     },
     {
       id: 4,
@@ -480,7 +480,7 @@ const ABOUT_LOCATION = {
       fileType: "txt",
       position: "top-60 left-5",
       subtitle: "Meet the Developer Behind the Code",
-      image: "/images/aarav.jpg",
+      image: "/images/aarav.jpeg",
       description: [
         "Hey! I’m Aarav 👋, a web developer who enjoys building sleek, interactive websites that actually work well.",
         "I specialize in JavaScript, React, and Next.js—and I love making things feel smooth, fast, and just a little bit delightful.",

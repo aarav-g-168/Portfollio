@@ -3,7 +3,8 @@ import Welcome from './components/Welcome'
 import Dock from './components/Dock'
 import TerminalWindow from './windows/Terminal'
 import SafariWindow from './windows/Safari'
-import ResumeWindow from './windows/Resume'
+import { lazy, Suspense } from 'react'
+import useWindowStore from './store/window'
 import FinderWindow from './windows/Finder'
 import TextWindow from './windows/Text'
 import ImageWindow from './windows/Image'
@@ -18,7 +19,10 @@ import GSAP from 'gsap';
 import {Draggable} from "gsap/Draggable";
 GSAP.registerPlugin(Draggable);
 
+const ResumeWindow = lazy(() => import('./windows/Resume'));
+
 const App = () => {
+  const resumeRequested = useWindowStore((state) => state.windows.resume.hasOpened);
   return (
     <main>
       <Navbar />
@@ -27,7 +31,7 @@ const App = () => {
 
       <TerminalWindow />
       <SafariWindow />
-      <ResumeWindow />
+      {resumeRequested && <Suspense fallback={<p className="resume-loading" role="status">Opening résumé…</p>}><ResumeWindow /></Suspense>}
       <FinderWindow />
       <TextWindow />
       <ImageWindow />

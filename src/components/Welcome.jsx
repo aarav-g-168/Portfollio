@@ -11,6 +11,7 @@ const renderText = (text, className, baseWeight = 400) => {
   return [...text].map((char, i) => (
     <span
       key={i}
+      data-letter=""
       className={className}
       style={{
         fontVariationSettings: `'wght' ${baseWeight}`,
@@ -23,9 +24,9 @@ const renderText = (text, className, baseWeight = 400) => {
 
 // GSAP component for hover
 const setupTextHover = (container, type) => {
-  if (!container) return () => {};
+  if (!container || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
 
-  const letters = container.querySelectorAll("span");
+  const letters = container.querySelectorAll("[data-letter]");
   const { min, max, default: base } = FONT_WEIGHTS[type];
 
   const animateLetter = (letter, weight, duration = 0.25) => {
@@ -78,20 +79,24 @@ const Welcome = () => {
 
   return (
     <section id="welcome">
-      <p ref={subtitleRef}>
+      <p ref={subtitleRef} aria-label="Hey, I'm Aarav! Welcome to my">
+        <span aria-hidden="true">
         {renderText(
           "Hey, I'm Aarav! Welcome to my",
-          "text-3xl font-georama",
+          "font-georama",
           100
         )}
+        </span>
       </p>
 
-      <h1 ref={titleRef} className="mt-7">
-        {renderText("Portfolio", "text-9xl italic font-georama")}
+      <h1 ref={titleRef} className="mt-7" aria-label="Portfolio">
+        <span aria-hidden="true">
+        {renderText("Portfolio", "italic font-georama")}
+        </span>
       </h1>
 
       <div className="small-screen">
-        <p>This portfolio is designed for desktop/tablet only</p>
+        <p>Open an app below to explore.</p>
       </div>
     </section>
   );

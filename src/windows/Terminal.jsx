@@ -1,7 +1,7 @@
 import WindowWrapper from '../hoc/WindowWrapper'
 import WindowControls from '../components/WindowControls'
 import { techStack } from '../constants'
-import { Check, Flag } from 'react-feather'
+import { Check } from 'react-feather'
 
 const Terminal = () => {
   return (
@@ -14,7 +14,7 @@ const Terminal = () => {
       <div className="techstack">
         <p>
           <span className="font-bold">@aarav %</span>
-          show tech stack
+          {' '}show tech stack
         </p>
 
         <div className="label">
@@ -24,12 +24,12 @@ const Terminal = () => {
 
         <ul className="content">
           {techStack.map(({category, items}) => (
-            <li className="flex items-center" key={category}>
-              <Check className="check" size={20} />
+            <li key={category}>
+              <Check className="check" size={20} aria-hidden="true" />
               <h3>{category}</h3>
 
               <ul>{items.map((item, i) => (
-                <li key={i}>{item} {i < items.length - 1 ? "," : ""}</li>
+                <li key={i}>{item}{i < items.length - 1 ? "," : ""}</li>
               ))}
               </ul>
 
@@ -39,11 +39,11 @@ const Terminal = () => {
 
         <div className="footnote">
           <p>
-            <Check size={20} /> 5 of 5 stacks loaded successfully (100%)
+            <Check size={20} /> {techStack.length} of {techStack.length} categories loaded
           </p>
 
           <p className="text-black">
-            <Flag size={15} fill="black" /> Render time: 6ms
+            Always learning. Always building.
           </p>
 
         </div>

@@ -11,6 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
+.env.*
+!.env.example
 
 # Editor directories and files
 .vscode/*
@@ -28,3 +31,7 @@ dist-ssr
 
 # Local agent skills
 .agents/skills/
+
+# Local verification files
+/tests/
+/docs/portfolio-review.md

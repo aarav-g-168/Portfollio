@@ -1,4 +1,4 @@
-import { Search } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import WindowControls from '../components/WindowControls'
 import WindowWrapper from '../hoc/WindowWrapper'
 import useLocationStore from '../store/location'
@@ -17,9 +17,12 @@ const Finder = () => {
       <h3>{name}</h3>
       <ul>
         {items.map((item) => (
-          <li key={item.id} onClick={() => item.type === 'trash' ? openWindow('trash') : setActiveLocation(item)} className={clsx(item.id === activeLocation.id ? "active" : "not-active")}>
-            <img src={item.icon} className="w-4" alt={item.name} />
+          <li key={item.id}>
+            <button type="button" onClick={() => item.type === 'trash' ? openWindow('trash') : setActiveLocation(item)}
+              aria-current={item.id === activeLocation.id ? 'page' : undefined} className={clsx(item.id === activeLocation.id ? "active" : "not-active")}>
+            <img src={item.icon} className="w-4" alt="" />
             <p className="text-sm font-medium truncate">{item.name}</p>
+            </button>
           </li>
         ))}
       </ul>
@@ -29,7 +32,7 @@ const Finder = () => {
   const openItem = (item) => {
     if (item.fileType === 'pdf') return openWindow("resume");
     if (item.kind === 'folder') return setActiveLocation(item);
-    if (['fig', 'url'].includes(item.fileType) && item.href) return window.open(item.href, '_blank');
+    if (['fig', 'url'].includes(item.fileType) && item.href) return window.open(item.href, '_blank', 'noopener,noreferrer');
     openWindow(`${item.fileType}${item.kind}`, item);
   };
 
@@ -37,10 +40,12 @@ const Finder = () => {
     <>
       <div id="window-header">
         <WindowControls windowKey="finder" />
-        <Search className="icon" />
+        <h2>{activeLocation.name}</h2>
+        <button type="button" className="finder-back" aria-label="Back to all projects" disabled={activeLocation.id === locations.work.id}
+          onClick={() => setActiveLocation(locations.work)}><ArrowLeft size={17} aria-hidden="true" /></button>
       </div>
 
-      <div className="bg-white flex h-full">
+      <div className="finder-layout">
         <div className="sidebar">
           {renderList("Favorites", Object.values(locations))}
           {renderList("Projects", locations.work.children)}
@@ -48,9 +53,11 @@ const Finder = () => {
 
         <ul className="content">
           {activeLocation?.children.map((item) => (
-            <li key={item.id} className={item.position} onClick={() => openItem(item)}>
-              <img src={item.icon} alt={item.name} />
+            <li key={item.id}>
+              <button type="button" onClick={() => openItem(item)}>
+              <img src={item.icon} alt="" />
               <p>{item.name}</p>
+              </button>
             </li>
           ))}
         </ul>

@@ -80,7 +80,7 @@ const Photos = () => {
                                 <li key={id}>
                                     <button type="button" className="photo-preview" aria-label={`Open ${name}`}
                                         onClick={() => openWindow("imgfile", {
-                                            id, name, icon: "/images/image.png", kind: "file",
+                                            id, name, icon: img, kind: "file",
                                             fileType: "img", imageUrl: img,
                                         })}>
                                         <span className="photo-frame">

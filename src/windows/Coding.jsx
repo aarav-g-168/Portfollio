@@ -6,9 +6,9 @@ import useWindowStore from '../store/window';
 import snapshot from '../data/coding-snapshot.json';
 
 const platforms = [
-  { id: 'leetcode', name: 'LeetCode', mark: 'LC', subtitle: 'Practice & problem solving' },
-  { id: 'codeforces', name: 'Codeforces', mark: 'CF', subtitle: 'Rated contests & algorithms' },
   { id: 'codechef', name: 'CodeChef', mark: 'CC', subtitle: 'Competitive programming' },
+  { id: 'codeforces', name: 'Codeforces', mark: 'CF', subtitle: 'Rated contests & algorithms' },
+  { id: 'leetcode', name: 'LeetCode', mark: 'LC', subtitle: 'Practice & problem solving' },
 ];
 const format = (value) => value == null ? '—' : value.toLocaleString('en-US');
 const date = (value) => new Date(value).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });

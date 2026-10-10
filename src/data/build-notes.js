@@ -61,14 +61,14 @@ export const buildNotes = [
   },
   {
     id: 'spotify-idea', title: 'A soundtrack for the desktop.', category: 'On the shelf', archived: true,
-    summary: 'A parked idea for the Spotify notch.',
-    intro: 'The notch already has a home in this portfolio. Connecting it to Spotify is a future addition; the player currently shows an honest, disconnected state.',
+    summary: 'The original idea behind the menu-bar soundtrack.',
+    intro: 'The idea began with a small space for music in the menu bar. A Last.fm connection now brings current or recent listening activity into that space, without asking visitors to sign in.',
     sections: [
       { heading: 'The idea', text: 'Show the current track and album artwork in a compact player that expands from the menu bar.' },
-      { heading: 'Before it ships', text: 'Decide how account connection should work, keep credentials on the server, and handle idle playback, expired sessions, and unavailable data gracefully.' },
+      { heading: 'What shipped', text: 'The notch shows the track, artist, and available artwork, with a Spotify search link. API credentials stay on the server. Cached activity, empty states, and a last-known-track fallback keep the interface useful when updates are unavailable.' },
     ],
     takeaway: 'A little personality, with a useful fallback.',
-    tags: ['Idea', 'Spotify', 'Future addition'],
+    tags: ['Idea', 'Spotify', 'Last.fm'],
   },
   {
     id: 'long-form-idea', title: 'Longer stories, someday.', category: 'On the shelf', archived: true,

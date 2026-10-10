@@ -17,13 +17,13 @@ const Text = () => {
         <h2>{name}</h2>
         </div>
 
-        <div className="p-5 space-y-6 bg-white">
+        <div className="text-document p-5 space-y-6 bg-white">
         {image ? (
             <div className="w-full">
             <img
                 src={image}
                 alt={name}
-                className="w-full h-auto rounded"
+                className="w-full h-auto max-h-60 object-contain rounded"
             />
             </div>
         ) : null}

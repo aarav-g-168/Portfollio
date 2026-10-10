@@ -1,4 +1,3 @@
-import React from "react";
 import WindowControls from "../components/WindowControls";
 import WindowWrapper from "../hoc/WindowWrapper";
 import useWindowStore from "../store/window";
@@ -18,7 +17,7 @@ const ImageWindowContent = () => {
         <h2>{name}</h2>
       </div>
 
-      <div className="p-5 bg-white">
+      <div className="image-document p-5 bg-white">
         {imageUrl ? (
           <div className="w-full">
             <img

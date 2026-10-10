@@ -4,7 +4,7 @@ import { useRef, useLayoutEffect, useEffect } from 'react';
 import { Draggable } from 'gsap/Draggable';
 
 const WindowWrapper = (Component, windowKey) => {
-    const wrapped = (props) => {
+    const Wrapped = (props) => {
         const { focusWindow, windows } = useWindowStore();
         const { isOpen, zIndex, maximized, genieAnimating } = windows[windowKey];
         const ref = useRef(null);
@@ -22,7 +22,7 @@ const WindowWrapper = (Component, windowKey) => {
             const el = ref.current;
             if (!el) return;
 
-            if (maximized) {
+            if (!isOpen || genieAnimating || maximized) {
                 // Kill draggable when maximized
                 if (draggableRef.current) {
                     draggableRef.current.kill();
@@ -33,6 +33,7 @@ const WindowWrapper = (Component, windowKey) => {
                 if (!draggableRef.current) {
                     const [instance] = Draggable.create(el, {
                         trigger: el.querySelector('[id="window-header"]') || el,
+                        bounds: 'main',
                         onPress: () => focusWindow(windowKey),
                     });
                     draggableRef.current = instance;
@@ -45,7 +46,7 @@ const WindowWrapper = (Component, windowKey) => {
                     draggableRef.current = null;
                 }
             };
-        }, [maximized, focusWindow, windowKey]);
+        }, [isOpen, genieAnimating, maximized, focusWindow]);
 
         useLayoutEffect(() => {
             const el = ref.current;
@@ -56,6 +57,8 @@ const WindowWrapper = (Component, windowKey) => {
         return (
             <section
                 id={windowKey}
+                hidden={!isOpen}
+                data-animating={genieAnimating || undefined}
                 data-maximized={maximized || undefined}
                 ref={ref}
                 onPointerDownCapture={(event) => {
@@ -68,8 +71,8 @@ const WindowWrapper = (Component, windowKey) => {
         );
     };
 
-    wrapped.displayName = `WindowWrapper(${Component.displayName || Component.name || 'Component'})`;
-    return wrapped;
+    Wrapped.displayName = `WindowWrapper(${Component.displayName || Component.name || 'Component'})`;
+    return Wrapped;
 };
 
 export default WindowWrapper

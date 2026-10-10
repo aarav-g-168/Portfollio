@@ -35,6 +35,10 @@ body {
   main {
     @apply w-dvw h-dvh overflow-hidden;
   }
+  main > section[hidden] { display: none !important; }
+
+  button, a { -webkit-tap-highlight-color: transparent; }
+  button:focus-visible, a:focus-visible { outline: 2px solid #2563eb; outline-offset: 3px; }
 
 }
 
@@ -70,6 +74,7 @@ body {
     }
     @media (max-width: 959px) {
       @apply px-3;
+      --notch-width: 140px;
       .menu-left { @apply gap-1; }
       .menu-links { @apply gap-0.5; }
       .menu-link { @apply text-xs; }
@@ -162,7 +167,13 @@ body {
     .notch-wave i:nth-child(2) { height: 12px; }
     .notch-wave i:nth-child(3) { height: 8px; }
     .notch-wave i:nth-child(4) { height: 14px; }
+    .notch-wave.is-playing i { animation: notch-equalizer 850ms ease-in-out infinite alternate paused; transform-origin: center; }
+    .notch-wave.is-playing i:nth-child(2) { animation-delay: -450ms; }
+    .notch-wave.is-playing i:nth-child(3) { animation-delay: -250ms; }
+    .notch-wave.is-playing i:nth-child(4) { animation-delay: -650ms; }
+    &:hover .notch-wave.is-playing i, &:focus-within .notch-wave.is-playing i { animation-play-state: running; }
     &.is-expanded {
+      z-index: 2;
       width: min(480px, calc(100vw - 24px));
       border-radius: 0 0 26px 26px;
       box-shadow: 0 18px 50px rgb(0 0 0 / 35%);
@@ -178,36 +189,45 @@ body {
     .notch-panel[hidden] { display: none; }
     .notch-track { @apply flex items-center gap-3; }
     .notch-artwork {
-      @apply flex size-14 shrink-0 items-center justify-center rounded-xl;
+      @apply relative flex size-14 shrink-0 items-center justify-center rounded-xl overflow-hidden;
       background: linear-gradient(140deg, #183624, #102018 65%, #171717);
       border: 1px solid rgb(255 255 255 / 8%);
       color: #86c99d;
     }
+    .notch-artwork img { @apply absolute inset-0 size-full object-cover; }
+    .notch-artwork img[hidden] { display: none; }
     .notch-track-copy { @apply min-w-0; }
     .notch-eyebrow { font-size: 9px; letter-spacing: 0.12em; color: #a1a1aa; }
-    .notch-track h2 { @apply mt-1 text-sm font-semibold; }
-    .notch-track p { @apply mt-1 text-xs leading-relaxed; color: #a1a1aa; }
-    .notch-transport { @apply flex justify-center items-center gap-1; }
-    .notch-transport button { @apply flex size-8 items-center justify-center; color: #71717a; cursor: not-allowed; }
-    .notch-transport .notch-play { @apply rounded-full bg-white/10; color: #a1a1aa; }
+    .notch-track h2 { @apply mt-1 text-sm font-semibold; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
+    .notch-track p { @apply mt-1 text-xs leading-relaxed truncate; color: #a1a1aa; }
+    .notch-actions { @apply flex items-center gap-1; }
+    .notch-actions button, .notch-actions a { @apply flex size-10 shrink-0 items-center justify-center rounded-full; }
+    .notch-listen { background: #1ed760; color: #071b0f; }
+    .notch-listen:hover { background: #3be477; }
+    .notch-refresh { @apply cursor-pointer; color: #a1a1aa; }
+    .notch-refresh:hover:not(:disabled) { @apply bg-white/10 text-white; }
+    .notch-refresh:disabled { cursor: wait; opacity: 0.55; }
+    .is-refreshing { animation: notch-refresh 1s linear infinite; }
     .notch-footer { @apply flex flex-wrap items-center justify-between gap-2 mt-3 pt-2 border-t border-white/10; grid-column: 1 / -1; font-size: 10px; color: #a1a1aa; }
     .notch-status { @apply flex items-center gap-1.5; }
     .notch-status i { @apply block size-1.5 rounded-full bg-zinc-500; }
-    .notch-soon { color: #a6dcb7; }
+    .notch-status.is-playing i { background: #1ed760; }
+    .notch-source { @apply flex items-center gap-1; color: #b3b3b8; }
+    a.notch-source:hover { @apply text-white; }
     @media (max-width: 699px) {
       .notch-trigger { @apply gap-2 px-3; }
     }
     @media (max-width: 480px) {
       .notch-panel { @apply px-4; column-gap: 6px; }
       .notch-track { @apply gap-2; }
-      .notch-track p { display: none; }
       .notch-eyebrow { font-size: 8px; }
       .notch-artwork { @apply size-11; }
       .notch-track h2 { @apply text-xs; }
-      .notch-transport button { @apply size-7; }
+      .notch-actions { @apply gap-0; }
+      .notch-actions button, .notch-actions a { @apply size-8; }
     }
     @media (prefers-reduced-motion: reduce) {
-      &, .notch-panel { transition: none; animation: none; }
+      &, .notch-panel, .notch-wave.is-playing i, .is-refreshing { transition: none; animation: none; }
     }
   }
 
@@ -215,6 +235,8 @@ body {
     from { opacity: 0; transform: translateY(-5px); }
     to { opacity: 1; transform: translateY(0); }
   }
+  @keyframes notch-equalizer { from { transform: scaleY(0.35); } to { transform: scaleY(1); } }
+  @keyframes notch-refresh { to { transform: rotate(360deg); } }
 
   .control-center-anchor { position: relative; display: flex; align-items: center; }
   .control-center-trigger {
@@ -296,6 +318,9 @@ body {
     input[type="range"]::-moz-range-thumb { height: 18px; width: 18px; border: none; border-radius: 50%; background: white; }
     .cc-music { @apply flex w-full items-center gap-3 p-3 mt-3 text-left; }
     .cc-music > svg { @apply ml-auto; }
+    .cc-music-copy { @apply min-w-0 flex-1; }
+    .cc-music-copy strong, .cc-music-copy small { @apply block truncate; }
+    .cc-music > svg { @apply shrink-0; }
     .cc-music-art { @apply flex size-12 shrink-0 items-center justify-center rounded-xl; background: rgb(90 153 108 / 20%); color: #a7e5b8; }
     .cc-footer { @apply flex items-center justify-between mt-3 px-1; }
     .cc-footer button, .cc-footer a { @apply flex min-h-9 items-center gap-1.5 text-xs text-zinc-200 hover:text-white; }
@@ -319,18 +344,32 @@ body {
 
   #welcome {
     @apply text-gray-200 flex flex-col justify-center items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none max-sm:h-screen max-sm:w-full max-sm:px-10;
+    > p [data-letter] { font-size: 30px; }
+    h1 [data-letter] { font-size: 128px; line-height: 1; }
 
     .small-screen {
-      @apply sm:hidden m-7 bg-red-300/20 backdrop-blur-lg p-3 rounded-md absolute top-10;
+      @apply sm:hidden mt-8 text-center;
 
       p {
-        @apply flex-1 text-[16px] text-center font-roboto text-gray-400;
+        @apply text-sm text-white/80;
       }
+    }
+
+    @media (max-width: 639px) {
+      h1 { margin-top: 16px; }
+      h1 [data-letter] { font-size: clamp(48px, 14vw, 86px); }
+      > p [data-letter] { font-size: clamp(14px, 4.2vw, 25px); }
     }
   }
 
   #dock {
-    @apply absolute bottom-5 left-1/2 -translate-x-1/2 z-50 select-none max-sm:hidden;
+    @apply absolute bottom-5 left-1/2 -translate-x-1/2 z-50 select-none;
+
+    @media (max-width: 639px) {
+      bottom: max(12px, env(safe-area-inset-bottom));
+      > .dock-container { gap: 3px; padding: 6px; }
+      button.dock-icon { width: clamp(38px, 11vw, 48px); height: clamp(38px, 11vw, 48px); }
+    }
 
     .dock-container {
       @apply bg-white/20 backdrop-blur-md justify-between rounded-2xl p-1.5 flex items-end gap-1.5;
@@ -543,7 +582,11 @@ body {
   }
 
   #terminal {
-    @apply w-xl absolute top-32 left-1/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply absolute bg-white shadow-2xl rounded-xl overflow-hidden;
+    width: min(840px, calc(100vw - 32px));
+    height: min(560px, calc(100dvh - 160px));
+    left: max(16px, calc((100vw - 840px) / 2));
+    top: 92px;
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -551,6 +594,8 @@ body {
 
     .techstack {
       @apply text-sm font-roboto p-5;
+      height: calc(100% - 48px);
+      overflow: auto;
 
       .label {
         @apply flex items-center ms-10 mt-7;
@@ -576,6 +621,9 @@ body {
             @apply whitespace-nowrap;
           }
         }
+        > li { display: grid; grid-template-columns: 20px 140px minmax(0, 1fr); align-items: start; gap: 12px; padding: 8px 0; }
+        > li h3 { width: auto; margin-left: 0; }
+        > li > ul { flex-wrap: wrap; gap: 4px 8px; }
       }
 
       .footnote {
@@ -589,6 +637,13 @@ body {
           }
         }
       }
+    }
+    @media (max-width: 639px) {
+      .techstack { padding: 16px; font-size: 12px; }
+      .techstack .label { display: none; }
+      .techstack .content { margin-top: 16px; padding: 12px 0; }
+      .techstack .content > li { grid-template-columns: 20px minmax(0, 1fr); gap: 4px 8px; padding: 10px 0; }
+      .techstack .content > li > ul { grid-column: 2; }
     }
   }
 
@@ -802,7 +857,7 @@ body {
 
   @keyframes coding-spin { to { transform: rotate(360deg); } }
 
-  #contact[data-maximized="true"], #coding[data-maximized="true"], #safari[data-maximized="true"], #trash[data-maximized="true"] {
+  main > section[data-maximized="true"] {
     top: 44px !important;
     height: calc(100dvh - 44px) !important;
     border-radius: 0;
@@ -869,7 +924,7 @@ body {
     button:focus-visible, a:focus-visible { @apply outline-2 outline-offset-2 outline-blue-600; }
 
     @media (max-width: 639px) {
-      top: 64px;
+      top: 88px;
       height: calc(100dvh - 112px);
       .experience-layout { @apply flex-col; }
       .experience-sidebar { @apply w-full shrink-0 border-r-0 border-b p-2; max-height: 180px; }
@@ -945,8 +1000,8 @@ body {
     @media (max-width: 639px) {
       width: calc(100vw - 24px);
       left: 12px;
-      top: 64px;
-      height: calc(100dvh - 152px);
+      top: 92px;
+      height: calc(100dvh - 172px);
       .photos-layout { @apply flex-col; }
       .sidebar {
         @apply w-full border-r-0 border-b p-2;
@@ -969,7 +1024,17 @@ body {
     }
   }
   #resume {
-    @apply w-fit h-fit absolute top-16 left-7/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply absolute bg-white shadow-2xl rounded-xl overflow-hidden;
+    width: min(640px, calc(100vw - 32px));
+    height: min(720px, calc(100dvh - 160px));
+    left: max(16px, calc((100vw - 640px) / 2));
+    top: 80px;
+    .resume-window { @apply flex h-full flex-col; }
+    #window-header { @apply shrink-0; }
+    .resume-document { @apply min-h-0 flex-1 overflow-auto bg-gray-100; }
+    .react-pdf__Document { @apply flex flex-col items-center gap-3 py-3; }
+    .react-pdf__Document > p { @apply p-6 text-sm; }
+    .react-pdf__Page { @apply shadow-sm; }
 
     #window-header {
       h2 {
@@ -979,10 +1044,18 @@ body {
   }
 
   #finder {
-    @apply absolute w-3xl left-40 top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl;
+    @apply absolute shadow-2xl overflow-hidden rounded-xl bg-white;
+    width: min(800px, calc(100vw - 32px));
+    height: min(560px, calc(100dvh - 160px));
+    left: max(16px, calc((100vw - 800px) / 2));
+    top: 80px;
+    #window-header { height: 48px; }
+    #window-header h2 { @apply flex-1 truncate text-center text-sm font-semibold text-gray-700; }
+    .finder-back { @apply grid size-7 shrink-0 cursor-pointer place-items-center rounded hover:bg-gray-200 disabled:opacity-30 disabled:cursor-default; }
+    .finder-layout { @apply flex min-h-0; height: calc(100% - 48px); }
 
     .sidebar {
-      @apply w-48 bg-gray-50 border-r border-gray-200 flex flex-col p-5 space-y-3;
+      @apply w-48 shrink-0 overflow-y-auto bg-gray-50 border-r border-gray-200 flex flex-col p-3 space-y-4;
 
       h3 {
         @apply text-xs font-medium text-gray-400 mb-1;
@@ -999,31 +1072,53 @@ body {
           @apply text-gray-700 hover:bg-gray-200;
         }
 
-        li {
-          @apply flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors;
+        button {
+          @apply flex w-full items-center gap-2 px-2 py-2 rounded-md cursor-pointer transition-colors text-left;
         }
+        img { @apply shrink-0; }
       }
     }
 
     .content {
-      @apply flex-1 p-8 bg-white max-w-2xl relative;
+      @apply grid min-w-0 flex-1 content-start gap-4 overflow-y-auto p-5 bg-white;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
 
       li {
-        @apply absolute flex items-center flex-col gap-3;
+        @apply min-w-0;
+        button { @apply flex w-full cursor-pointer items-center flex-col gap-2 rounded-lg px-2 py-3 hover:bg-blue-50; }
 
         img {
           @apply object-contain object-center size-16 relative group-hover:scale-105;
         }
 
         p {
-          @apply text-sm text-center font-medium w-40;
+          @apply text-xs text-center font-medium break-words;
+          overflow-wrap: anywhere;
         }
       }
+    }
+    @media (max-width: 639px) {
+      top: 92px;
+      .finder-layout { @apply flex-col; }
+      .sidebar { @apply w-full shrink-0 flex-row gap-3 space-y-0 border-r-0 border-b p-2; max-height: 135px; }
+      .sidebar > div { @apply min-w-0; }
+      .sidebar > div:first-child { flex: 1; }
+      .sidebar > div:last-child { flex: 1.3; }
+      .sidebar h3 { @apply px-2; }
+      .sidebar ul { @apply space-y-0; }
+      .sidebar button { @apply py-1 text-xs; }
+      .sidebar p { @apply text-xs; }
+      .content { @apply gap-2 p-3; grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
   }
 
   #txtfile {
-    @apply w-md absolute top-36 right-32 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply absolute bg-white shadow-2xl rounded-xl overflow-hidden;
+    width: min(540px, calc(100vw - 32px));
+    height: min(620px, calc(100dvh - 160px));
+    left: max(16px, calc((100vw - 540px) / 2));
+    top: 92px;
+    .text-document { height: calc(100% - 48px); overflow: auto; }
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -1031,7 +1126,15 @@ body {
   }
 
   #imgfile {
-    @apply w-xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply absolute bg-white shadow-2xl rounded-xl overflow-hidden;
+    width: min(640px, calc(100vw - 32px));
+    height: min(620px, calc(100dvh - 160px));
+    left: max(16px, calc((100vw - 640px) / 2));
+    top: 92px;
+    .image-document { height: calc(100% - 48px); overflow: auto; }
+    .image-document > div { @apply flex h-full items-center justify-center; }
+    .image-document img { max-height: 100%; }
+    #window-header h2 { @apply flex-1 truncate text-center text-sm font-semibold; }
 
     #window-header {
       p {
@@ -1054,6 +1157,7 @@ body {
     ul {
       li {
         @apply absolute z-0 select-none flex items-center flex-col;
+        button { @apply flex cursor-pointer flex-col items-center rounded-lg; }
 
         img {
           @apply group-hover:bg-gray-950/10 p-1 rounded-md;
@@ -1065,6 +1169,8 @@ body {
       }
     }
   }
+
+  .resume-loading { @apply fixed top-24 left-1/2 -translate-x-1/2 rounded-xl bg-white px-5 py-3 text-sm shadow-xl; z-index: 1500; }
 }
 
 
