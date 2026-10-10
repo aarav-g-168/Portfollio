@@ -10,9 +10,55 @@ const navLinks = [
     type: "contact",
   },
   {
+    id: 5,
+    name: "Experience",
+    type: "experience",
+  },
+  {
     id: 4,
     name: "Resume",
     type: "resume",
+  },
+];
+
+// Experience details displayed in the Mac-style Experience window.
+export const experiences = [
+  {
+    id: "experience-1",
+    role: "Full Stack Developer Intern",
+    organization: "Solder Labs",
+    type: "Internship",
+    dates: "Sept 2026 – Present",
+    location: "Hybrid",
+    highlights: [
+      "Contributing to the development of MediOS, a hospital operating system integrating patient records, scheduling, billing, staff management, and communication workflows into a unified platform.",
+      "Collaborating across frontend and backend teams to support feature development, integration, debugging, and coordination of the product for upcoming client deployment.",
+    ],
+    skills: [
+      "Next.js", "React", "TypeScript", "Express", "PostgreSQL",
+      "Prisma", "Drizzle ORM", "Neon", "REST APIs", "Git",
+    ],
+    link: "",
+    placeholder: false,
+  },
+  {
+    id: "experience-2",
+    role: "Core Member",
+    organization: "Advanced Developer’s Group",
+    type: "Leadership",
+    dates: "Feb 2025 – Present",
+    location: "Vellore Institute of Technology",
+    highlights: [
+      "Selected as a Core Member in the Web Development domain of Advanced Developer’s Club (ADG), collaborating with senior developers on full-stack projects and scalable web applications using modern development practices.",
+      "Contributed to the development of responsive web solutions using React, Next.js, TypeScript, and Firebase while working on API integration, UI optimization, debugging, Git-based collaboration, and deployment workflows.",
+    ],
+    skills: [
+      "Next.js", "React", "TypeScript", "Python", "Tailwind CSS",
+      "Firebase", "Firebase Auth", "Firebase Database", "Google OAuth",
+      "Chakra UI", "Framer Motion", "Git",
+    ],
+    link: "",
+    placeholder: false,
   },
 ];
 
@@ -528,6 +574,7 @@ export const locations = {
 const INITIAL_Z_INDEX = 1000;
 
 const WINDOW_CONFIG = {
+  experience: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, maximized: false, originalStyle: null },
   finder: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, maximized: false, originalStyle: null },
   contact: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, maximized: false, originalStyle: null },
   resume: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, maximized: false, originalStyle: null },
