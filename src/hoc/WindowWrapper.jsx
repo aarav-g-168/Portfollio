@@ -1,21 +1,25 @@
-import { useGSAP } from '@gsap/react';
 import useWindowStore from '../store/window';
 import { useRef, useLayoutEffect, useEffect } from 'react';
 import { Draggable } from 'gsap/Draggable';
+import { animateWindowTransition } from '../lib/window-motion';
 
 const WindowWrapper = (Component, windowKey) => {
     const Wrapped = (props) => {
-        const { focusWindow, windows } = useWindowStore();
-        const { isOpen, zIndex, maximized, genieAnimating } = windows[windowKey];
+        const { focusWindow, finishWindowTransition, windows } = useWindowStore();
+        const { isOpen, zIndex, maximized, genieAnimating, transition } = windows[windowKey];
         const ref = useRef(null);
         const draggableRef = useRef(null);
+        const motionRef = useRef(null);
 
-        useGSAP(() => {
+        useLayoutEffect(() => {
             const el = ref.current;
-            if (!el || !isOpen || genieAnimating) return;
+            if (!el || !transition) return;
+            motionRef.current = animateWindowTransition(el, windowKey, transition.type, () => {
+                finishWindowTransition(windowKey, transition.id);
+            });
+        }, [transition, finishWindowTransition]);
 
-            el.style.display = 'block';
-        }, [isOpen, genieAnimating]);
+        useLayoutEffect(() => () => motionRef.current?.cancel(), []);
 
         // Manage draggable lifecycle based on maximized state
         useEffect(() => {
@@ -48,12 +52,6 @@ const WindowWrapper = (Component, windowKey) => {
             };
         }, [isOpen, genieAnimating, maximized, focusWindow]);
 
-        useLayoutEffect(() => {
-            const el = ref.current;
-            if (!el) return;
-            el.style.display = isOpen ? 'block' : 'none';
-        }, [isOpen]);
-
         return (
             <section
                 id={windowKey}
@@ -64,7 +62,7 @@ const WindowWrapper = (Component, windowKey) => {
                 onPointerDownCapture={(event) => {
                     if (!event.target.closest('#window-controls')) focusWindow(windowKey);
                 }}
-                style={{ zIndex }}
+                style={{ zIndex, display: isOpen ? 'block' : 'none' }}
                 className="absolute">
                 <Component {...props} />
             </section>

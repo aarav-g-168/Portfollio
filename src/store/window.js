@@ -9,14 +9,23 @@ import gsap from 'gsap'
 
 import { INITIAL_Z_INDEX, WINDOW_CONFIG } from "../constants"
 
-const useWindowStore = create(immer((set) => ({
+const useWindowStore = create(immer((set, get) => ({
     windows: WINDOW_CONFIG,
     nextZIndex: INITIAL_Z_INDEX,
+    nextTransitionId: 1,
 
-    setGenieAnimating: (windowKey, value) => set((state) => {
+    finishWindowTransition: (windowKey, transitionId) => set((state) => {
         const win = state.windows[windowKey];
-        if (!win) return;
-        win.genieAnimating = value;
+        if (!win || win.transition?.id !== transitionId) return;
+        const { type } = win.transition;
+        win.transition = null;
+        win.genieAnimating = false;
+        if (type === 'open') return;
+        win.isOpen = false;
+        if (type === 'close') {
+            win.zIndex = INITIAL_Z_INDEX;
+            win.data = null;
+        }
     }),
 
     openWindow: (windowKey, data = null) => set((state) => {
@@ -25,11 +34,16 @@ const useWindowStore = create(immer((set) => ({
             console.error(`Window with id ${windowKey} not found.`);
             return;
         }
+        const appearing = !win.isOpen || (win.transition && win.transition.type !== 'open');
         win.isOpen = true;
         win.hasOpened = true;
         win.zIndex = state.nextZIndex;
         win.data = data ?? win.data;
         state.nextZIndex += 1;
+        if (appearing) {
+            win.transition = { id: state.nextTransitionId++, type: 'open' };
+            win.genieAnimating = true;
+        }
     }),
 
     closeWindow: (windowKey) => set((state) => {
@@ -38,24 +52,30 @@ const useWindowStore = create(immer((set) => ({
             console.error(`Window with id ${windowKey} not found.`);
             return;
         }
-        win.isOpen = false;
-        win.zIndex = INITIAL_Z_INDEX;
-        win.data = null;
-        win.genieAnimating = false;
+        if (!win.isOpen || win.transition?.type === 'close') return;
+        win.transition = { id: state.nextTransitionId++, type: 'close' };
+        win.genieAnimating = true;
     }),
 
     // hides the window without clearing its state, so reopening keeps data/z-index continuity
     minimizeWindow: (windowKey) => set((state) => {
         const win = state.windows[windowKey];
-        if (!win) {
-            console.error(`Window with id ${windowKey} not found.`);
-            return;
-        }
-        win.isOpen = false;
+        if (!win?.isOpen || win.transition?.type === 'minimize') return;
+        win.transition = { id: state.nextTransitionId++, type: 'minimize' };
+        win.genieAnimating = true;
     }),
+
+    toggleWindow: (windowKey) => {
+        const { windows, openWindow, closeWindow } = get();
+        const win = windows[windowKey];
+        if (!win) return;
+        if (!win.isOpen || (win.transition && win.transition.type !== 'open')) openWindow(windowKey);
+        else closeWindow(windowKey);
+    },
 
     focusWindow: (windowKey) => set((state) => {
         const win = state.windows[windowKey];
+        if (!win) return;
         win.zIndex = state.nextZIndex;
         state.nextZIndex += 1;
     }),

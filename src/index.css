@@ -363,7 +363,8 @@ body {
   }
 
   #dock {
-    @apply absolute bottom-5 left-1/2 -translate-x-1/2 z-50 select-none;
+    @apply absolute bottom-5 left-1/2 -translate-x-1/2 select-none;
+    z-index: 1900;
 
     @media (max-width: 639px) {
       bottom: max(12px, env(safe-area-inset-bottom));
@@ -1171,6 +1172,29 @@ body {
   }
 
   .resume-loading { @apply fixed top-24 left-1/2 -translate-x-1/2 rounded-xl bg-white px-5 py-3 text-sm shadow-xl; z-index: 1500; }
+}
+
+/* Temporary, non-interactive mesh used only during dock/window transitions. */
+.genie-transition {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+.genie-slice {
+  position: absolute;
+  left: 0;
+  top: 0;
+  clip-path: inset(0);
+  transform-origin: 0 0;
+  will-change: transform;
+  pointer-events: none;
+}
+.genie-slice *, .genie-slice *::before, .genie-slice *::after {
+  animation: none !important;
+  transition: none !important;
+  caret-color: transparent !important;
 }
 
 
