@@ -1,16 +1,37 @@
-# React + Vite
+# Aarav's macOS portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React, Vite, Tailwind CSS, GSAP, and Zustand.
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```sh
+npm install
+npm run dev
+npm run build
+```
 
-## React Compiler
+The menu bar's trophy opens Competitive Programming. Spotlight opens from the search icon or Ctrl/⌘ K and searches applications, projects, experience, skills, and photos.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Coding profiles
 
-## Expanding the ESLint configuration
+Profiles are configured in `api/_lib/coding.js`: LeetCode and Codeforces `aarav_g_168`, CodeChef `aaravgupta1608`, and GitHub `aarav-g-168`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+`GET /api/coding?platform=leetcode|codeforces|codechef|github` reads public profile data without account credentials. Vite serves this route during development and preview; Vercel supports the root `api/` handler in production. Other hosting needs an equivalent server route to enable live refresh.
+
+The API caches each profile for 15 minutes and spaces Codeforces requests by at least two seconds. LeetCode, CodeChef, and GitHub use public profile endpoints/page data, whose formats can change. On upstream failures or static hosting, the dashboard retains the dated snapshot in `src/data/coding-snapshot.json`.
+
+To update that snapshot before a static deployment (requires internet):
+
+```sh
+npm run refresh:coding
+```
+
+Solved totals add each platform's count; problems appearing on multiple platforms are counted separately. Codeforces reports a solved count only while its complete submission history fits the request limit.
+
+## Contact form
+
+The existing Contact window (both navbar and dock) submits name, reply email, subject, and message to `guptaaarav987@gmail.com` using [FormSubmit AJAX](https://formsubmit.co/ajax-documentation). There are no email credentials in the client.
+
+**Owner setup:** Submit one real message from the deployed site, then open the FormSubmit activation email in that inbox and confirm the form. Check spam if needed. Messages cannot be relied on for delivery before this step; inbox delivery has not been tested by the development checks.
+
+The form includes required fields, a honeypot, a sending state, submission feedback, and keeps the draft after failures. Direct email and social links remain available. Native validation and layout can be tested locally without sending a message.

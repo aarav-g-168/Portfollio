@@ -1,9 +1,11 @@
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
-import { navLinks, navIcons } from "../constants";
+import { navLinks } from "../constants";
+import { Search, Trophy } from "lucide-react";
 import useWindowStore from "../store/window";
 import SpotifyNotch from "./SpotifyNotch";
 import ControlCenter from "./ControlCenter";
+import Spotlight from "./Spotlight";
 
 const Navbar = () => {
   const { openWindow } = useWindowStore();
@@ -13,6 +15,17 @@ const Navbar = () => {
   useEffect(() => {
     const timer = setInterval(() => setNow(new Date()), 30000);
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleShortcut = (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        setOpenPanel((current) => current === 'spotlight' ? null : 'spotlight');
+      }
+    };
+    document.addEventListener('keydown', handleShortcut);
+    return () => document.removeEventListener('keydown', handleShortcut);
   }, []);
 
   return (
@@ -51,27 +64,20 @@ const Navbar = () => {
 
       {/* right */}
       <div className="menu-right">
-        <ul className="menu-status-icons" aria-label="System status">
-          {navIcons.filter(({ id }) => id !== 4).map(({ id, img }) => (
-            <li key={id}>
-              <img
-                src={img}
-                alt={`icon-${id}`}
-                className="w-4 h-4 opacity-90"
-              />
-            </li>
-          ))}
-        </ul>
-
-        <ControlCenter expanded={openPanel === "controls"}
-          onToggle={() => setOpenPanel((current) => current === "controls" ? null : "controls")}
-          onClose={() => setOpenPanel((current) => current === "controls" ? null : current)}
-          onOpenMusic={() => setOpenPanel("spotify")} />
+        <div className="menu-tools" role="group" aria-label="Portfolio utilities">
+          <button type="button" className="menu-tool" aria-label="Competitive Programming" aria-controls="coding" title="Competitive Programming" onClick={() => { setOpenPanel(null); openWindow('coding'); }}><Trophy size={17} strokeWidth={1.8} aria-hidden="true" /></button>
+          <button type="button" className={`menu-tool${openPanel === 'spotlight' ? ' active' : ''}`} aria-label="Open Spotlight" title="Spotlight (Ctrl / ⌘ K)" aria-haspopup="dialog" aria-expanded={openPanel === 'spotlight'} aria-controls="portfolio-spotlight" onClick={() => setOpenPanel((current) => current === 'spotlight' ? null : 'spotlight')}><Search size={17} strokeWidth={1.8} aria-hidden="true" /></button>
+          <ControlCenter expanded={openPanel === "controls"}
+            onToggle={() => setOpenPanel((current) => current === "controls" ? null : "controls")}
+            onClose={() => setOpenPanel((current) => current === "controls" ? null : current)}
+            onOpenMusic={() => setOpenPanel("spotify")} />
+        </div>
 
         <time dateTime={now.toISOString()} aria-label={dayjs(now).format("dddd D MMMM, h:mm A")}>
-          <span className="menu-date">{dayjs(now).format("ddd D MMM")} </span>{dayjs(now).format("h:mm A")}
+          <span className="menu-date">{dayjs(now).format("ddd D MMM")}</span><span className="menu-clock">{dayjs(now).format("h:mm A")}</span>
         </time>
       </div>
+      {openPanel === 'spotlight' && <Spotlight onClose={() => setOpenPanel(null)} />}
     </nav>
   );
 };

@@ -1,11 +1,12 @@
-import { useState } from "react";
 import { ArrowUpRight, BriefcaseBusiness, CalendarDays, MapPin } from "lucide-react";
 import WindowWrapper from "../hoc/WindowWrapper";
 import WindowControls from "../components/WindowControls";
 import { experiences } from "../constants";
+import useWindowStore from "../store/window";
 
 const Experience = () => {
-    const [selectedId, setSelectedId] = useState(experiences[0]?.id);
+    const { windows, openWindow } = useWindowStore();
+    const selectedId = windows.experience.data?.entryId;
     const selected = experiences.find((entry) => entry.id === selectedId) ?? experiences[0];
 
     return (
@@ -26,7 +27,7 @@ const Experience = () => {
                             <li key={entry.id}>
                                 <button type="button" className={selected?.id === entry.id ? "selected" : ""}
                                     aria-current={selected?.id === entry.id ? "true" : undefined}
-                                    onClick={() => setSelectedId(entry.id)}>
+                                    onClick={() => openWindow('experience', { entryId: entry.id })}>
                                     <span className="experience-entry-icon"><BriefcaseBusiness size={18} aria-hidden="true" /></span>
                                     <span className="experience-entry-copy">
                                         <span className="entry-organization">{entry.organization}</span>

@@ -5,6 +5,7 @@ import { create } from 'zustand'
 
 // updates the state more easily and immutably
 import { immer } from 'zustand/middleware/immer'
+import gsap from 'gsap'
 
 import { INITIAL_Z_INDEX, WINDOW_CONFIG } from "../constants"
 
@@ -67,16 +68,19 @@ const useWindowStore = create(immer((set) => ({
 
         const el = document.getElementById(windowKey);
         if (!el) return;
+        if (win.genieAnimating) return;
 
         if (!win.maximized) {
             // Store original position and size before maximizing
-            const rect = el.getBoundingClientRect();
             win.originalStyle = {
                 top: el.style.top || '',
                 left: el.style.left || '',
-                width: el.style.width || rect.width + 'px',
-                height: el.style.height || rect.height + 'px',
+                // Preserve CSS sizing so restored windows still adapt to the viewport.
+                width: el.style.width || '',
+                height: el.style.height || '',
                 position: el.style.position || 'absolute',
+                x: Number(gsap.getProperty(el, 'x')) || 0,
+                y: Number(gsap.getProperty(el, 'y')) || 0,
             };
 
             // Apply full-screen styles
@@ -88,6 +92,7 @@ const useWindowStore = create(immer((set) => ({
             el.style.borderRadius = '0';
             el.style.maxWidth = 'none';
             el.style.maxHeight = 'none';
+            gsap.set(el, { x: 0, y: 0 });
             win.maximized = true;
         } else {
             // Restore original position and size
@@ -100,6 +105,7 @@ const useWindowStore = create(immer((set) => ({
                 el.style.borderRadius = '';
                 el.style.maxWidth = '';
                 el.style.maxHeight = '';
+                gsap.set(el, { x: win.originalStyle.x ?? 0, y: win.originalStyle.y ?? 0 });
                 win.originalStyle = null;
             }
             win.maximized = false;

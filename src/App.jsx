@@ -1,4 +1,3 @@
-import React from 'react'
 import Navbar from './components/Navbar'
 import Welcome from './components/Welcome'
 import Dock from './components/Dock'
@@ -11,6 +10,7 @@ import ImageWindow from './windows/Image'
 import ContactWindow from './windows/Contact'
 import PhotosWindow from './windows/Photos'
 import ExperienceWindow from './windows/Experience'
+import CodingWindow from './windows/Coding'
 import Home from './components/Home'
 
 import GSAP from 'gsap';
@@ -33,6 +33,7 @@ const App = () => {
       <ContactWindow />
       <PhotosWindow />
       <ExperienceWindow />
+      <CodingWindow />
       <Home />
     </main>
   )

@@ -1,0 +1,2336 @@
+{
+  "leetcode": {
+    "handle": "aarav_g_168",
+    "url": "https://leetcode.com/u/aarav_g_168/",
+    "rating": 1489,
+    "bestRating": 1559,
+    "contests": 16,
+    "solved": 132,
+    "difficulty": {
+      "all": 132,
+      "easy": 81,
+      "medium": 46,
+      "hard": 5
+    },
+    "history": [
+      {
+        "rating": 1434,
+        "date": "2025-03-29T14:30:00.000Z",
+        "name": "Biweekly Contest 153"
+      },
+      {
+        "rating": 1489,
+        "date": "2025-03-30T02:30:00.000Z",
+        "name": "Weekly Contest 443"
+      },
+      {
+        "rating": 1524,
+        "date": "2025-04-27T02:30:00.000Z",
+        "name": "Weekly Contest 447"
+      },
+      {
+        "rating": 1504,
+        "date": "2025-05-24T14:30:00.000Z",
+        "name": "Biweekly Contest 157"
+      },
+      {
+        "rating": 1519,
+        "date": "2025-05-25T02:30:00.000Z",
+        "name": "Weekly Contest 451"
+      },
+      {
+        "rating": 1520,
+        "date": "2025-06-21T14:30:00.000Z",
+        "name": "Biweekly Contest 159"
+      },
+      {
+        "rating": 1559,
+        "date": "2025-07-27T02:30:00.000Z",
+        "name": "Weekly Contest 460"
+      },
+      {
+        "rating": 1531,
+        "date": "2025-08-02T14:30:00.000Z",
+        "name": "Biweekly Contest 162"
+      },
+      {
+        "rating": 1526,
+        "date": "2025-08-03T02:30:00.000Z",
+        "name": "Weekly Contest 461"
+      },
+      {
+        "rating": 1550,
+        "date": "2025-08-10T02:30:00.000Z",
+        "name": "Weekly Contest 462"
+      },
+      {
+        "rating": 1552,
+        "date": "2025-08-24T02:30:00.000Z",
+        "name": "Weekly Contest 464"
+      },
+      {
+        "rating": 1536,
+        "date": "2025-08-30T14:30:00.000Z",
+        "name": "Biweekly Contest 164"
+      },
+      {
+        "rating": 1496,
+        "date": "2025-08-31T02:30:00.000Z",
+        "name": "Weekly Contest 465"
+      },
+      {
+        "rating": 1484,
+        "date": "2025-10-11T14:30:00.000Z",
+        "name": "Biweekly Contest 167"
+      },
+      {
+        "rating": 1528,
+        "date": "2025-11-22T14:30:00.000Z",
+        "name": "Biweekly Contest 170"
+      },
+      {
+        "rating": 1489,
+        "date": "2026-03-28T14:30:00.000Z",
+        "name": "Biweekly Contest 179"
+      }
+    ],
+    "updatedAt": "2026-10-10T06:04:19.829Z"
+  },
+  "codeforces": {
+    "handle": "aarav_g_168",
+    "url": "https://codeforces.com/profile/aarav_g_168",
+    "rating": 1250,
+    "bestRating": 1399,
+    "rank": "pupil",
+    "contests": 35,
+    "solved": 71,
+    "history": [
+      {
+        "rating": 410,
+        "date": "2025-02-25T16:50:00.000Z",
+        "name": "Codeforces Round 1006 (Div. 3)"
+      },
+      {
+        "rating": 652,
+        "date": "2025-02-27T16:35:00.000Z",
+        "name": "Educational Codeforces Round 175 (Rated for Div. 2)"
+      },
+      {
+        "rating": 847,
+        "date": "2025-03-10T17:15:00.000Z",
+        "name": "Codeforces Round 1008 (Div. 2)"
+      },
+      {
+        "rating": 924,
+        "date": "2025-03-11T17:05:00.000Z",
+        "name": "Codeforces Round 1009 (Div. 3)"
+      },
+      {
+        "rating": 974,
+        "date": "2025-03-17T16:35:00.000Z",
+        "name": "Educational Codeforces Round 176 (Rated for Div. 2)"
+      },
+      {
+        "rating": 1054,
+        "date": "2025-04-03T16:35:00.000Z",
+        "name": "Educational Codeforces Round 177 (Rated for Div. 2)"
+      },
+      {
+        "rating": 1012,
+        "date": "2025-04-08T16:50:00.000Z",
+        "name": "Codeforces Round 1016 (Div. 3)"
+      },
+      {
+        "rating": 955,
+        "date": "2025-04-28T16:35:00.000Z",
+        "name": "Educational Codeforces Round 178 (Rated for Div. 2)"
+      },
+      {
+        "rating": 855,
+        "date": "2025-05-24T16:35:00.000Z",
+        "name": "Codeforces Round 1026 (Div. 2)"
+      },
+      {
+        "rating": 763,
+        "date": "2025-06-12T16:35:00.000Z",
+        "name": "Codeforces Round 1030 (Div. 2)"
+      },
+      {
+        "rating": 796,
+        "date": "2025-06-23T16:35:00.000Z",
+        "name": "Educational Codeforces Round 180 (Rated for Div. 2)"
+      },
+      {
+        "rating": 811,
+        "date": "2025-07-17T16:50:00.000Z",
+        "name": "Codeforces Round 1037 (Div. 3)"
+      },
+      {
+        "rating": 906,
+        "date": "2025-07-22T16:35:00.000Z",
+        "name": "Educational Codeforces Round 181 (Rated for Div. 2)"
+      },
+      {
+        "rating": 808,
+        "date": "2025-07-27T16:35:00.000Z",
+        "name": "Codeforces Round 1039 (Div. 2)"
+      },
+      {
+        "rating": 881,
+        "date": "2025-08-07T17:35:00.000Z",
+        "name": "Atto Round 1 (Codeforces Round 1041, Div. 1 + Div. 2)"
+      },
+      {
+        "rating": 913,
+        "date": "2025-08-10T16:50:00.000Z",
+        "name": "Codeforces Round 1042 (Div. 3)"
+      },
+      {
+        "rating": 966,
+        "date": "2025-08-21T16:50:00.000Z",
+        "name": "Codeforces Round 1043 (Div. 3)"
+      },
+      {
+        "rating": 1078,
+        "date": "2025-08-24T16:35:00.000Z",
+        "name": "Codeforces Round 1044 (Div. 2)"
+      },
+      {
+        "rating": 1065,
+        "date": "2025-09-07T16:50:00.000Z",
+        "name": "Codeforces Round 1047 (Div. 3)"
+      },
+      {
+        "rating": 1070,
+        "date": "2025-09-09T16:35:00.000Z",
+        "name": "Codeforces Round 1049 (Div. 2)"
+      },
+      {
+        "rating": 1058,
+        "date": "2025-09-13T16:50:00.000Z",
+        "name": "Codeforces Round 1050 (Div. 4)"
+      },
+      {
+        "rating": 1104,
+        "date": "2025-09-15T16:35:00.000Z",
+        "name": "Educational Codeforces Round 182 (Rated for Div. 2)"
+      },
+      {
+        "rating": 1128,
+        "date": "2025-09-17T16:35:00.000Z",
+        "name": "Codeforces Round 1051 (Div. 2)"
+      },
+      {
+        "rating": 1087,
+        "date": "2025-09-25T16:50:00.000Z",
+        "name": "Codeforces Round 1054 (Div. 3)"
+      },
+      {
+        "rating": 1102,
+        "date": "2025-10-10T16:50:00.000Z",
+        "name": "Codeforces Round 1057 (Div. 2)"
+      },
+      {
+        "rating": 1254,
+        "date": "2025-11-14T16:35:00.000Z",
+        "name": "Educational Codeforces Round 184 (Rated for Div. 2)"
+      },
+      {
+        "rating": 1237,
+        "date": "2025-11-28T16:35:00.000Z",
+        "name": "Educational Codeforces Round 185 (Rated for Div. 2)"
+      },
+      {
+        "rating": 1222,
+        "date": "2025-12-11T16:35:00.000Z",
+        "name": "Codeforces Round 1070 (Div. 2)"
+      },
+      {
+        "rating": 1187,
+        "date": "2026-01-12T16:50:00.000Z",
+        "name": "Codeforces Round 1072 (Div. 3)"
+      },
+      {
+        "rating": 1152,
+        "date": "2026-01-23T16:35:00.000Z",
+        "name": "Codeforces Round 1075 (Div. 2)"
+      },
+      {
+        "rating": 1165,
+        "date": "2026-02-21T16:35:00.000Z",
+        "name": "Codeforces Round 1081 (Div. 2)"
+      },
+      {
+        "rating": 1399,
+        "date": "2026-04-07T16:50:00.000Z",
+        "name": "Codeforces Round 1091 (Div. 2) and CodeCraft 26"
+      },
+      {
+        "rating": 1399,
+        "date": "2026-06-18T17:35:00.000Z",
+        "name": "Order Capital Round 2 (Codeforces Round 1104, Div. 1 + Div. 2)"
+      },
+      {
+        "rating": 1357,
+        "date": "2026-07-16T17:15:00.000Z",
+        "name": "Spectral::Cup 2026 Round 3 (Codeforces Round 1110, Div. 1 + Div. 2)"
+      },
+      {
+        "rating": 1250,
+        "date": "2026-08-07T16:35:00.000Z",
+        "name": "Educational Codeforces Round 193 (Rated for Div. 2)"
+      }
+    ],
+    "updatedAt": "2026-10-10T06:04:23.921Z"
+  },
+  "codechef": {
+    "handle": "aaravgupta1608",
+    "url": "https://www.codechef.com/users/aaravgupta1608",
+    "rating": 1575,
+    "bestRating": 1605,
+    "solved": 290,
+    "stars": 2,
+    "contests": 35,
+    "history": [
+      {
+        "rating": 984,
+        "name": "Starters 197 (Rated)",
+        "date": "2025-07-30T00:00:00.000Z"
+      },
+      {
+        "rating": 1241,
+        "name": "Starters 198 (Rated)",
+        "date": "2025-08-06T00:00:00.000Z"
+      },
+      {
+        "rating": 1318,
+        "name": "Starters 199 (Rated)",
+        "date": "2025-08-13T00:00:00.000Z"
+      },
+      {
+        "rating": 1388,
+        "name": "Starters 200 (Rated)",
+        "date": "2025-08-20T00:00:00.000Z"
+      },
+      {
+        "rating": 1369,
+        "name": "Starters 201 (Rated)",
+        "date": "2025-08-27T00:00:00.000Z"
+      },
+      {
+        "rating": 1388,
+        "name": "Starters 202 (Rated)",
+        "date": "2025-09-03T00:00:00.000Z"
+      },
+      {
+        "rating": 1349,
+        "name": "Starters 203 (Rated)",
+        "date": "2025-09-10T00:00:00.000Z"
+      },
+      {
+        "rating": 1375,
+        "name": "Starters 204 (Rated)",
+        "date": "2025-09-17T00:00:00.000Z"
+      },
+      {
+        "rating": 1440,
+        "name": "Starters 205 (Rated)",
+        "date": "2025-09-24T00:00:00.000Z"
+      },
+      {
+        "rating": 1397,
+        "name": "Starters 207 (Rated)",
+        "date": "2025-10-08T00:00:00.000Z"
+      },
+      {
+        "rating": 1445,
+        "name": "Starters 210 (Rated)",
+        "date": "2025-10-29T00:00:00.000Z"
+      },
+      {
+        "rating": 1464,
+        "name": "Starters 211 (Rated)",
+        "date": "2025-11-05T00:00:00.000Z"
+      },
+      {
+        "rating": 1464,
+        "name": "Starters 212 (Rated)",
+        "date": "2025-11-12T00:00:00.000Z"
+      },
+      {
+        "rating": 1487,
+        "name": "Starters 216 (Rated)",
+        "date": "2025-12-10T00:00:00.000Z"
+      },
+      {
+        "rating": 1484,
+        "name": "Starters 217 (Rated)",
+        "date": "2025-12-17T00:00:00.000Z"
+      },
+      {
+        "rating": 1522,
+        "name": "Starters 220 (Rated)",
+        "date": "2026-01-07T00:00:00.000Z"
+      },
+      {
+        "rating": 1514,
+        "name": "Starters 224 (Rated)",
+        "date": "2026-02-04T00:00:00.000Z"
+      },
+      {
+        "rating": 1537,
+        "name": "Starters 225 (Rated)",
+        "date": "2026-02-11T00:00:00.000Z"
+      },
+      {
+        "rating": 1537,
+        "name": "Starters 226 (Rated)",
+        "date": "2026-02-18T00:00:00.000Z"
+      },
+      {
+        "rating": 1547,
+        "name": "Starters 228 (Rated)",
+        "date": "2026-03-04T00:00:00.000Z"
+      },
+      {
+        "rating": 1585,
+        "name": "Starters 229 (Rated)",
+        "date": "2026-03-11T00:00:00.000Z"
+      },
+      {
+        "rating": 1597,
+        "name": "Starters 230 (Rated)",
+        "date": "2026-03-18T00:00:00.000Z"
+      },
+      {
+        "rating": 1586,
+        "name": "Starters 231 (Rated)",
+        "date": "2026-03-25T00:00:00.000Z"
+      },
+      {
+        "rating": 1597,
+        "name": "Starters 232 (Rated)",
+        "date": "2026-04-01T00:00:00.000Z"
+      },
+      {
+        "rating": 1603,
+        "name": "Starters 233 (Rated)",
+        "date": "2026-04-08T00:00:00.000Z"
+      },
+      {
+        "rating": 1583,
+        "name": "Starters 239 (Rated)",
+        "date": "2026-05-20T00:00:00.000Z"
+      },
+      {
+        "rating": 1581,
+        "name": "Starters 240 (Rated)",
+        "date": "2026-05-27T00:00:00.000Z"
+      },
+      {
+        "rating": 1581,
+        "name": "Starters 243 (Rated)",
+        "date": "2026-06-17T00:00:00.000Z"
+      },
+      {
+        "rating": 1593,
+        "name": "Starters 247 (Rated)",
+        "date": "2026-07-15T00:00:00.000Z"
+      },
+      {
+        "rating": 1583,
+        "name": "Starters 249 (Rated)",
+        "date": "2026-07-29T00:00:00.000Z"
+      },
+      {
+        "rating": 1605,
+        "name": "Starters 250",
+        "date": "2026-08-05T00:00:00.000Z"
+      },
+      {
+        "rating": 1597,
+        "name": "Starters 252 (Rated)",
+        "date": "2026-08-19T00:00:00.000Z"
+      },
+      {
+        "rating": 1595,
+        "name": "Starters 255",
+        "date": "2026-09-09T00:00:00.000Z"
+      },
+      {
+        "rating": 1572,
+        "name": "Starters 257 (Rated)",
+        "date": "2026-09-23T00:00:00.000Z"
+      },
+      {
+        "rating": 1575,
+        "name": "Starters 259 (Rated)",
+        "date": "2026-10-07T00:00:00.000Z"
+      }
+    ],
+    "updatedAt": "2026-10-10T06:04:19.876Z"
+  },
+  "github": {
+    "handle": "aarav-g-168",
+    "url": "https://github.com/aarav-g-168",
+    "contributions": 299,
+    "days": [
+      {
+        "date": "2025-10-05",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-06",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-07",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-08",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-09",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-10",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-11",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-12",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-13",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-14",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-15",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2025-10-16",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-17",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-18",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-19",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-20",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-21",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-22",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-23",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-24",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-25",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-26",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-27",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-28",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-29",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-30",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-10-31",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-01",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-02",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-03",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-04",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-05",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-06",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-07",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-08",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-09",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-10",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-11",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-12",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-13",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-14",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-15",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-16",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-17",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-18",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-19",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-20",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-21",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-22",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-23",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-24",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-25",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-26",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-27",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-28",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-11-29",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2025-11-30",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-01",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-02",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-03",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-04",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-05",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-06",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-07",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-08",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-09",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-10",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-11",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-12",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-13",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-14",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-15",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-16",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-17",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-18",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-19",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-20",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-21",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-22",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-23",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-24",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-25",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-26",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-27",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-28",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-29",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-30",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2025-12-31",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-01",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-02",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-03",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-04",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-05",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-06",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-07",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-08",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-09",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-10",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-11",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-12",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-13",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-14",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-15",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-16",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-17",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-18",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-19",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-20",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-21",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-22",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-23",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-24",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-25",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-26",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-27",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-28",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-29",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-30",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-01-31",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-01",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-02",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-03",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-04",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-05",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-06",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-07",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-08",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-09",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-10",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-11",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-12",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-13",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-14",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-15",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-16",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-17",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-18",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-19",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-20",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-02-21",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-22",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-23",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-24",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-25",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-26",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-27",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-02-28",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-03-01",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-03-02",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-03-03",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-03-04",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-03-05",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-03-06",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-03-07",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-03-08",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-03-09",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-03-10",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-03-11",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-03-12",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-03-13",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-03-14",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-03-15",
+        "level": 2,
+        "count": 3
+      },
+      {
+        "date": "2026-03-16",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-03-17",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-03-18",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-03-19",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-03-20",
+        "level": 2,
+        "count": 4
+      },
+      {
+        "date": "2026-03-21",
+        "level": 4,
+        "count": 9
+      },
+      {
+        "date": "2026-03-22",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-03-23",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-03-24",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-03-25",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-03-26",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-03-27",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-03-28",
+        "level": 2,
+        "count": 5
+      },
+      {
+        "date": "2026-03-29",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-03-30",
+        "level": 3,
+        "count": 7
+      },
+      {
+        "date": "2026-03-31",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-04-01",
+        "level": 2,
+        "count": 3
+      },
+      {
+        "date": "2026-04-02",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-04-03",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-04-04",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-04-05",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-04-06",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-04-07",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-04-08",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-04-09",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-04-10",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-04-11",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-04-12",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-04-13",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-04-14",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-04-15",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-04-16",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-04-17",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-04-18",
+        "level": 2,
+        "count": 5
+      },
+      {
+        "date": "2026-04-19",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-04-20",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-04-21",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-04-22",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-04-23",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-04-24",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-04-25",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-04-26",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-04-27",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-04-28",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-04-29",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-04-30",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-01",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-02",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-03",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-04",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-05",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-06",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-07",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-08",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-09",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-10",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-11",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-12",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-05-13",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-14",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-15",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-16",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-17",
+        "level": 2,
+        "count": 3
+      },
+      {
+        "date": "2026-05-18",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-05-19",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-20",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-21",
+        "level": 3,
+        "count": 6
+      },
+      {
+        "date": "2026-05-22",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-05-23",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-24",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-05-25",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-05-26",
+        "level": 2,
+        "count": 4
+      },
+      {
+        "date": "2026-05-27",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-05-28",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-29",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-05-30",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-05-31",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-06-01",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-06-02",
+        "level": 2,
+        "count": 5
+      },
+      {
+        "date": "2026-06-03",
+        "level": 2,
+        "count": 4
+      },
+      {
+        "date": "2026-06-04",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-06-05",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-06-06",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-06-07",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-06-08",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-06-09",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-06-10",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-06-11",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-06-12",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-06-13",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-06-14",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-06-15",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-06-16",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-06-17",
+        "level": 2,
+        "count": 5
+      },
+      {
+        "date": "2026-06-18",
+        "level": 2,
+        "count": 5
+      },
+      {
+        "date": "2026-06-19",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-06-20",
+        "level": 2,
+        "count": 3
+      },
+      {
+        "date": "2026-06-21",
+        "level": 3,
+        "count": 8
+      },
+      {
+        "date": "2026-06-22",
+        "level": 2,
+        "count": 3
+      },
+      {
+        "date": "2026-06-23",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-06-24",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-06-25",
+        "level": 2,
+        "count": 4
+      },
+      {
+        "date": "2026-06-26",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-06-27",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-06-28",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-06-29",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-06-30",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-07-01",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-02",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-07-03",
+        "level": 2,
+        "count": 4
+      },
+      {
+        "date": "2026-07-04",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-07-05",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-06",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-07-07",
+        "level": 2,
+        "count": 3
+      },
+      {
+        "date": "2026-07-08",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-09",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-10",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-11",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-12",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-07-13",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-14",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-07-15",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-16",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-17",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-18",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-19",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-20",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-21",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-22",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-23",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-24",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-25",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-26",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-27",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-28",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-29",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-30",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-07-31",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-08-01",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-08-02",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-08-03",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-08-04",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-08-05",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-08-06",
+        "level": 2,
+        "count": 3
+      },
+      {
+        "date": "2026-08-07",
+        "level": 2,
+        "count": 5
+      },
+      {
+        "date": "2026-08-08",
+        "level": 2,
+        "count": 3
+      },
+      {
+        "date": "2026-08-09",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-08-10",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-08-11",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-08-12",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-08-13",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-08-14",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-08-15",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-08-16",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-08-17",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-08-18",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-08-19",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-08-20",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-08-21",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-08-22",
+        "level": 3,
+        "count": 8
+      },
+      {
+        "date": "2026-08-23",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-08-24",
+        "level": 2,
+        "count": 3
+      },
+      {
+        "date": "2026-08-25",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-08-26",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-08-27",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-08-28",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-08-29",
+        "level": 2,
+        "count": 3
+      },
+      {
+        "date": "2026-08-30",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-08-31",
+        "level": 2,
+        "count": 4
+      },
+      {
+        "date": "2026-09-01",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-09-02",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-09-03",
+        "level": 2,
+        "count": 5
+      },
+      {
+        "date": "2026-09-04",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-09-05",
+        "level": 2,
+        "count": 3
+      },
+      {
+        "date": "2026-09-06",
+        "level": 2,
+        "count": 3
+      },
+      {
+        "date": "2026-09-07",
+        "level": 3,
+        "count": 7
+      },
+      {
+        "date": "2026-09-08",
+        "level": 2,
+        "count": 4
+      },
+      {
+        "date": "2026-09-09",
+        "level": 4,
+        "count": 9
+      },
+      {
+        "date": "2026-09-10",
+        "level": 4,
+        "count": 10
+      },
+      {
+        "date": "2026-09-11",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-09-12",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-09-13",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-09-14",
+        "level": 2,
+        "count": 3
+      },
+      {
+        "date": "2026-09-15",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-09-16",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-09-17",
+        "level": 1,
+        "count": 2
+      },
+      {
+        "date": "2026-09-18",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-09-19",
+        "level": 4,
+        "count": 11
+      },
+      {
+        "date": "2026-09-20",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-09-21",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-09-22",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-09-23",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-09-24",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-09-25",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-09-26",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-09-27",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-09-28",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-09-29",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-09-30",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-10-01",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-10-02",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-10-03",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-10-04",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-10-05",
+        "level": 0,
+        "count": 0
+      },
+      {
+        "date": "2026-10-06",
+        "level": 1,
+        "count": 1
+      },
+      {
+        "date": "2026-10-07",
+        "level": 2,
+        "count": 3
+      },
+      {
+        "date": "2026-10-08",
+        "level": 3,
+        "count": 6
+      },
+      {
+        "date": "2026-10-09",
+        "level": 3,
+        "count": 8
+      },
+      {
+        "date": "2026-10-10",
+        "level": 2,
+        "count": 3
+      }
+    ],
+    "updatedAt": "2026-10-10T06:04:19.890Z"
+  }
+}

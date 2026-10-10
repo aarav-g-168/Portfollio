@@ -223,7 +223,6 @@ const photosLinks = [
   },
 ];
 
-// Set category to "personal" or "social" to choose a photo's section.
 const gallery = [
   {
     id: 1,
@@ -574,6 +573,7 @@ export const locations = {
 const INITIAL_Z_INDEX = 1000;
 
 const WINDOW_CONFIG = {
+  coding: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, maximized: false, originalStyle: null },
   experience: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, maximized: false, originalStyle: null },
   finder: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, maximized: false, originalStyle: null },
   contact: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, maximized: false, originalStyle: null },

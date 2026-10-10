@@ -51,9 +51,9 @@ const ControlCenter = ({ expanded, onToggle, onClose, onOpenMusic }) => {
 
   return (
     <div ref={panelRef} className="control-center-anchor">
-      <button ref={triggerRef} type="button" className={`control-center-trigger${expanded ? " active" : ""}`}
+      <button ref={triggerRef} type="button" className={`menu-tool control-center-trigger${expanded ? " active" : ""}`}
         aria-label="Control Center" aria-expanded={expanded} aria-controls="portfolio-control-center" onClick={onToggle}>
-        <SlidersHorizontal size={17} aria-hidden="true" />
+        <SlidersHorizontal size={17} strokeWidth={1.8} aria-hidden="true" />
       </button>
       {expanded && (
         <section id="portfolio-control-center" className="control-center" aria-label="Portfolio Control Center">
