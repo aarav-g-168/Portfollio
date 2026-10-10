@@ -12,6 +12,7 @@ const Dock = () => {
     useGSAP(() => {
         const dock = dockRef.current;
         if (!dock) return () => {};
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
         const icons = dock.querySelectorAll(".dock-icon");
 
@@ -62,9 +63,24 @@ const Dock = () => {
 
         if (!dock || !windowEl || !dockIcon) return;
 
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            if (isOpening) openWindow(windowKey);
+            else closeWindow(windowKey);
+            return;
+        }
+
+        // Reveal before measuring: hidden windows otherwise report a zero rect.
+        setGenieAnimating(windowKey, true);
+        if (isOpening) {
+            openWindow(windowKey);
+            await new Promise(resolve => requestAnimationFrame(resolve));
+        }
+
         // Get positions
         const iconRect = dockIcon.getBoundingClientRect();
         const windowRect = windowEl.getBoundingClientRect();
+        const savedX = Number(gsap.getProperty(windowEl, 'x')) || 0;
+        const savedY = Number(gsap.getProperty(windowEl, 'y')) || 0;
 
         // Calculate start and end positions relative to viewport
         const iconCenterX = iconRect.left + iconRect.width / 2;
@@ -73,21 +89,12 @@ const Dock = () => {
         const windowCenterY = windowRect.top + windowRect.height / 2;
 
         if (isOpening) {
-            // FIRST: open window in store so element is mounted and visible
-            openWindow(windowKey);
-
-            // Wait for React to render the window (next frame)
-            await new Promise(r => requestAnimationFrame(r));
-
-            // NOW set animating state and run genie animation on visible element
-            setGenieAnimating(windowKey, true);
-
             windowEl.style.transformOrigin = 'center center';
 
             // Set initial state at dock icon position
             gsap.set(windowEl, {
-                x: iconCenterX - windowCenterX,
-                y: iconCenterY - windowCenterY,
+                x: savedX + iconCenterX - windowCenterX,
+                y: savedY + iconCenterY - windowCenterY,
                 scale: 0.1,
                 rotation: 0,
                 opacity: 0
@@ -97,8 +104,8 @@ const Dock = () => {
             await gsap.to(windowEl, {
                 duration: 0.5,
                 ease: "power3.inOut",
-                x: 0,
-                y: 0,
+                x: savedX,
+                y: savedY,
                 scale: 1,
                 opacity: 1,
                 onComplete: () => {
@@ -115,15 +122,15 @@ const Dock = () => {
             await gsap.to(windowEl, {
                 duration: 0.4,
                 ease: "power3.inOut",
-                x: iconCenterX - windowCenterX,
-                y: iconCenterY - windowCenterY,
+                x: savedX + iconCenterX - windowCenterX,
+                y: savedY + iconCenterY - windowCenterY,
                 scale: 0.1,
                 opacity: 0,
                 rotation: 15,
                 onComplete: () => {
                     windowEl.style.display = 'none';
                     windowEl.style.transformOrigin = '';
-                    gsap.set(windowEl, { x: 0, y: 0, scale: 1, opacity: 1, rotation: 0 });
+                    gsap.set(windowEl, { x: savedX, y: savedY, scale: 1, opacity: 1, rotation: 0 });
                 }
             });
 
@@ -140,6 +147,7 @@ const Dock = () => {
             console.error(`Window with id ${windowKey} not found.`);
             return;
         }
+        if (window.genieAnimating) return;
 
         if (window.isOpen) {
             animateGenieEffect(windowKey, false);

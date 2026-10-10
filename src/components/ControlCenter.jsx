@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, BriefcaseBusiness, Code2, FileText, LayoutGrid, Mail, Moon, Music2, SlidersHorizontal, Sun, Terminal } from "lucide-react";
+import { ArrowUpRight, BriefcaseBusiness, Code2, FileText, LayoutGrid, Mail, Moon, Music2, Sun, Terminal } from "lucide-react";
+import MenuBarGlyph from './MenuBarGlyph';
 import useWindowStore from "../store/window";
 import { socials } from "../constants";
 
@@ -53,7 +54,7 @@ const ControlCenter = ({ expanded, onToggle, onClose, onOpenMusic }) => {
     <div ref={panelRef} className="control-center-anchor">
       <button ref={triggerRef} type="button" className={`menu-tool control-center-trigger${expanded ? " active" : ""}`}
         aria-label="Control Center" aria-expanded={expanded} aria-controls="portfolio-control-center" onClick={onToggle}>
-        <SlidersHorizontal size={17} strokeWidth={1.8} aria-hidden="true" />
+        <MenuBarGlyph kind="controls" />
       </button>
       {expanded && (
         <section id="portfolio-control-center" className="control-center" aria-label="Portfolio Control Center">

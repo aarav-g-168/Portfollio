@@ -11,6 +11,7 @@ import ContactWindow from './windows/Contact'
 import PhotosWindow from './windows/Photos'
 import ExperienceWindow from './windows/Experience'
 import CodingWindow from './windows/Coding'
+import ArchiveWindow from './windows/Archive'
 import Home from './components/Home'
 
 import GSAP from 'gsap';
@@ -34,6 +35,7 @@ const App = () => {
       <PhotosWindow />
       <ExperienceWindow />
       <CodingWindow />
+      <ArchiveWindow />
       <Home />
     </main>
   )

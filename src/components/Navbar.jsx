@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { navLinks } from "../constants";
-import { Search, Trophy } from "lucide-react";
+import MenuBarGlyph from "./MenuBarGlyph";
 import useWindowStore from "../store/window";
 import SpotifyNotch from "./SpotifyNotch";
 import ControlCenter from "./ControlCenter";
@@ -65,8 +65,8 @@ const Navbar = () => {
       {/* right */}
       <div className="menu-right">
         <div className="menu-tools" role="group" aria-label="Portfolio utilities">
-          <button type="button" className="menu-tool" aria-label="Competitive Programming" aria-controls="coding" title="Competitive Programming" onClick={() => { setOpenPanel(null); openWindow('coding'); }}><Trophy size={17} strokeWidth={1.8} aria-hidden="true" /></button>
-          <button type="button" className={`menu-tool${openPanel === 'spotlight' ? ' active' : ''}`} aria-label="Open Spotlight" title="Spotlight (Ctrl / ⌘ K)" aria-haspopup="dialog" aria-expanded={openPanel === 'spotlight'} aria-controls="portfolio-spotlight" onClick={() => setOpenPanel((current) => current === 'spotlight' ? null : 'spotlight')}><Search size={17} strokeWidth={1.8} aria-hidden="true" /></button>
+          <button type="button" className="menu-tool" aria-label="Competitive Programming" aria-controls="coding" title="Competitive Programming" onClick={() => { setOpenPanel(null); openWindow('coding'); }}><MenuBarGlyph kind="coding" /></button>
+          <button type="button" className={`menu-tool${openPanel === 'spotlight' ? ' active' : ''}`} aria-label="Open Spotlight" title="Spotlight (Ctrl / ⌘ K)" aria-haspopup="dialog" aria-expanded={openPanel === 'spotlight'} aria-controls="portfolio-spotlight" onClick={() => setOpenPanel((current) => current === 'spotlight' ? null : 'spotlight')}><MenuBarGlyph kind="search" /></button>
           <ControlCenter expanded={openPanel === "controls"}
             onToggle={() => setOpenPanel((current) => current === "controls" ? null : "controls")}
             onClose={() => setOpenPanel((current) => current === "controls" ? null : current)}

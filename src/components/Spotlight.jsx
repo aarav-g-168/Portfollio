@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowDown, ArrowUp, BriefcaseBusiness, FileText, Folder, Image, Mail, Search, Terminal, Trophy, X } from 'lucide-react';
+import { Archive, ArrowDown, ArrowUp, BriefcaseBusiness, FileText, Folder, Image, Mail, NotebookPen, Search, Terminal, Trophy, X } from 'lucide-react';
 import { searchSpotlight } from '../lib/spotlight';
 import useWindowStore from '../store/window';
 import useLocationStore from '../store/location';
 
-const icons = { folder: Folder, mail: Mail, briefcase: BriefcaseBusiness, file: FileText, terminal: Terminal, trophy: Trophy, image: Image };
+const icons = { folder: Folder, mail: Mail, briefcase: BriefcaseBusiness, file: FileText, terminal: Terminal, trophy: Trophy, image: Image, notes: NotebookPen, archive: Archive };
 
 const Spotlight = ({ onClose }) => {
   const [query, setQuery] = useState('');

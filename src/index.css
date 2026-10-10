@@ -391,47 +391,155 @@ body {
   }
 
   #safari {
-    @apply w-4xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    width: min(1080px, calc(100vw - 32px));
+    height: min(720px, calc(100dvh - 144px));
+    left: max(16px, calc((100vw - 1080px) / 2));
+    top: 72px;
+  }
 
-    .search {
-      @apply flex items-center gap-3 w-2/3 bg-white border border-gray-300 rounded-lg px-3 py-2;
+  #trash {
+    width: min(980px, calc(100vw - 32px));
+    height: min(690px, calc(100dvh - 144px));
+    left: max(16px, calc((100vw - 980px) / 2));
+    top: 72px;
+  }
 
-      input {
-        @apply placeholder:text-gray-400;
-      }
+  #safari, #trash {
+    @apply absolute overflow-hidden rounded-xl border border-black/10 bg-white shadow-2xl;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #27272a;
+    .notes-window, .archive-window { @apply flex h-full min-h-0 flex-col; }
+    #window-header { @apply shrink-0; display: grid; grid-template-columns: 72px minmax(0, 1fr) 72px; height: 50px; padding: 0 16px; background: #f6f6f5; }
+    #window-header h2 { @apply flex min-w-0 items-center justify-center gap-2 text-[13px] font-semibold text-gray-700; }
+    button { cursor: pointer; }
+    button:disabled { cursor: default; opacity: 0.35; }
+    button:focus-visible, input:focus-visible { outline: 2px solid #b77900; outline-offset: 2px; }
+    .notes-toolbar { @apply flex justify-end gap-1; }
+    .notes-toolbar button { @apply grid size-8 place-items-center rounded-md text-gray-500 hover:bg-black/5; }
+    .notes-toolbar button[aria-pressed="true"] { @apply bg-amber-100 text-amber-800; }
+    .notes-layout { display: grid; grid-template-columns: 180px 256px minmax(0, 1fr); flex: 1; min-height: 0; }
+    .notes-sidebar { @apply relative overflow-y-auto border-r border-black/10 p-3; background: #efeeeb; }
+    .notes-account { @apply mb-6 flex items-center gap-2 px-1 pt-2; }
+    .notes-account > span { @apply grid size-8 shrink-0 place-items-center rounded-full bg-white text-[11px] font-semibold text-stone-600 shadow-sm; }
+    .notes-account strong { @apply block text-xs font-semibold; }
+    .notes-account small { @apply mt-1 block text-[10px] text-stone-500; }
+    .notes-sidebar h3 { @apply mb-2 px-2 text-[11px] font-semibold text-stone-500; }
+    .notes-sidebar > button { @apply mb-1 flex min-h-10 w-full items-center gap-2 rounded-lg px-2 text-xs font-medium text-stone-700 hover:bg-black/5; }
+    .notes-sidebar > button > svg { @apply shrink-0 text-amber-700; }
+    .notes-sidebar > button > span, .notes-archive-arrow { @apply ml-auto text-[11px] text-stone-500; }
+    .notes-sidebar > button.selected { background: #dfdcd5; color: #292524; }
+    .notes-sidebar-caption { @apply mt-10 px-2 text-[11px] leading-5 text-stone-500; }
+    .notes-list-pane { @apply flex min-h-0 min-w-0 flex-col border-r border-black/10 bg-[#fafaf9]; }
+    .notes-list-heading { @apply flex items-baseline justify-between gap-2 px-4 pt-5 pb-3; }
+    .notes-list-heading h3 { @apply text-base font-semibold tracking-tight; }
+    .notes-list-heading > span { @apply text-[11px] text-stone-500; }
+    .notes-search { @apply mx-3 mb-3 flex min-h-8 shrink-0 items-center gap-2 rounded-lg border border-black/10 bg-black/5 px-2.5 text-stone-500; }
+    .notes-search input { @apply min-w-0 flex-1 border-0 bg-transparent py-1.5 text-xs text-stone-800 outline-none placeholder:text-stone-500; user-select: text; }
+    .notes-search:focus-within { outline: 2px solid #d4a03a; outline-offset: 1px; }
+    .notes-search input:focus-visible { outline: none; }
+    .notes-search input::-webkit-search-cancel-button { display: none; }
+    .notes-search button { @apply grid size-6 shrink-0 place-items-center rounded hover:bg-black/10; }
+    .notes-list { @apply min-h-0 overflow-y-auto px-2 pb-2; scrollbar-width: thin; }
+    .notes-list > button { @apply mb-1 block w-full rounded-lg px-3 py-3 text-left hover:bg-black/5; }
+    .notes-list > button.selected { background: #f5df99; }
+    .notes-list strong { @apply block text-[13px] leading-5 font-semibold; }
+    .notes-list p { @apply mt-1 text-[11px] leading-[17px] text-stone-600; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .notes-list > button > span { @apply mt-2 flex items-center gap-1.5 text-[10px] text-stone-600; }
+    .notes-list-footer { @apply mt-auto shrink-0 border-t border-black/5 px-4 py-2.5 text-[10px] text-stone-500; }
+    .notes-reading-pane { @apply flex min-h-0 min-w-0 flex-col bg-[#fffefb]; }
+    .note-reader { @apply min-h-0 min-w-0 flex-1 overflow-y-auto px-8 py-7; scrollbar-width: thin; }
+    .note-reader article { @apply mx-auto w-full; max-width: 620px; }
+    .note-metadata { @apply mb-4 flex flex-wrap items-center gap-3 text-[11px] text-stone-500; }
+    .note-metadata > span:first-child { @apply font-medium text-amber-800; }
+    .note-reader h3 { @apply text-[26px] leading-[1.25] font-semibold tracking-tight text-stone-900; text-wrap: balance; }
+    .note-reader p { @apply text-[13px] leading-[1.85] text-stone-600; overflow-wrap: anywhere; }
+    .note-reader .note-lead { @apply mt-4 text-sm leading-[1.8] text-stone-600; }
+    .note-reader section { @apply mt-6; }
+    .note-reader h4 { @apply mb-1.5 text-[13px] font-semibold text-stone-800; }
+    .note-reader blockquote { @apply mt-7 flex items-start gap-3 rounded-lg border border-amber-200/70 bg-amber-50/80 p-4; }
+    .note-reader blockquote > svg { @apply mt-0.5 shrink-0 text-amber-700; }
+    .note-reader blockquote p { @apply text-[13px] leading-6 font-medium text-amber-900; }
+    .note-tags { @apply mt-5 flex flex-wrap gap-2; }
+    .note-tags li { @apply rounded-md border border-stone-200 bg-white px-2 py-1 text-[10px] text-stone-600; }
+    .note-project-link { @apply mt-5 inline-flex min-h-10 items-center gap-1.5 rounded-md text-xs font-medium text-amber-800 hover:underline; }
+    .notes-back { display: none; }
+    .notebook-status { @apply flex min-h-8 shrink-0 flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t border-black/10 bg-[#f6f6f5] px-4 py-2 text-[10px] leading-4 text-stone-500; }
+    .notebook-status button { @apply text-[11px] font-medium text-amber-800 hover:underline; }
+    .notebook-empty { @apply flex min-w-0 flex-1 flex-col items-center justify-center gap-3 px-5 py-8 text-center text-stone-500; }
+    .notebook-empty strong { @apply text-sm font-semibold text-stone-700; }
+    .notebook-empty p { @apply max-w-64 text-xs leading-6; }
+    .notebook-empty button { @apply min-h-9 rounded-lg bg-amber-100 px-3 py-2 text-xs font-medium text-amber-900 hover:bg-amber-200; }
+    .archive-header-count { @apply text-right text-[11px] text-stone-500; }
+    .archive-layout { @apply flex min-h-0 flex-1; }
+    .archive-browser { @apply flex w-72 shrink-0 flex-col overflow-y-auto border-r border-black/10 bg-[#f5f4f1] p-4; scrollbar-width: thin; }
+    .archive-intro { @apply px-1 pt-1 pb-5; }
+    .archive-emblem { @apply mb-4 grid size-11 place-items-center rounded-xl border border-white bg-white/80 text-stone-500 shadow-sm; }
+    .archive-intro h3 { @apply text-xl font-semibold tracking-tight text-stone-800; }
+    .archive-intro p { @apply mt-2 text-xs leading-5 text-stone-500; }
+    .archive-browser .notes-search { @apply mx-0; }
+    .archive-filters { @apply mb-3 flex shrink-0 gap-1 rounded-lg bg-black/5 p-1; }
+    .archive-filters button { @apply min-h-8 flex-1 rounded-md px-2 text-[11px] text-stone-600; }
+    .archive-filters button[aria-pressed="true"] { @apply bg-white font-medium text-stone-800 shadow-sm; }
+    .archive-items > button { @apply mb-2 flex min-h-20 w-full items-center gap-3 rounded-lg border border-transparent p-3 text-left hover:bg-black/5; }
+    .archive-items > button.selected { @apply border-stone-200 bg-white shadow-sm; }
+    .archive-file-icon { @apply grid size-10 shrink-0 place-items-center rounded-lg border border-stone-200 bg-stone-50 text-amber-700; }
+    .archive-items > button > span:last-child { @apply min-w-0; }
+    .archive-items strong { @apply block text-xs leading-5 font-semibold text-stone-800; }
+    .archive-items small { @apply mt-1 block text-[10px] leading-4 text-stone-500; }
+    .archive-preview { @apply flex min-h-0 min-w-0 flex-1 flex-col bg-[#fffefb]; }
+    .archive-restore { @apply flex shrink-0 flex-wrap items-center justify-between gap-3 border-t border-stone-200 bg-white px-6 py-4; }
+    .archive-restore p { @apply text-xs text-stone-500; }
+    .archive-restore button { @apply inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-stone-200 bg-stone-100 px-3 py-2 text-xs font-medium text-stone-700 shadow-sm hover:bg-stone-200; }
+    @media (max-width: 1099px) {
+      .notes-layout { grid-template-columns: 156px 224px minmax(0, 1fr); }
+      .notes-account { @apply gap-1.5; }
+      .notes-account > span { @apply size-7; }
+      .notes-account strong { @apply text-[11px]; }
+      .notes-account small { @apply text-[9px]; }
+      .note-reader { @apply px-6 py-6; }
+      .note-reader h3 { @apply text-2xl; }
     }
-
-    .blog {
-      @apply bg-white p-10 max-w-3xl mx-auto;
-
-      h2 {
-        @apply text-xl font-bold text-pink-600 mb-10;
-      }
-
-      .blog-post {
-        @apply grid grid-cols-12 space-x-5;
-
-        img {
-          @apply size-full rounded-md object-cover;
-        }
-
-        .content {
-          @apply col-span-10 space-y-3;
-
-          p {
-            @apply text-xs text-gray-500;
-          }
-
-          h3 {
-            @apply font-semibold text-base text-gray-800;
-          }
-
-          a {
-            @apply text-blue-600 text-xs hover:underline flex items-center gap-3;
-          }
-        }
-      }
+    @media (max-width: 879px) {
+      .notes-layout { grid-template-columns: 220px minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); }
+      .notes-sidebar { @apply flex items-center gap-2 border-r-0 border-b px-3 py-2; grid-column: 1 / -1; }
+      .notes-account, .notes-sidebar h3, .notes-sidebar-caption { display: none; }
+      .notes-sidebar > button { @apply mb-0 min-h-9 w-auto px-3; }
+      .notes-sidebar > button > span { @apply ml-2; }
+      .notes-sidebar > button:last-of-type { @apply ml-auto; }
+      .archive-browser { @apply w-60 p-3; }
+      .archive-restore { @apply px-5; }
     }
+    @media (max-width: 699px) {
+      top: 88px;
+      height: calc(100dvh - 112px);
+    }
+    @media (max-width: 639px) {
+      .notes-layout { @apply flex flex-col; }
+      .notes-sidebar { @apply shrink-0 gap-1 px-2; }
+      .notes-sidebar > button { @apply gap-1.5 px-2 text-[11px]; }
+      .notes-sidebar > button > svg { @apply size-3.5; }
+      .notes-sidebar > button > span { @apply ml-0; }
+      .notes-reading-pane { display: none; }
+      .notes-list-pane { @apply min-h-0 flex-1 border-r-0; }
+      .is-reading .notes-list-pane { display: none; }
+      .is-reading .notes-reading-pane { @apply flex flex-1; }
+      .notes-back { @apply flex min-h-10 shrink-0 items-center gap-1.5 px-5 text-xs font-medium text-amber-800; }
+      .note-reader { @apply px-5 pt-3 pb-6; }
+      .note-reader h3 { @apply text-2xl; }
+      .notes-search input { @apply text-base; }
+      .archive-layout { @apply flex-col; }
+      .archive-browser { @apply w-full shrink-0 border-r-0 border-b p-3; max-height: 44%; }
+      .archive-intro { @apply pb-3; }
+      .archive-intro h3 { @apply text-base; }
+      .archive-intro p, .archive-emblem { display: none; }
+      .archive-filters { @apply mb-2; }
+      .archive-items > button { @apply min-h-16 p-2; }
+      .archive-preview { @apply min-h-0; }
+      .archive-restore { @apply px-4 py-3; }
+      .archive-restore p { display: none; }
+      .archive-restore button { @apply w-full; }
+    }
+    @media (prefers-reduced-motion: reduce) { button { transition: none; } }
   }
 
   #terminal {
@@ -694,7 +802,7 @@ body {
 
   @keyframes coding-spin { to { transform: rotate(360deg); } }
 
-  #contact[data-maximized="true"], #coding[data-maximized="true"] {
+  #contact[data-maximized="true"], #coding[data-maximized="true"], #safari[data-maximized="true"], #trash[data-maximized="true"] {
     top: 44px !important;
     height: calc(100dvh - 44px) !important;
     border-radius: 0;

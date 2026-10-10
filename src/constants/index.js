@@ -90,8 +90,8 @@ const dockApps = [
   },
   {
     id: "safari",
-    name: "Articles",
-    icon: "safari.png",
+    name: "Build Notes",
+    icon: "build-notes.svg",
     canOpen: true,
   },
   {
@@ -116,32 +116,7 @@ const dockApps = [
     id: "trash",
     name: "Archive",
     icon: "trash.png",
-    canOpen: false,
-  },
-];
-
-const blogPosts = [
-  {
-    id: 1,
-    date: "Sep 2, 2025",
-    title:
-      "TypeScript Explained: What It Is, Why It Matters, and How to Master It",
-    image: "/images/blog1.png",
-    link: "https://jsmastery.com/blog/typescript-explained-what-it-is-why-it-matters-and-how-to-master-it",
-  },
-  {
-    id: 2,
-    date: "Aug 28, 2025",
-    title: "The Ultimate Guide to Mastering Three.js for 3D Development",
-    image: "/images/blog2.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-three-js-for-3d-development",
-  },
-  {
-    id: 3,
-    date: "Aug 15, 2025",
-    title: "The Ultimate Guide to Mastering GSAP Animations",
-    image: "/images/blog3.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-gsap-animations",
+    canOpen: true,
   },
 ];
 
@@ -278,7 +253,6 @@ export {
   navLinks,
   navIcons,
   dockApps,
-  blogPosts,
   techStack,
   socials,
   photosLinks,
@@ -538,29 +512,10 @@ const RESUME_LOCATION = {
 const TRASH_LOCATION = {
   id: 4,
   type: "trash",
-  name: "Trash",
+  name: "Archive",
   icon: "/icons/trash.svg",
   kind: "folder",
-  children: [
-    {
-      id: 1,
-      name: "trash1.png",
-      icon: "/images/trash-1.png",
-      kind: "file",
-      fileType: "img",
-      position: "top-10 left-10",
-      imageUrl: "/images/trash-1.png",
-    },
-    {
-      id: 2,
-      name: "trash2.png",
-      icon: "/images/trash-2.png",
-      kind: "file",
-      fileType: "img",
-      position: "top-40 left-80",
-      imageUrl: "/images/trash-2.png",
-    },
-  ],
+  children: [],
 };
 
 export const locations = {
@@ -573,6 +528,7 @@ export const locations = {
 const INITIAL_Z_INDEX = 1000;
 
 const WINDOW_CONFIG = {
+  trash: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, maximized: false, originalStyle: null },
   coding: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, maximized: false, originalStyle: null },
   experience: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, maximized: false, originalStyle: null },
   finder: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, maximized: false, originalStyle: null },

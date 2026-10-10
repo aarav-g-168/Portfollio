@@ -10,7 +10,13 @@ npm run dev
 npm run build
 ```
 
-The menu bar's trophy opens Competitive Programming. Spotlight opens from the search icon or Ctrl/⌘ K and searches applications, projects, experience, skills, and photos.
+The menu bar's chart icon opens Competitive Programming. Spotlight opens from the search icon or Ctrl/⌘ K and searches applications, projects, experience, skills, and photos.
+
+## Build Notes and Archive
+
+The yellow Notes icon in the dock opens Build Notes. Its notebook has full-text search, pinned notes, and links back to the relevant project folders. Edit the copy or add entries in `src/data/build-notes.js`; entries marked `archived: true` start on the Archive shelf.
+
+Archive opens from the dock's bin icon, the notebook sidebar, or Spotlight. It contains parked ideas and archived notes, with search, filtering, previews, and Restore to Build Notes. Nothing is permanently deleted. Pin/archive preferences are saved only in the visitor's browser (`macfolio-notebook-v1` in local storage); they never change the published content for other visitors.
 
 ## Coding profiles
 
