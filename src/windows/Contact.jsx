@@ -3,8 +3,7 @@ import { ArrowUpRight, Check, Copy, LoaderCircle, Mail, Send } from "lucide-reac
 import WindowWrapper from "../hoc/WindowWrapper";
 import { socials } from "../constants";
 import WindowControls from "../components/WindowControls";
-
-const email = "guptaaarav987@gmail.com";
+import { contactEmail as email, submitContactMessage } from "../lib/contact";
 
 const Contact = () => {
   const [status, setStatus] = useState("idle");
@@ -32,16 +31,11 @@ const Contact = () => {
     }
     setStatus("sending"); setFeedback("");
     try {
-      const response = await fetch(`https://formsubmit.co/ajax/${email}`, {
-        method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ ...fields, name, message, email: fields.email.trim(), _subject: `Portfolio: ${fields.subject}`, _template: "table" }),
-        signal: AbortSignal.timeout(20000),
-      });
-      const result = await response.json();
-      if (!response.ok || ![true, "true"].includes(result.success)) throw new Error("Submission failed");
+      await submitContactMessage({ ...fields, name, message, email: fields.email.trim() });
       setStatus("success"); setFeedback("Message submitted. Thanks for getting in touch!"); form.reset();
-    } catch {
-      setStatus("error"); setFeedback("Your message couldn't be submitted. Please try again or email me directly. Your draft is still here.");
+    } catch (error) {
+      setStatus("error");
+      setFeedback(`${error.message || "Your message couldn't be submitted. Please email me directly."} Your draft is still here.`);
     }
   };
 

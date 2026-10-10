@@ -40,4 +40,8 @@ The existing Contact window (both navbar and dock) submits name, reply email, su
 
 **Owner setup:** Submit one real message from the deployed site, then open the FormSubmit activation email in that inbox and confirm the form. Check spam if needed. Messages cannot be relied on for delivery before this step; inbox delivery has not been tested by the development checks.
 
+Visitor submissions arrive in the Gmail inbox above, with a subject such as `Portfolio: An opportunity`. The visitor's email is the Reply-To address, so replying to the notification emails them directly. There is no separate messages dashboard in the portfolio.
+
+If submission fails, the form distinguishes email activation, network/timeout errors, rate limiting, and service outages, and preserves the draft. Activation requires the inbox owner's confirmation; a successful service response is not a guarantee of inbox delivery.
+
 The form includes required fields, a honeypot, a sending state, submission feedback, and keeps the draft after failures. Direct email and social links remain available. Native validation and layout can be tested locally without sending a message.
