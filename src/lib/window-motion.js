@@ -7,6 +7,7 @@ const parentDock = { resume: 'finder', txtfile: 'finder', imgfile: 'photos' };
 const clamp = (value) => Math.max(0, Math.min(1, value));
 const smooth = (value) => { const t = clamp(value); return t * t * (3 - 2 * t); };
 const mix = (from, to, amount) => from + (to - from) * amount;
+const MOTION = { open: 0.5, close: 0.42, minimum: 0.08 };
 
 // Give snapshots their own selectors, so animation never duplicates live DOM IDs.
 const snapshotStyles = (ids) => {
@@ -202,8 +203,10 @@ export const animateWindowTransition = (element, windowKey, type, onComplete) =>
     const destination = opening ? 0 : 1;
     motion.tween = gsap.to(motion.progress, {
         value: destination,
-        duration: Math.max(0.12, (opening ? 0.68 : 2.8) * Math.abs(destination - motion.progress.value)),
-        ease: opening ? 'power2.out' : 'power1.inOut',
+        duration: Math.max(MOTION.minimum, (opening ? MOTION.open : MOTION.close) * Math.abs(destination - motion.progress.value)),
+        // The mesh already eases its neck and travel separately; easing this
+        // progress again makes opening linger and closing hesitate.
+        ease: 'none',
         onUpdate: motion.render,
         onComplete: motion.finish,
     });
