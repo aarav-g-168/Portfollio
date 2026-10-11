@@ -42,6 +42,7 @@ const SpotifyNotch = ({ expanded, onToggle, onClose }) => {
         aria-expanded={expanded} aria-controls="spotify-notch-panel"
         aria-label={expanded ? "Collapse Spotify notch" : "Open Spotify notch"}
         onClick={onToggle}>
+        <Music2 className="notch-idle-icon" size={16} aria-hidden="true" />
         <span className="notch-service"><Music2 size={15} aria-hidden="true" /><span>Spotify</span></span>
         {expanded ? <ChevronUp size={15} aria-hidden="true" /> : (
           <span className={`notch-wave${playing ? ' is-playing' : ''}`} aria-hidden="true"><i /><i /><i /><i /></span>

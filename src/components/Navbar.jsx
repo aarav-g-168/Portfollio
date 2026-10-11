@@ -1,5 +1,7 @@
 import dayjs from "dayjs";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import PortfolioGuide from './PortfolioGuide';
+import useLocationStore from '../store/location';
 import { navLinks } from "../constants";
 import MenuBarGlyph from "./MenuBarGlyph";
 import useWindowStore from "../store/window";
@@ -8,11 +10,25 @@ import ControlCenter from "./ControlCenter";
 import Spotlight from "./Spotlight";
 import useMusicStore from '../store/music';
 
-const Navbar = () => {
+const Navbar = ({ guideOpen, onGuideChange, onShowStart }) => {
+  const appleRef = useRef(null);
   const { openWindow } = useWindowStore();
   const [now, setNow] = useState(() => new Date());
   const [openPanel, setOpenPanel] = useState(null);
   const refreshMusic = useMusicStore((state) => state.refresh);
+
+  useEffect(() => {
+    const dismiss = (event) => { if (!appleRef.current?.contains(event.target)) appleRef.current?.removeAttribute('open'); };
+    const escape = (event) => { if (event.key === 'Escape' && appleRef.current?.open) { appleRef.current.removeAttribute('open'); appleRef.current.querySelector('summary')?.focus(); } };
+    document.addEventListener('pointerdown', dismiss);
+    document.addEventListener('keydown', escape);
+    return () => { document.removeEventListener('pointerdown', dismiss); document.removeEventListener('keydown', escape); };
+  }, []);
+  const openGuideTarget = (key) => {
+    onGuideChange(false);
+    if (key === 'spotify' || key === 'spotlight') setOpenPanel(key);
+    else { setOpenPanel(null); if (key === 'finder') useLocationStore.getState().resetActiveLocation(); openWindow(key); }
+  };
 
   useEffect(() => {
     const refreshWhenVisible = () => { if (!document.hidden) void refreshMusic(); };
@@ -31,23 +47,24 @@ const Navbar = () => {
     const handleShortcut = (event) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault();
+        onGuideChange(false);
         setOpenPanel((current) => current === 'spotlight' ? null : 'spotlight');
       }
     };
     document.addEventListener('keydown', handleShortcut);
     return () => document.removeEventListener('keydown', handleShortcut);
-  }, []);
+  }, [onGuideChange]);
 
   return (
     <nav id="desktop-navbar" aria-label="Desktop menu bar">
       {/* left */}
       <div className="menu-left">
         <div className="menu-brand">
-          <img
+          <details ref={appleRef} className="apple-menu"><summary aria-label="Apple menu" title="Portfolio guide & shortcuts"><img
             src="/images/logo.svg"
-            alt="logo"
+            alt=""
             className="w-4 h-4"
-          />
+          /></summary><div className="apple-menu-panel"><button type="button" onClick={() => { appleRef.current.removeAttribute('open'); setOpenPanel(null); onGuideChange(true); }}>Portfolio guide <span>Explore</span></button><button type="button" onClick={() => { appleRef.current.removeAttribute('open'); onShowStart(); }}>Show Start here</button></div></details>
           <p>
             Aarav's Portfolio
           </p>
@@ -88,6 +105,7 @@ const Navbar = () => {
         </time>
       </div>
       {openPanel === 'spotlight' && <Spotlight onClose={() => setOpenPanel(null)} />}
+      {guideOpen && <PortfolioGuide onClose={() => onGuideChange(false)} onOpen={openGuideTarget} />}
     </nav>
   );
 };
