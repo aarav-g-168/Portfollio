@@ -39,7 +39,7 @@ Solved totals add each platform's count; problems appearing on multiple platform
 The black menu-bar notch shows current or most recent listening activity from Last.fm, with artist, available artwork, a Spotify search link, and refresh. Control Center uses the same activity. Last.fm provides listening history, not Spotify playback control or precise progress.
 
 1. Connect **Spotify Scrobbling** in [Last.fm’s application settings](https://www.last.fm/settings/applications).
-2. Copy `.env.example` to `.env.local`, then set `LASTFM_API_KEY` to your Last.fm API key. `LASTFM_USERNAME` is `aarav-g-168`. No Shared Secret is needed.
+2. Create `.env.local`, then set `LASTFM_API_KEY` to your Last.fm API key and `LASTFM_USERNAME` to `aarav-g-168`. No Shared Secret is needed.
 3. Start or restart `npm run dev`, play something on Spotify, and open the notch. The client checks every 30 seconds while the tab is visible; Last.fm may take a little longer to report a listen.
 
 The API key stays on the server. Never prefix it with `VITE_`, commit `.env.local`, or place it in client source. `GET /api/music` caches Last.fm results for 20 seconds, coalesces concurrent requests, and backs off on failures. If refresh fails, the last known track is marked stale rather than shown as live.
@@ -57,3 +57,25 @@ Visitor submissions arrive in the Gmail inbox above, with a subject such as `Por
 If submission fails, the form distinguishes email activation, network/timeout errors, rate limiting, and service outages, and preserves the draft. Activation requires the inbox owner's confirmation; a successful service response is not a guarantee of inbox delivery.
 
 The form includes required fields, a honeypot, a sending state, submission feedback, and keeps the draft after failures. Direct email and social links remain available. Native validation and layout can be tested locally without sending a message.
+
+## Cloudflare Workers deployment
+
+The repository includes `wrangler.jsonc` and `cloudflare/worker.js`. They deploy the Vite output in `dist/` and adapt the shared `/api/music` and `/api/coding` handlers to the Workers runtime. API requests run before the SPA fallback, so they return JSON rather than `index.html`.
+
+Cloudflare Workers Builds settings:
+
+- Worker name: `portfolio` (must match `name` in `wrangler.jsonc`).
+- Build command: `npm run build`.
+- Deploy command: `npx wrangler deploy`.
+- Root directory: repository root.
+
+In the Worker's **Settings → Variables and Secrets**, add `LASTFM_API_KEY` as a **Secret**, using your Last.fm API key. This is a runtime secret; a build-only environment variable is insufficient. `LASTFM_USERNAME` is configured as `aarav-g-168` in Wrangler. Do not add the API key to Wrangler, Git, or a `VITE_` variable.
+
+To validate the deployment bundle without publishing:
+
+```sh
+npm run build
+npx wrangler deploy --dry-run
+```
+
+To test the Workers runtime locally, run `npx wrangler dev` after building. For music, optionally put `LASTFM_API_KEY` in an ignored `.dev.vars` file. Keep using `.env.local` for `npm run dev`. Check `/api/music` and `/api/coding?platform=codechef` after deploying; music reports `unconfigured` until the runtime secret is present. Public coding platforms can occasionally reject upstream requests; the portfolio retains its saved stats in that case.
