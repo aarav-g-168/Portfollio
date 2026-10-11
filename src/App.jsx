@@ -25,7 +25,7 @@ const ResumeWindow = lazy(() => import('./windows/Resume'));
 
 const App = () => {
   const [showStart, setShowStart] = useState(() => { try { return localStorage.getItem('portfolio-start-dismissed') !== 'true'; } catch { return true; } });
-  const [guideOpen, setGuideOpen] = useState(false);
+  const [guideOpen, setGuideOpen] = useState(() => { try { return localStorage.getItem('portfolio-tour-seen-v1') ? null : 'invite'; } catch { return 'invite'; } });
   const openEssential = (key) => {
     if (key === 'finder') useLocationStore.getState().resetActiveLocation();
     useWindowStore.getState().openWindow(key);
@@ -39,7 +39,7 @@ const App = () => {
     <main className={showStart ? 'has-start-card' : ''}>
       <Navbar guideOpen={guideOpen} onGuideChange={setGuideOpen} onShowStart={() => setStartVisibility(true)} />
       <Welcome />
-      {showStart && <StartHere onOpen={openEssential} onExplore={() => setGuideOpen(true)} onDismiss={() => setStartVisibility(false)} />}
+      {showStart && <StartHere onOpen={openEssential} onExplore={() => setGuideOpen('tour')} onDismiss={() => setStartVisibility(false)} />}
       <Dock />
 
       <TerminalWindow />

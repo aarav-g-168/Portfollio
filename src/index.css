@@ -1264,3 +1264,73 @@ html[data-desktop-focus='true'] .start-here { display: none; }
 .portfolio-guide { scrollbar-width: thin; }
 .portfolio-guide header { position: sticky; top: 0; z-index: 1; }
 @media (max-width: 400px) { #desktop-navbar { --notch-width: 112px; } }
+
+/* Date widgets and an opt-in, live desktop tour. */
+.date-trigger { border-radius: 6px; cursor: pointer; padding: 4px; }
+.date-trigger:hover, .date-trigger[aria-expanded='true'] { background: #ffffff26; }
+.desktop-widgets { position: fixed; top: 52px; right: 16px; width: min(350px, calc(100vw - 24px)); max-height: calc(100dvh - 70px); overflow-y: auto; padding: 6px; color: white; text-shadow: none; scrollbar-width: thin; animation: widgets-arrive 200ms ease-out; }
+.desktop-widgets > header { display: flex; justify-content: space-between; align-items: center; padding: 0 4px 12px; font-size: 11px; font-weight: 500; }
+.desktop-widgets > header button { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: #242938c9; cursor: pointer; }
+.widget-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.desktop-widget { border-radius: 23px; padding: 18px; border: 1px solid #ffffff24; background: #202432e8; backdrop-filter: blur(28px); box-shadow: 0 8px 24px #0002, inset 0 1px #ffffff12; }
+.clock-widget { background: #f8f9fcf5; color: #18202e; text-align: center; padding: 20px 10px; }
+.clock-widget > span { font-size: 9px; letter-spacing: .12em; color: #647084; }
+.clock-widget > strong { display: block; font-size: 36px; line-height: 1.6; letter-spacing: -2px; font-variant-numeric: tabular-nums; }
+.clock-widget p { font-size: 12px; font-weight: 600; }
+.clock-widget small { font-size: 11px; color: #647084; }
+.calendar-widget { padding: 16px 10px; }
+.calendar-widget h2 { font-size: 10px; font-weight: 650; color: #ff898c; text-transform: uppercase; margin: 0 0 10px 3px; }
+.calendar-widget h2 span { color: #bac2d3; font-size: 9px; }
+.calendar-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; text-align: center; font-size: 9px; }
+.calendar-grid > * { display: grid; place-items: center; aspect-ratio: 1; }
+.calendar-grid b { font-weight: 500; color: #aeb7c8; }
+.calendar-grid .today { background: #fa6069; color: #fff; border-radius: 50%; font-weight: 700; }
+.timezone-widget, .widget-connect, .widget-resume { margin-top: 12px; }
+.timezone-widget > div { display: flex; align-items: center; gap: 10px; }
+.timezone-widget strong, .widget-resume strong { font-size: 13px; display: block; }
+.timezone-widget small, .widget-resume small { display: block; font-size: 11px; color: #bdc6d5; margin-top: 3px; }
+.timezone-widget > b { display: block; font-size: 28px; letter-spacing: -1px; margin-top: 14px; font-variant-numeric: tabular-nums; }
+.timezone-widget p { font-size: 11px; color: #bdc6d5; margin-top: 4px; }
+.widget-connect { background: linear-gradient(140deg,#263e60ed,#242637ed); }
+.widget-eyebrow { font-size: 9px; letter-spacing: .12em; color: #b7d7ff; }
+.widget-connect h2 { font-size: 19px; line-height: 1.25; font-weight: 600; margin-top: 10px; }
+.widget-connect p { font-size: 12px; color: #c5cede; margin-top: 8px; }
+.widget-connect button { display: flex; align-items: center; justify-content: center; gap: 10px; background: #ffffff18; border: 1px solid #ffffff20; border-radius: 10px; padding: 12px; width: 100%; margin-top: 16px; font-size: 12px; cursor: pointer; }
+.widget-connect button:hover { background: #ffffff28; }
+.widget-resume { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; cursor: pointer; }
+.widget-resume > svg:last-child { margin-left: auto; }
+.widget-resume:hover { background: #30394aed; }
+.widget-footnote { text-align: center; padding: 16px 6px; font-size: 10px; color: #e0e5ef; }
+.tour-layer { position: fixed; inset: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: #202535; text-shadow: none; overflow: hidden; }
+.tour-layer::backdrop { background: transparent; }
+.tour-layer.is-invitation { background: #10182966; backdrop-filter: blur(8px); }
+.tour-highlight { position: absolute; pointer-events: none; border: 2px solid #cce1ff; border-radius: 16px; box-shadow: 0 0 0 9999px #0a102766, 0 0 25px #78b6ff50; }
+.tour-card { position: absolute; width: min(370px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow-y: auto; border: 1px solid #ffffffa6; border-radius: 20px; background: #f6f8fcfa; padding: 22px; box-shadow: 0 16px 65px #0004; }
+.is-invitation .tour-card { left: 50%; top: 50%; transform: translate(-50%,-50%); width: min(420px,calc(100vw - 32px)); padding: 28px; }
+.tour-card header { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 18px; }
+.tour-card header span { display: flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: .07em; color: #456083; font-weight: 600; }
+.tour-card button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 36px; padding: 8px 10px; border-radius: 8px; cursor: pointer; font-size: 12px; }
+.tour-card button:hover { background: #e2e8f3; }
+.tour-card header button { padding: 4px; min-width: 28px; min-height: 28px; }
+.tour-card h2 { font-size: 23px; line-height: 1.18; font-weight: 650; letter-spacing: -.65px; }
+.tour-card p { margin-top: 12px; font-size: 13px; line-height: 1.65; color: #576477; }
+.tour-card .tour-primary { background: #2563eb; color: white; }
+.tour-card .tour-primary:hover { background: #1d4ed8; }
+.tour-card button:disabled { opacity: .35; cursor: default; }
+.tour-progress { height: 3px; border-radius: 4px; background: #dde4ef; overflow: hidden; margin: 20px 0 12px; }
+.tour-progress span { display: block; height: 100%; background: #2563eb; }
+.tour-card footer { display: flex; align-items: center; gap: 5px; }
+.tour-card footer > span { margin-left: auto; font-size: 11px; color: #66758a; margin-right: 6px; }
+.tour-invite-actions { display: flex; flex-direction: column; gap: 7px; margin-top: 24px; }
+.tour-invite-actions small { text-align: center; font-size: 10px; color: #66758a; margin-top: 7px; }
+#desktop-navbar .tour-card button:focus-visible { outline: 2px solid #2563eb; outline-offset: 3px; }
+@keyframes widgets-arrive { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: none; } }
+@media (max-width: 699px) {
+  #desktop-navbar .menu-right time { display: flex; width: auto; }
+  #desktop-navbar .date-trigger { position: fixed; top: 86px; right: 12px; background: #17244770; padding: 5px 9px; }
+  #desktop-navbar .date-trigger .menu-date { display: none; }
+  .desktop-widgets { top: 120px; right: 6px; max-height: calc(100dvh - 132px); }
+  .tour-card { padding: 18px; }
+  .tour-card h2 { font-size: 20px; }
+}
+@media (prefers-reduced-motion: reduce) { .desktop-widgets { animation: none; } }

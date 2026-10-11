@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
-import { useEffect, useRef, useState } from "react";
-import PortfolioGuide from './PortfolioGuide';
-import useLocationStore from '../store/location';
+import { useCallback, useEffect, useRef, useState } from "react";
+import GuidedTour from './GuidedTour';
+import DesktopWidgets from './DesktopWidgets';
 import { navLinks } from "../constants";
 import MenuBarGlyph from "./MenuBarGlyph";
 import useWindowStore from "../store/window";
@@ -24,10 +24,11 @@ const Navbar = ({ guideOpen, onGuideChange, onShowStart }) => {
     document.addEventListener('keydown', escape);
     return () => { document.removeEventListener('pointerdown', dismiss); document.removeEventListener('keydown', escape); };
   }, []);
-  const openGuideTarget = (key) => {
-    onGuideChange(false);
-    if (key === 'spotify' || key === 'spotlight') setOpenPanel(key);
-    else { setOpenPanel(null); if (key === 'finder') useLocationStore.getState().resetActiveLocation(); openWindow(key); }
+  const setTourPanel = useCallback((panel) => setOpenPanel(panel), []);
+  const finishTour = () => {
+    onGuideChange(null);
+    setOpenPanel(null);
+    try { localStorage.setItem('portfolio-tour-seen-v1', 'true'); } catch { /* Optional preference. */ }
   };
 
   useEffect(() => {
@@ -47,7 +48,7 @@ const Navbar = ({ guideOpen, onGuideChange, onShowStart }) => {
     const handleShortcut = (event) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault();
-        onGuideChange(false);
+        onGuideChange(null);
         setOpenPanel((current) => current === 'spotlight' ? null : 'spotlight');
       }
     };
@@ -64,7 +65,7 @@ const Navbar = ({ guideOpen, onGuideChange, onShowStart }) => {
             src="/images/logo.svg"
             alt=""
             className="w-4 h-4"
-          /></summary><div className="apple-menu-panel"><button type="button" onClick={() => { appleRef.current.removeAttribute('open'); setOpenPanel(null); onGuideChange(true); }}>Portfolio guide <span>Explore</span></button><button type="button" onClick={() => { appleRef.current.removeAttribute('open'); onShowStart(); }}>Show Start here</button></div></details>
+          /></summary><div className="apple-menu-panel"><button type="button" onClick={() => { appleRef.current.removeAttribute('open'); setOpenPanel(null); onGuideChange('tour'); }}>Guided tour <span>Replay</span></button><button type="button" onClick={() => { appleRef.current.removeAttribute('open'); onShowStart(); }}>Show Start here</button></div></details>
           <p>
             Aarav's Portfolio
           </p>
@@ -87,7 +88,7 @@ const Navbar = ({ guideOpen, onGuideChange, onShowStart }) => {
 
       <SpotifyNotch expanded={openPanel === "spotify"}
         onToggle={() => setOpenPanel((current) => current === "spotify" ? null : "spotify")}
-        onClose={() => setOpenPanel((current) => current === "spotify" ? null : current)} />
+        onClose={() => { if (!guideOpen) setOpenPanel((current) => current === "spotify" ? null : current); }} />
 
       {/* right */}
       <div className="menu-right">
@@ -96,16 +97,17 @@ const Navbar = ({ guideOpen, onGuideChange, onShowStart }) => {
           <button type="button" className={`menu-tool${openPanel === 'spotlight' ? ' active' : ''}`} aria-label="Open Spotlight" title="Spotlight (Ctrl / ⌘ K)" aria-haspopup="dialog" aria-expanded={openPanel === 'spotlight'} aria-controls="portfolio-spotlight" onClick={() => setOpenPanel((current) => current === 'spotlight' ? null : 'spotlight')}><MenuBarGlyph kind="search" /></button>
           <ControlCenter expanded={openPanel === "controls"}
             onToggle={() => setOpenPanel((current) => current === "controls" ? null : "controls")}
-            onClose={() => setOpenPanel((current) => current === "controls" ? null : current)}
+            onClose={() => { if (!guideOpen) setOpenPanel((current) => current === "controls" ? null : current); }}
             onOpenMusic={() => setOpenPanel("spotify")} />
         </div>
 
-        <time dateTime={now.toISOString()} aria-label={dayjs(now).format("dddd D MMMM, h:mm A")}>
+        <button type="button" className="date-trigger" aria-label="Open date and widgets" aria-expanded={openPanel === 'widgets'} aria-controls="desktop-widgets" onClick={() => setOpenPanel((current) => current === 'widgets' ? null : 'widgets')}><time dateTime={now.toISOString()} aria-label={dayjs(now).format("dddd D MMMM, h:mm A")}>
           <span className="menu-date">{dayjs(now).format("ddd D MMM")}</span><span className="menu-clock">{dayjs(now).format("h:mm A")}</span>
-        </time>
+        </time></button>
       </div>
-      {openPanel === 'spotlight' && <Spotlight onClose={() => setOpenPanel(null)} />}
-      {guideOpen && <PortfolioGuide onClose={() => onGuideChange(false)} onOpen={openGuideTarget} />}
+      {openPanel === 'spotlight' && <Spotlight onClose={() => { if (!guideOpen) setOpenPanel(null); }} />}
+      {openPanel === 'widgets' && <DesktopWidgets now={now} onClose={() => { if (!guideOpen) setOpenPanel(null); }} onOpen={(key) => { setOpenPanel(null); openWindow(key); }} />}
+      {guideOpen && <GuidedTour mode={guideOpen} onStart={() => onGuideChange('tour')} onClose={finishTour} onPanel={setTourPanel} />}
     </nav>
   );
 };
