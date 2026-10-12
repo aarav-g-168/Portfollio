@@ -27,7 +27,6 @@ const App = () => {
   const resumeRequested = useWindowStore((state) => state.windows.resume.hasOpened);
   return (
     <main>
-      <a className="desktop-exit" href="/">← Back to portfolio</a>
       <Navbar guideOpen={guideOpen} onGuideChange={setGuideOpen} />
       <Welcome />
       <Dock />

@@ -88,4 +88,4 @@ Spotify Scrobbling follows the connected account across devices. The notch shows
 
 ## Portfolio entry points
 
-The main `/` page is a conventional portfolio with projects, experience, skills, public coding profile links, résumé access, and the existing FormSubmit contact integration. `/desktop` opens MacFolio. The laptop preview and Enter MacFolio link are explicit entry points; Back to portfolio restores the previous scroll position. `/resume` remains PDF-only. The laptop scroll animation will be integrated separately when its component is supplied.
+Both `/` and `/desktop` open MacFolio directly. `/resume` remains PDF-only. The conventional portfolio source is retained for a future redesign but is not currently exposed. The laptop scroll animation is deferred.
