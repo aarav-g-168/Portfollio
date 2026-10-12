@@ -1,0 +1,96 @@
+% One-page resume. Compile with pdfLaTeX (Overleaf's default compiler).
+% Content adapted from the supplied resume; no new accomplishments added.
+\documentclass[letterpaper,11pt]{article}
+\usepackage[margin=0.55in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+\ifdefined\pdfgentounicode
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\urlstyle{same}
+\raggedright
+\titleformat{\section}{\large\bfseries}{}{0pt}{}[\titlerule]
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+\setlist[itemize]{leftmargin=13pt,label=\textbullet,itemsep=2pt,
+  topsep=3pt,parsep=0pt,partopsep=0pt}
+\newcommand{\entry}[4]{%
+  \textbf{#1}\hfill #2\par
+  \textit{#3}\hfill\textit{#4}\par}
+\newcommand{\project}[3]{%
+  \textbf{#1}\hfill\href{#3}{\underline{View project}}\par
+  {\small\textit{#2}}\par}
+
+\begin{document}
+\fontsize{10.5}{12}\selectfont
+
+\begin{center}
+  {\fontsize{25}{28}\selectfont\bfseries Aarav Gupta}\\[3pt]
+  Vellore, Tamil Nadu\enspace\textbar\enspace +91-8329103296\enspace\textbar\enspace
+  \href{mailto:guptaaarav987@gmail.com}{guptaaarav987@gmail.com}\\[2pt]
+  \href{https://www.linkedin.com/in/aarav-gupta-a1120526a/}{\underline{LinkedIn}}\enspace\textbar\enspace
+  \href{https://github.com/aarav-g-168}{\underline{github.com/aarav-g-168}}\enspace\textbar\enspace
+  \href{https://aarav.site}{\underline{aarav.site}}
+\end{center}
+\vspace{-7pt}
+
+\section{Education}
+\entry{Vellore Institute of Technology, Vellore}{July 2024 -- April 2028}
+  {B.Tech in Information Technology}{CGPA: 9.14}
+
+\section{Technical Skills}
+\textbf{Languages \& Formats:} C/C++, Python, Java, SQL, JavaScript, TypeScript, HTML, JSON\par
+\textbf{Frontend:} React, Next.js, AngularJS, Tailwind CSS, Bootstrap, Chakra UI, Framer Motion, Vite\par
+\textbf{Backend \& Tools:} Node.js, Express.js, Flask, REST APIs, API integration, Git, GitHub, Vercel, AWS\par
+\textbf{Data \& Auth:} PostgreSQL, MongoDB, MySQL, Firebase, Firebase Auth, Prisma, Drizzle ORM, Neon\par
+\textbf{Fundamentals:} Data Structures \& Algorithms, Object-Oriented Programming, DBMS, OS, Computer Networks
+
+\section{Experience}
+\entry{Solder Labs}{Sept 2026 -- Present}{Full Stack Developer Intern}{Hybrid}
+\begin{itemize}
+  \item Contributing to \textbf{MediOS}, a hospital operating system unifying patient records, scheduling, billing, staff management, and communication workflows.
+  \item Collaborating with frontend and backend teams on feature development, integration, and debugging for upcoming client deployment.
+\end{itemize}
+\vspace{2pt}
+\entry{Advanced Developer's Group (ADG)}{Feb 2025 -- Present}{Core Member, Web Development}{Vellore Institute of Technology}
+\begin{itemize}
+  \item Developing responsive full-stack applications with \textbf{React, Next.js, TypeScript, and Firebase} alongside senior developers.
+  \item Contributing to API integration, UI optimization, debugging, Git-based collaboration, and deployment workflows.
+\end{itemize}
+
+\section{Projects}
+\project{HackGrid}{Next.js, TypeScript, React, Tailwind CSS, Prisma, Neon, Firebase}{https://www.adgvit.com/}
+\begin{itemize}
+  \item Built a full-stack platform for a \textbf{36-hour auction-based hackathon}, supporting team management, auction settlements, and SaaS problem-statement allocation through backend APIs and database models.
+  \item Developed a mobile-optimized \textbf{judge evaluation system} with team search, auction details, and structured scoring.
+\end{itemize}
+\vspace{2pt}
+\project{Contest Manager}{Next.js, TypeScript, Express.js, PostgreSQL, Drizzle ORM, Firebase Auth}{https://contest-manager.vercel.app}
+\begin{itemize}
+  \item Aggregated contests from Codeforces, LeetCode, and other platforms using the \textbf{CLIST API}, with server-side fetching, upcoming-contest filters, countdowns, and timezone-aware schedules.
+  \item Built an Express.js/PostgreSQL backend with Drizzle ORM and Firebase Authentication for secure login and personalized contest tracking.
+\end{itemize}
+\vspace{2pt}
+\project{Recruitment Portal}{Next.js, TypeScript, React, Python, Firebase, Tailwind CSS, Chakra UI, Framer Motion}{https://adgvit.in/}
+\begin{itemize}
+  \item Built a recruitment and assessment platform for \textbf{500+ students}, with domain-based assignments, protected routes, and Google OAuth restricted to \textbf{@vitstudent.ac.in} accounts.
+  \item Implemented real-time submission tracking, validation, deadline enforcement, and duplicate prevention, with responsive dashboards and loading states.
+\end{itemize}
+
+\section{Achievements}
+\begin{itemize}
+  \item Peak ratings: \href{https://codeforces.com/profile/aarav_g_168}{\textbf{Codeforces: 1395 (Pupil)}}\enspace\textbar\enspace
+    \href{https://www.codechef.com/users/aarav1608}{\textbf{CodeChef: 1603 (3-star)}}\enspace\textbar\enspace
+    \href{https://leetcode.com/u/aarav_g_168/}{\textbf{LeetCode: 1559}}.
+  \item Achieved \textbf{Global Rank 238} in CodeChef Starters 229, Division 3.
+  \item Secured \textbf{3rd place} in a GDSC hackathon among \textbf{1,500+ freshers}.
+\end{itemize}
+\end{document}
