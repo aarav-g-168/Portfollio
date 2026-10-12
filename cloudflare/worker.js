@@ -23,6 +23,11 @@ export default {
   async fetch(request, env) {
     const path = new URL(request.url).pathname;
     try {
+      if (path === '/resume' || path === '/resume/') {
+        const pdfUrl = new URL(request.url);
+        pdfUrl.pathname = '/resume.pdf';
+        return await env.ASSETS.fetch(new Request(pdfUrl, request));
+      }
       if (path === '/api/coding') return await runHandler(codingHandler, request);
       if (path === '/api/music') {
         if (!music || musicConfig.username !== env.LASTFM_USERNAME || musicConfig.apiKey !== env.LASTFM_API_KEY) {

@@ -34,9 +34,10 @@ const Navbar = ({ guideOpen, onGuideChange, onShowStart }) => {
   useEffect(() => {
     const refreshWhenVisible = () => { if (!document.hidden) void refreshMusic(); };
     refreshWhenVisible();
-    const timer = setInterval(refreshWhenVisible, 30000);
+    const timer = setInterval(refreshWhenVisible, 15000);
     document.addEventListener('visibilitychange', refreshWhenVisible);
-    return () => { clearInterval(timer); document.removeEventListener('visibilitychange', refreshWhenVisible); };
+    window.addEventListener('focus', refreshWhenVisible);
+    return () => { clearInterval(timer); document.removeEventListener('visibilitychange', refreshWhenVisible); window.removeEventListener('focus', refreshWhenVisible); };
   }, [refreshMusic]);
 
   useEffect(() => {

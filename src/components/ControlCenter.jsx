@@ -13,8 +13,8 @@ const ControlCenter = ({ expanded, onToggle, onClose, onOpenMusic }) => {
   const { openWindow, minimizeWindow, windows } = useWindowStore();
   const github = socials.find((social) => social.text === "Github");
   const { activity } = useMusicStore();
-  const musicLabel = activity.track ? `${activity.status === 'playing' && !activity.stale ? 'Listening now' : 'Last played'} · ${activity.track.artist}`
-    : activity.status === 'unconfigured' ? 'Spotify · Not connected' : 'Spotify · Listening activity';
+  const musicLabel = activity.track ? `${activity.stale ? 'Status unavailable' : activity.status === 'playing' ? 'Online · Listening now' : 'Offline · Last played'} · ${activity.track.artist}`
+    : activity.status === 'idle' ? 'Offline · Not listening' : activity.status === 'unconfigured' ? 'Spotify · Not connected' : 'Spotify · Listening activity';
 
   useEffect(() => {
     document.documentElement.dataset.desktopFocus = String(focusMode);

@@ -11,10 +11,10 @@ const SpotifyNotch = ({ expanded, onToggle, onClose }) => {
   const emptyCopy = {
     loading: ['Finding the soundtrack…', 'Checking in with Last.fm.', 'Connecting'],
     unconfigured: ['Soundtrack coming soon.', 'A little space for Aarav’s favorite music.', 'Not connected'],
-    idle: ['Nothing playing right now.', 'Your next listen will appear here.', 'Waiting for a listen'],
+    idle: ['Nothing playing right now.', 'Your next listen will appear here.', 'Offline · Not listening'],
     unavailable: ['Music is temporarily unavailable.', 'Try refreshing in a moment.', 'Connection unavailable'],
   }[status] || ['', '', ''];
-  const statusLabel = track ? (stale ? 'Update unavailable' : playing ? 'Listening now' : 'Recently played') : emptyCopy[2];
+  const statusLabel = track ? (stale ? 'Listening status unavailable' : playing ? 'Online · Listening now' : 'Offline · Not listening') : emptyCopy[2];
 
   useEffect(() => {
     if (!expanded) return;

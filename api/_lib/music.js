@@ -1,4 +1,4 @@
-const CACHE_MS = 20000;
+const CACHE_MS = 10000;
 const RETRY_MS = 60000;
 
 const safeUrl = (value, hosts) => {

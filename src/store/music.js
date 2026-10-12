@@ -11,7 +11,7 @@ const useMusicStore = create((set, get) => ({
     set({ refreshing: true });
     pendingRequest = (async () => {
       try {
-        const response = await fetch('/api/music', { signal: AbortSignal.timeout(15000), headers: { Accept: 'application/json' } });
+        const response = await fetch('/api/music', { cache: 'no-store', signal: AbortSignal.timeout(15000), headers: { Accept: 'application/json' } });
         const data = await response.json();
         if (!statuses.includes(data.status) || (!response.ok && data.status !== 'unavailable')) throw new Error('Music unavailable');
         if (['playing', 'recent'].includes(data.status) && (!data.track?.title || !data.track?.artist)) throw new Error('Invalid track');

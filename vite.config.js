@@ -12,7 +12,12 @@ function portfolioApi(env) {
   const routes = { '/api/coding': codingHandler, '/api/music': createMusicHandler(music.getActivity) };
   const configure = (server) => {
     server.middlewares.use((req, res, next) => {
-      const handler = routes[new URL(req.url, 'http://localhost').pathname];
+      const path = new URL(req.url, 'http://localhost').pathname;
+      if (path === '/resume' || path === '/resume/') {
+        req.url = '/resume.pdf';
+        return next();
+      }
+      const handler = routes[path];
       if (!handler) return next();
       res.status = (code) => { res.statusCode = code; return res; };
       res.json = (data) => { res.setHeader('Content-Type', 'application/json'); res.end(JSON.stringify(data)); };

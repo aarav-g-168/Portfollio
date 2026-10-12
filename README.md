@@ -40,9 +40,9 @@ The black menu-bar notch shows current or most recent listening activity from La
 
 1. Connect **Spotify Scrobbling** in [Last.fmâ€™s application settings](https://www.last.fm/settings/applications).
 2. Create `.env.local`, then set `LASTFM_API_KEY` to your Last.fm API key and `LASTFM_USERNAME` to `aarav-g-168`. No Shared Secret is needed.
-3. Start or restart `npm run dev`, play something on Spotify, and open the notch. The client checks every 30 seconds while the tab is visible; Last.fm may take a little longer to report a listen.
+3. Start or restart `npm run dev`, play something on Spotify, and open the notch. The client checks every 15 seconds while the tab is visible, and when the tab regains focus; Last.fm may take a little longer to report a listen.
 
-The API key stays on the server. Never prefix it with `VITE_`, commit `.env.local`, or place it in client source. `GET /api/music` caches Last.fm results for 20 seconds, coalesces concurrent requests, and backs off on failures. If refresh fails, the last known track is marked stale rather than shown as live.
+The API key stays on the server. Never prefix it with `VITE_`, commit `.env.local`, or place it in client source. `GET /api/music` caches Last.fm results for 10 seconds, coalesces concurrent requests, and backs off on failures. If refresh fails, the last known track is marked stale rather than shown as live.
 
 Development and `npm run preview` serve the API through Vite. Vercel can use the root `api/music.js` handler with `LASTFM_API_KEY` and `LASTFM_USERNAME` configured as server environment variables. A different production host needs an equivalent server route; uploading `dist/` alone cannot serve live music. Static hosting shows a graceful unavailable state. The Node runtime must support `fetch` and `AbortSignal.timeout`.
 
@@ -79,3 +79,9 @@ npx wrangler deploy --dry-run
 ```
 
 To test the Workers runtime locally, run `npx wrangler dev` after building. For music, optionally put `LASTFM_API_KEY` in an ignored `.dev.vars` file. Keep using `.env.local` for `npm run dev`. Check `/api/music` and `/api/coding?platform=codechef` after deploying; music reports `unconfigured` until the runtime secret is present. Public coding platforms can occasionally reject upstream requests; the portfolio retains its saved stats in that case.
+
+## Direct résumé link
+
+`/resume` and `/resume/` serve `public/resume.pdf` directly in Vite and Cloudflare Workers, without loading the desktop. The desktop résumé window and download still use the same PDF.
+
+Spotify Scrobbling follows the connected account across devices. The notch shows the last played track with “Offline · Not listening” when Last.fm reports no current track. This is listening activity, not Spotify account presence; Last.fm can delay stop/start updates. Upstream failures show an unknown status instead of claiming the owner is offline.
