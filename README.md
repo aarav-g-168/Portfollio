@@ -85,3 +85,7 @@ To test the Workers runtime locally, run `npx wrangler dev` after building. For 
 `/resume` and `/resume/` serve `public/resume.pdf` directly in Vite and Cloudflare Workers, without loading the desktop. The desktop résumé window and download still use the same PDF.
 
 Spotify Scrobbling follows the connected account across devices. The notch shows the last played track with “Offline · Not listening” when Last.fm reports no current track. This is listening activity, not Spotify account presence; Last.fm can delay stop/start updates. Upstream failures show an unknown status instead of claiming the owner is offline.
+
+## Portfolio entry points
+
+The main `/` page is a conventional portfolio with projects, experience, skills, public coding profile links, rÃ©sumÃ© access, and the existing FormSubmit contact integration. `/desktop` opens MacFolio. The laptop preview and Enter MacFolio link are explicit entry points; Back to portfolio restores the previous scroll position. `/resume` remains PDF-only. The laptop scroll animation will be integrated separately when its component is supplied.

@@ -1,12 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
-
-const resumeOnly = /^\/resume\/?$/.test(window.location.pathname);
+import PortfolioRouter from './components/PortfolioRouter.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {resumeOnly ? <iframe className="resume-only" src="/resume.pdf" title="Aarav Gupta’s résumé" /> : <App />}
+    <PortfolioRouter />
   </StrictMode>
 )

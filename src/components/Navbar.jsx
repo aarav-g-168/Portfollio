@@ -10,7 +10,7 @@ import ControlCenter from "./ControlCenter";
 import Spotlight from "./Spotlight";
 import useMusicStore from '../store/music';
 
-const Navbar = ({ guideOpen, onGuideChange, onShowStart }) => {
+const Navbar = ({ guideOpen, onGuideChange }) => {
   const appleRef = useRef(null);
   const { openWindow } = useWindowStore();
   const [now, setNow] = useState(() => new Date());
@@ -28,7 +28,6 @@ const Navbar = ({ guideOpen, onGuideChange, onShowStart }) => {
   const finishTour = () => {
     onGuideChange(null);
     setOpenPanel(null);
-    try { localStorage.setItem('portfolio-tour-seen-v1', 'true'); } catch { /* Optional preference. */ }
   };
 
   useEffect(() => {
@@ -66,7 +65,7 @@ const Navbar = ({ guideOpen, onGuideChange, onShowStart }) => {
             src="/images/logo.svg"
             alt=""
             className="w-4 h-4"
-          /></summary><div className="apple-menu-panel"><button type="button" onClick={() => { appleRef.current.removeAttribute('open'); setOpenPanel(null); onGuideChange('tour'); }}>Guided tour <span>Replay</span></button><button type="button" onClick={() => { appleRef.current.removeAttribute('open'); onShowStart(); }}>Show Start here</button></div></details>
+          /></summary><div className="apple-menu-panel"><button type="button" onClick={() => { appleRef.current.removeAttribute('open'); setOpenPanel(null); onGuideChange('tour'); }}>Guided tour <span>Replay</span></button></div></details>
           <p>
             Aarav's Portfolio
           </p>

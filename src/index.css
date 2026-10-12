@@ -1201,26 +1201,7 @@ body {
 
 
 
-/* Desktop orientation: quiet shortcuts, with an optional native modal guide. */
-.has-start-card #welcome { top: 29%; }
-.has-start-card #welcome h1 [data-letter] { font-size: clamp(56px, 8vw, 100px); }
-.has-start-card #welcome > p [data-letter] { font-size: clamp(14px, 2.2vw, 26px); }
-.has-start-card #welcome .small-screen { display: none; }
-.start-here { position: absolute; top: 49%; left: 50%; transform: translateX(-50%); width: min(480px, calc(100% - 32px)); max-height: calc(51dvh - 100px); overflow-y: auto; z-index: 1; padding: 14px 16px 8px; border: 1px solid #ffffff50; border-radius: 18px; background: #f6f7fbeb; backdrop-filter: blur(24px); color: #202535; box-shadow: 0 12px 40px #0002, inset 0 1px #fff9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-.start-heading, .start-heading > span { display: flex; align-items: center; gap: 8px; }
-.start-heading { justify-content: space-between; font-size: 13px; font-weight: 600; }
-.start-heading button, .portfolio-guide header button { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; cursor: pointer; }
-.start-here > p { margin: 0 0 12px; font-size: 12px; color: #5c6372; }
-.start-actions, .guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.start-actions button, .guide-grid button { display: flex; align-items: center; gap: 10px; min-width: 0; padding: 11px 10px; text-align: left; border: 1px solid #dde1e9; background: #ffffffb8; border-radius: 10px; cursor: pointer; transition: background 150ms; }
-.start-actions button > svg, .guide-grid button > svg { flex-shrink: 0; color: #2769ce; }
-.start-actions button > svg:last-child, .guide-grid button > svg:last-child { margin-left: auto; width: 12px; color: #717886; }
-.start-actions span, .guide-grid span { min-width: 0; }
-.start-actions strong, .guide-grid strong { display: block; font-size: 12px; font-weight: 600; }
-.start-actions small, .guide-grid small { display: block; margin-top: 3px; font-size: 11px; line-height: 1.5; color: #606877; }
-.start-actions button:hover, .guide-grid button:hover { background: #e8f0ff; border-color: #b8cff2; }
-.explore-desktop { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 36px; margin-top: 4px; color: #255dac; font-size: 12px; cursor: pointer; border-radius: 8px; }
-.explore-desktop:hover, .start-heading button:hover, .portfolio-guide header button:hover { background: #00000008; }
+/* Apple menu and discoverable music notch. */
 .apple-menu { position: relative; }
 .apple-menu summary { display: grid; place-items: center; width: 28px; height: 32px; cursor: pointer; list-style: none; border-radius: 6px; }
 .apple-menu summary::-webkit-details-marker { display: none; }
@@ -1229,42 +1210,13 @@ body {
 .apple-menu-panel button { display: flex; justify-content: space-between; width: 100%; padding: 10px; text-align: left; border-radius: 6px; font-size: 13px; cursor: pointer; }
 .apple-menu-panel button:hover { background: #2563eb; color: white; }
 .apple-menu-panel span { opacity: .65; font-size: 11px; }
-.portfolio-guide { margin: auto; padding: 0; width: min(640px, calc(100vw - 32px)); max-height: calc(100dvh - 48px); border: 1px solid #ffffff90; border-radius: 16px; background: #f6f7fa; color: #202535; box-shadow: 0 30px 100px #0005; text-shadow: none; }
-.portfolio-guide::backdrop { background: #11182755; backdrop-filter: blur(8px); }
-.portfolio-guide header { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 1px solid #dde1e9; background: #eaeef4; }
-.portfolio-guide header > span { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; }
-.guide-body { padding: 22px; }
-.guide-body h2 { font-size: 25px; font-weight: 650; letter-spacing: -.6px; }
-.guide-body > p { margin-top: 8px; font-size: 13px; line-height: 1.6; color: #606877; }
-.guide-body h3 { margin: 22px 0 10px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: #606877; }
-.guide-body .guide-tip { border-top: 1px solid #dde1e9; margin-top: 20px; padding-top: 14px; font-size: 12px; }
-#desktop-navbar .portfolio-guide button:focus-visible, #desktop-navbar .apple-menu-panel button:focus-visible, .start-here button:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
+#desktop-navbar .apple-menu-panel button:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
 .spotify-notch .notch-trigger { position: relative; }
 .spotify-notch .notch-trigger > .notch-idle-icon { position: absolute; left: calc(50% - 8px); opacity: 1; color: #1ed760; }
 .spotify-notch:hover .notch-trigger > .notch-idle-icon, .spotify-notch:focus-within .notch-trigger > .notch-idle-icon, .spotify-notch.is-expanded .notch-trigger > .notch-idle-icon { opacity: 0; }
 .menu-tool { position: relative; }
 .menu-tool::after { content: attr(aria-label); position: absolute; top: calc(100% + 8px); right: 0; width: max-content; max-width: 200px; padding: 6px 9px; border-radius: 6px; background: #202535f5; color: white; font-size: 11px; pointer-events: none; opacity: 0; text-shadow: none; }
 .menu-tool:hover::after, .menu-tool:focus-visible::after { opacity: 1; }
-html[data-desktop-focus='true'] .start-here { display: none; }
-@media (max-width: 699px) {
-  .has-start-card #welcome { top: 27%; height: auto; padding: 0 16px; width: 100%; }
-  .has-start-card #welcome h1 { margin-top: 14px; }
-  .start-here { top: 43%; max-height: calc(57dvh - 90px); }
-  .start-actions { gap: 6px; }
-  .start-actions button { padding: 10px 8px; gap: 7px; }
-  .start-actions button > svg:last-child { display: none; }
-  .guide-grid { grid-template-columns: 1fr; }
-  .guide-body { padding: 18px; }
-}
-@media (max-height: 560px) {
-  .has-start-card #welcome { top: 30%; left: 28%; width: 44%; }
-  .has-start-card #welcome h1 [data-letter] { font-size: 48px; }
-  .has-start-card #welcome > p [data-letter] { font-size: 12px; }
-  .start-here { top: 100px; left: auto; right: 16px; transform: none; width: 46%; max-height: calc(100dvh - 185px); }
-}
-@media (prefers-reduced-motion: reduce) { .start-actions button, .guide-grid button { transition: none; } }
-.portfolio-guide { scrollbar-width: thin; }
-.portfolio-guide header { position: sticky; top: 0; z-index: 1; }
 @media (max-width: 400px) { #desktop-navbar { --notch-width: 112px; } }
 
 /* Date widgets and an opt-in, live desktop tour. */
