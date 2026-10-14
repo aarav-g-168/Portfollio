@@ -14,4 +14,12 @@ The preview Worker needs its own `LASTFM_API_KEY` secret for music. Production s
 
 Normal production builds use `npm run build` and the existing `wrangler.jsonc`; their homepage stays MacFolio. Preview builds go to `dist-preview/`, while production builds go to `dist/`, so preview assets never replace the production output.
 
-No laptop scroll transition is included in this setup.
+## Creative portfolio
+
+The preview has an editorial hero, project tabs with build-note dialogs, expandable experience entries, an interactive skills toolbench, and the shared contact form.
+
+The desktop showroom lazy-loads a lightweight original laptop model. Scroll only over its stage to rotate and approach the display. Backward scrolling reverses progress; arrow keys provide the same interaction, Escape resets, and Enter directly bypasses animation. The final transition expands only the screen, then opens `/desktop?from=preview`. Back to portfolio is shown only for this preview entry; the ordinary MacFolio homepage has no exit button.
+
+Touch devices and screens under 1024px show a static MacFolio preview without an entry button. Reduced-motion desktop users get direct entry without the scroll interaction. All professional content is available without entering MacFolio.
+
+Regenerate the original GLB with `node scripts/create-preview-laptop.mjs` if needed. It uses no external model. The display texture is an actual MacFolio screenshot.

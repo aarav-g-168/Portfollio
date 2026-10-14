@@ -240,7 +240,7 @@
  .folio-hero-stage { display: block; padding-block: 35px 24px; }
  .folio-hero h1 { font-size: clamp(60px,19vw,120px); line-height: .9; }
  .folio-hero-annotation { right: 8%; bottom: 14px; font-size: 10px; }
- .folio-hero-object { position: absolute; right: -30px; bottom: 30px; height: 170px; width: 175px; opacity: .9; }
+ .folio-hero-object { position: absolute; right: -5px; bottom: 15px; height: 108px; width: 108px; opacity: .9; }
  .folio-orange-object { width: 75%; }
  .folio-orbit,.folio-object-index,.folio-object-coordinate,.folio-floating-chip { display: none; }
  .folio-hero-annotation { display: none; }
