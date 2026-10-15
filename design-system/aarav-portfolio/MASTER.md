@@ -4,13 +4,15 @@ Preview-only creative portfolio. The published MacFolio route stays independent.
 
 ## Visual language
 
-Editorial composition: warm paper (#f4f1e9), near-black olive ink (#23251f), burnt orange (#d84617), neutral dividers (#d6d5ca). Archivo for oversized display typography, Space Grotesk for readable content, Roboto Mono for small metadata. Use Georgia italics as a deliberate editorial counterpoint in section headings.
+Editorial composition: warm paper (#f4f1e9), near-black olive ink (#23251f), accessible functional orange (#bc3c12), brighter orange artwork (#d84617), neutral dividers (#d6d5ca). Self-hosted Archivo for oversized display typography, self-hosted Space Grotesk for readable content, system monospace for small metadata. Use Georgia italics as a deliberate editorial counterpoint in section headings.
 
 Keep large type, generous space, asymmetric hero composition and visible rules. Project screenshots carry the color in the work section. The dark olive laptop showroom is the single cinematic section. Avoid adding unrelated neon, glass cards, or extra competing background effects.
 
 ## Interaction
 
 Motion supports the hierarchy: clipped title reveal, restrained magnetic primary action, gentle project tilt, project crossfades, build-note dialogs, expandable experience and skill category selection. Never hide essential information behind hover. Respect reduced motion, native dialog focus, visible focus rings and semantic controls.
+
+Use project spotlight cards, selectable system maps, the experience tracing rail and development-process stepper to explain the work. Keep full case studies directly linked and pre-rendered. Add purposeful components without compromising the established visual language or SEO requirements.
 
 The laptop scroll interaction applies only within the projected laptop bounds. Forward and backward input must remain reversible before entry. Keyboard arrows, Escape, reset, direct entry and a skip link are available. The screen transitions into live MacFolio; only preview entrants get a return button.
 
@@ -19,6 +21,10 @@ The laptop scroll interaction applies only within the projected laptop bounds. F
 Complete professional content, native scrolling, accessible projects and forms. Simplify the hero artwork, stack columns, allow tags to wrap and keep inputs at 16px. No WebGL or unusable desktop entry control on touch/small-screen devices. Reduced-motion desktop visitors receive direct entry without the scroll scene.
 
 ## Content
+
+SEO is a non-negotiable release requirement. Follow `docs/SEO-REQUIREMENTS.md` for pre-rendering, metadata, crawlable project routes, performance budgets and measured audits when adding components.
+
+The skill dataset returned no verified match for the specific progressive-disclosure query. General implementation guidance here is to preserve complete linked project content and use native buttons/dialogs for optional details.
 
 Use existing project and experience data. Do not invent employment outcomes, usage metrics, availability claims or testimonials. Coding profile links open the actual public accounts. Contact uses the already activated email form integration.
 

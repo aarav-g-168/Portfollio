@@ -1,0 +1,13 @@
+import { ArrowLeft, ArrowUpRight, Code2 } from 'lucide-react';
+import { portfolioProjects, portfolioHome, projectPath } from '../../data/portfolio-projects';
+import ProjectMap from './ProjectMap';
+import usePortfolioSeo from './usePortfolioSeo';
+import '../BasicPortfolio.css';
+
+export default function CaseStudy({ slug }) {
+  const project=portfolioProjects.find((item)=>item.slug===slug);
+  usePortfolioSeo(project);
+  if (!project) return <main className="folio"><div className="folio-case"><h1>Project not found.</h1><a href={portfolioHome}>Back to portfolio</a></div></main>;
+  const next=portfolioProjects[(portfolioProjects.indexOf(project)+1)%portfolioProjects.length];
+  return <main className="folio folio-case-page"><article className="folio-case"><header className="folio-case-nav"><a href={`${portfolioHome}#selected-work`}><ArrowLeft size={16} /> Back to selected work</a><a href="/resume" target="_blank" rel="noreferrer">Résumé <ArrowUpRight size={16} /></a></header><div className="folio-case-intro"><span className="folio-mono">{project.category}</span><h1>{project.name}</h1><p>{project.brief}</p><div className="folio-tags">{project.stack.map((skill)=><span key={skill}>{skill}</span>)}</div></div><img className="folio-case-cover" src={project.image} srcSet={project.imageSet} sizes="(max-width:700px) 90vw, 1100px" alt={`${project.name} website interface`} width="1440" height="900" fetchPriority="high" decoding="async" /><section className="folio-case-overview"><span className="folio-mono">THE IDEA</span><h2>{project.title}</h2><p>{project.description[0]}</p></section><section className="folio-case-features"><span className="folio-mono">WHAT’S INSIDE</span><div>{project.features.map((feature,index)=><article key={feature}><span className="folio-mono">0{index+1}</span><h3>{feature}</h3></article>)}</div></section><ProjectMap project={project} /><section className="folio-case-decisions"><span className="folio-mono">BUILD NOTES</span><h2>The details behind the interface.</h2>{project.description.slice(1).map((text,index)=><div key={text}><span className="folio-mono">0{index+1}</span><p>{text}</p></div>)}</section><div className="folio-case-links">{project.links.map((link)=><a key={link.id} href={link.href} target="_blank" rel="noreferrer">{link.name==='GitHub' ? <><Code2 size={18} /> Explore the source</> : <>Open the live site <ArrowUpRight size={18} /></>}</a>)}</div><a className="folio-next-project" href={projectPath(next)}><span className="folio-mono">NEXT BUILD</span><strong>{next.name}</strong><ArrowUpRight size={40} /></a><footer><a href={`${portfolioHome}#connect`}>Have something in mind? Let’s talk <ArrowUpRight size={16} /></a></footer></article></main>;
+}

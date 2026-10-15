@@ -16,10 +16,16 @@ Normal production builds use `npm run build` and the existing `wrangler.jsonc`; 
 
 ## Creative portfolio
 
-The preview has an editorial hero, project tabs with build-note dialogs, expandable experience entries, an interactive skills toolbench, and the shared contact form.
+The preview has an editorial hero, project tabs with preview/system-map views, spotlight project cards, linked project case studies, expandable experience entries with a tracing rail, an interactive skills toolbench, a development-process stepper, section navigation, and the shared contact form.
 
-The desktop showroom lazy-loads a lightweight original laptop model. Scroll only over its stage to rotate and approach the display. Backward scrolling reverses progress; arrow keys provide the same interaction, Escape resets, and Enter directly bypasses animation. The final transition expands only the screen, then opens `/desktop?from=preview`. Back to portfolio is shown only for this preview entry; the ordinary MacFolio homepage has no exit button.
+The desktop showroom lazy-loads a lightweight original laptop model. Scroll only over the laptop itself to rotate and approach the display. Backward scrolling reverses progress; arrow keys provide the same interaction, Escape resets, and Enter directly bypasses animation. The final transition expands only the screen, then opens `/desktop?from=preview`. Back to portfolio is shown only for this preview entry; the ordinary MacFolio homepage has no exit button.
 
 Touch devices and screens under 1024px show a static MacFolio preview without an entry button. Reduced-motion desktop users get direct entry without the scroll interaction. All professional content is available without entering MacFolio.
 
 Regenerate the original GLB with `node scripts/create-preview-laptop.mjs` if needed. It uses no external model. The display texture is an actual MacFolio screenshot.
+
+## SEO and release checks
+
+Both portfolio build modes pre-render the homepage and three project pages into full HTML. Each page has its own metadata and structured data, with responsive images and local licensed fonts. Unknown paths return a real 404. Preview pages intentionally carry `noindex`.
+
+For an indexable local release audit, run `npm run build:portfolio`, `npm run check:seo`, and `npm run serve:portfolio`. This writes `dist-portfolio/` separately and does not publish it. Run `npm run check:seo:preview` after `npm run build:preview` to verify staging metadata. The SEO requirements and measured results are in `docs/SEO-REQUIREMENTS.md` and `docs/SEO-AUDIT.md`.

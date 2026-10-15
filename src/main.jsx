@@ -1,10 +1,13 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import './index.css'
 import PortfolioRouter from './components/PortfolioRouter.jsx'
 
-createRoot(document.getElementById('root')).render(
+const app = (
   <StrictMode>
     <PortfolioRouter />
   </StrictMode>
 )
+const root = document.getElementById('root')
+if (root.dataset.prerendered === 'true') hydrateRoot(root, app)
+else createRoot(root).render(app)

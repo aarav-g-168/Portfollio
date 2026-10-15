@@ -6,7 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:preview": "vite build --mode portfolio-preview --outDir dist-preview",
+    "build:preview": "node scripts/build-portfolio.mjs",
+    "build:portfolio": "node scripts/build-portfolio.mjs --release",
+    "serve:portfolio": "vite preview --mode portfolio-release --outDir dist-portfolio",
+    "check:seo": "node scripts/check-portfolio-seo.mjs dist-portfolio",
+    "check:seo:preview": "node scripts/check-portfolio-seo.mjs dist-preview --preview",
     "lint": "eslint .",
     "preview": "vite preview",
     "refresh:coding": "node scripts/refresh-coding.mjs"
