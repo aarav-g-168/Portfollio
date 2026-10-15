@@ -12,7 +12,7 @@ Keep large type, generous space, asymmetric hero composition and visible rules. 
 
 Motion supports the hierarchy: clipped title reveal, restrained magnetic primary action, gentle project tilt, project crossfades, build-note dialogs, expandable experience and skill category selection. Never hide essential information behind hover. Respect reduced motion, native dialog focus, visible focus rings and semantic controls.
 
-Use project spotlight cards, selectable system maps, the experience tracing rail and development-process stepper to explain the work. Keep full case studies directly linked and pre-rendered. Add purposeful components without compromising the established visual language or SEO requirements.
+Use the project X-ray, expanding film frames, skills patchboard, experience tracing rail and physical build machine to explain the work. Add responsive press states, icon movement, contextual pointer notes, field-focus feedback and portrait reactions. Keep gestures reversible, controls native, and pointer effects out of touch and reduced-motion modes. Keep full case studies directly linked and pre-rendered. Add purposeful components without compromising the established visual language or SEO requirements.
 
 The laptop scroll interaction applies only within the projected laptop bounds. Forward and backward input must remain reversible before entry. Keyboard arrows, Escape, reset, direct entry and a skip link are available. The screen transitions into live MacFolio; only preview entrants get a return button.
 
