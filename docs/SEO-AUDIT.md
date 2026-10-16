@@ -1,6 +1,10 @@
 # Portfolio release audit
 
-## Current tactile-component revision
+## Current project and experience revision
+
+After replacing the project reel with CSS stacking sheets and the experience accordion with a field notebook, the local release homepage scored **96 performance / 100 accessibility / 100 best practices / 100 SEO**. LCP 2.4 s, total blocking time 0 ms, CLS 0.001. Report: `work-experience-home.report.html` in the external task artifact directory. The approved MacBook showroom and lower sections retain their implementation. Both experience chapters and all three project summaries/links remain in the initial HTML.
+
+## Earlier tactile-component revision
 
 Re-audited after adding the project X-ray, cinematic reel, patchboard, build machine, postcard form and micro-interactions. Local release homepage, Lighthouse 13.5.0, default mobile simulation: **95 performance / 100 accessibility / 100 best practices / 100 SEO**. FCP 2.1 s, LCP 2.6 s, total blocking time 0 ms, CLS 0. Report: `studio-home.report.html` in the task's external `seo-audit/` artifact directory. Builds still pre-render all four pages; the SEO validation script passes. These are lab results, not field Core Web Vitals or search-ranking guarantees.
 
