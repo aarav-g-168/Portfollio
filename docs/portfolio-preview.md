@@ -16,7 +16,9 @@ Normal production builds use `npm run build` and the existing `wrangler.jsonc`; 
 
 ## Creative portfolio
 
-The preview has an editorial hero, three stacking project sheets with inline build inspectors and direct case-study/live/source links, a tabbed experience field notebook for internship and leadership, a cable-driven skills patchboard, a tactile build machine with printed receipts, section navigation, and a working postcard-style contact form.
+The preview has an editorial hero, a dimensional project turntable with a tuning dial, direct case-study/live/source links, and draggable internship/leadership role passes with spring-loaded SVG straps, a cable-driven skills patchboard, a tactile build machine with printed receipts, section navigation, and a working postcard-style contact form.
+
+The portfolio and case-study pages use Lenis for gentle wheel easing and section-link transitions inside their own scroll container. Touch scrolling, keyboard scrolling, form controls and browser zoom retain native behavior. Reduced-motion preferences disable the smoothing, including when changed during a visit. Anchor links preserve URL history and move focus to the destination. Returning from MacFolio restores the previous position immediately.
 
 The desktop showroom lazy-loads a lightweight original laptop model. Scroll only over the laptop itself to rotate and approach the display. Backward scrolling reverses progress; arrow keys provide the same interaction, Escape resets, and Enter directly bypasses animation. The final transition expands only the screen, then opens `/desktop?from=preview`. Back to portfolio is shown only for this preview entry; the ordinary MacFolio homepage has no exit button.
 

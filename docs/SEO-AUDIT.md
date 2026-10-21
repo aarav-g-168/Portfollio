@@ -1,6 +1,10 @@
 # Portfolio release audit
 
-## Current project and experience revision
+## Current turntable and role-pass revision
+
+Local release homepage, Lighthouse 13.5.0 mobile simulation: **96 performance / 100 accessibility / 100 best practices / 100 SEO**. LCP 2.4 s, total blocking time 0 ms, CLS 0.001. Report: `turntable-home.report.html` in the external task artifact directory. The project stage uses native CSS transforms; role physics mount only for eligible desktop pointers. Manual checks covered dial endpoints, keyboard tabs, side-screen selection, build overlays, badge dragging and return, click isolation after dragging, keyboard activation, and phone layouts. The audit also caught an existing stretched mobile MacFolio preview image; its height now scales with its width. Lab scores do not establish field Core Web Vitals or search rankings.
+
+## Earlier project and experience revision
 
 After replacing the project reel with CSS stacking sheets and the experience accordion with a field notebook, the local release homepage scored **96 performance / 100 accessibility / 100 best practices / 100 SEO**. LCP 2.4 s, total blocking time 0 ms, CLS 0.001. Report: `work-experience-home.report.html` in the external task artifact directory. The approved MacBook showroom and lower sections retain their implementation. Both experience chapters and all three project summaries/links remain in the initial HTML.
 
