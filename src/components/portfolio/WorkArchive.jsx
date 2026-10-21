@@ -1,18 +1,46 @@
 import { useState } from 'react';
-import { ArrowUpRight, ArrowDown, Braces, Globe, Scan, X } from 'lucide-react';
+import { useReducedMotion } from 'motion/react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Aperture, Command, Globe, SlidersHorizontal } from 'lucide-react';
 import { portfolioProjects, projectPath } from '../../data/portfolio-projects';
 
-function ProjectSheet({ project, index }) {
-  const [inspecting,setInspecting]=useState(false);
-  return <article id={`work-${project.slug}`} className="folio-work-sheet" style={{'--sheet-accent':project.accent,'--sheet-order':index}}>
-    <header><span className="folio-mono">SELECTED BUILD / 0{index+1}</span><span className="folio-mono">{project.category}</span><span className="folio-sheet-reg" aria-hidden="true">+</span></header>
-    <div className="folio-sheet-layout"><div className="folio-sheet-copy"><span className="folio-sheet-number" aria-hidden="true">0{index+1}</span><h3>{project.name}</h3><p className="folio-sheet-brief">{project.brief}</p><p>{project.description[0]}</p><div className="folio-sheet-stack">{project.stack.map((tool)=><span key={tool}>{tool}</span>)}</div><a className="folio-sheet-story" href={projectPath(project)}>Open the case study <ArrowUpRight size={18}/></a><div className="folio-sheet-outlinks">{project.links.map((link)=><a key={link.id} href={link.href} target="_blank" rel="noreferrer">{link.name==='GitHub'?'Source code':'Live website'}<ArrowUpRight size={14}/></a>)}</div></div>
-      <div className={`folio-sheet-preview ${inspecting?'is-inspecting':''}`}><div className="folio-sheet-windowbar"><span aria-hidden="true"><i/><i/><i/></span><span>{project.links[0].href.replace('https://','').replace(/\/$/,'')}</span><Globe size={12} aria-hidden="true"/></div><div className="folio-sheet-screen"><img src={project.image} srcSet={project.imageSet} sizes="(max-width:900px) 85vw, 55vw" width="960" height="600" loading="lazy" decoding="async" alt={`${project.name} website interface`}/><div className="folio-sheet-inspector" hidden={!inspecting} id={`inspect-${project.slug}`}><span className="folio-mono"><Braces size={16}/> BUILD SNAPSHOT</span><h4>{project.title}</h4><ul>{project.features.map((feature,number)=><li key={feature}><span>0{number+1}</span>{feature}</li>)}</ul></div></div><button className="folio-sheet-inspect" onClick={()=>setInspecting(!inspecting)} aria-expanded={inspecting} aria-controls={`inspect-${project.slug}`}>{inspecting?<X size={15}/>:<Scan size={15}/>} {inspecting?'Back to preview':'Inspect the build'}</button></div></div>
-    <footer><span className="folio-mono">{project.features[0]}</span><span className="folio-mono">DESIGN / DEVELOPMENT / DETAILS</span></footer>
-    <span className="folio-sheet-edge" aria-hidden="true"/>
-  </article>;
-}
-
 export default function WorkArchive() {
-  return <section className="folio-section folio-work-archive" id="selected-work"><div className="folio-section-label"><span>01</span><span>SELECTED WORK</span><span aria-hidden="true">↗</span></div><div className="folio-work-heading"><div><span className="folio-mono">IDEAS THAT MADE IT OUT OF THE EDITOR</span><h2>Built with intent.<br/><em>Made to be explored.</em></h2></div><p>Three different problems.<br/>A little of my thinking in each one.<ArrowDown size={20} aria-hidden="true"/></p></div><nav className="folio-work-index" aria-label="Jump to a project">{portfolioProjects.map((project,index)=><a href={`#work-${project.slug}`} key={project.id}><span>0{index+1}</span>{project.name}<ArrowUpRight size={15}/></a>)}</nav><div className="folio-work-sheets">{portfolioProjects.map((project,index)=><ProjectSheet key={project.id} project={project} index={index}/>)}</div><div className="folio-work-end"><span className="folio-mono">THAT’S THE WORK. HERE’S THE HUMAN.</span><a href="#journey" aria-label="Continue to experience"><ArrowDown size={20}/></a></div></section>;
+  const [active,setActive]=useState(0);
+  const [view,setView]=useState('screen');
+  const reduce=useReducedMotion();
+  const select=(index)=>{setActive((index+portfolioProjects.length)%portfolioProjects.length);setView('screen');};
+  const keyChange=(event,index)=>{
+    if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
+    event.preventDefault();
+    const next=event.key==='Home'?0:event.key==='End'?portfolioProjects.length-1:(index+(event.key==='ArrowRight'?1:-1)+portfolioProjects.length)%portfolioProjects.length;
+    select(next);document.getElementById(`exhibit-tab-${next}`)?.focus();
+  };
+  const parallax=(event)=>{
+    if(reduce || event.pointerType!=='mouse')return;
+    const rect=event.currentTarget.getBoundingClientRect();
+    event.currentTarget.style.setProperty('--stage-x',`${(event.clientX-rect.left-rect.width/2)/45}px`);
+    event.currentTarget.style.setProperty('--stage-y',`${(event.clientY-rect.top-rect.height/2)/45}px`);
+  };
+  return <section className="folio-section folio-exhibit" id="selected-work">
+    <div className="folio-section-label"><span>01</span><span>SELECTED WORK</span><span aria-hidden="true">↗</span></div>
+    <div className="folio-exhibit-heading"><div><span className="folio-mono">A FEW THINGS I PUT INTO THE WORLD</span><h2>Ideas are easy.<br/><em>Here’s the execution.</em></h2></div><p>Pick a project.<br/>Get a little closer to the build.<ArrowUpRight size={22} aria-hidden="true"/></p></div>
+    <div className="folio-project-instrument">
+      <header className="folio-instrument-header"><span className="folio-mono"><Aperture size={16}/> THE PROJECT TURNTABLE</span><div><i aria-hidden="true"/><span>EXPLORING / 0{active+1}</span></div><span className="folio-instrument-corners" aria-hidden="true">AG—01</span></header>
+      <div className="folio-exhibit-scene" onPointerMove={parallax} onPointerLeave={(event)=>{event.currentTarget.style.setProperty('--stage-x','0px');event.currentTarget.style.setProperty('--stage-y','0px');}}>
+        <span className="folio-scene-word" aria-hidden="true">BUILT.</span><div className="folio-scene-orbit" aria-hidden="true"/><div className="folio-scene-floor" aria-hidden="true"/>
+        <div className="folio-exhibit-screens">{portfolioProjects.map((project,index)=>{
+          const offset=((index-active+1+portfolioProjects.length)%portfolioProjects.length)-1;
+          return <button key={project.id} type="button" className={`folio-exhibit-screen ${active===index?'is-selected':''}`} style={{zIndex:active===index?3:1,'--screen-accent':project.accent,transform:`translateX(${offset*72}%) translateY(${Math.abs(offset)*28}px) rotateY(${offset*-33}deg) rotateZ(${offset*5}deg) scale(${active===index?1:.72})`,opacity:active===index?1:.48}} onClick={()=>select(index)} aria-label={`Select ${project.name}`} aria-pressed={active===index} tabIndex={active===index?-1:0}>
+            <span className="folio-exhibit-windowbar"><span aria-hidden="true"><i/><i/><i/></span><span>{project.links[0].href.replace('https://','').replace(/\/$/,'')}</span><Globe size={10} aria-hidden="true"/></span>
+            <span className="folio-exhibit-image"><img src={project.image} srcSet={project.imageSet} sizes="(max-width:700px) 85vw, 55vw" alt={`${project.name} website interface`} width="960" height="600" loading="lazy" decoding="async"/>{active===index && view==='notes' && <span className="folio-exhibit-overlay"><span className="folio-mono"><SlidersHorizontal size={15}/> INSIDE THE BUILD</span><strong>{project.title}</strong><span className="folio-exhibit-features">{project.features.map((feature,i)=><span key={feature}><small>0{i+1}</small>{feature}</span>)}</span></span>}</span>
+            <span className="folio-exhibit-screen-foot"><span>{project.name}</span><span>0{index+1} <Command size={10}/></span></span>
+          </button>;
+        })}</div>
+        <span className="folio-stage-coordinate" aria-hidden="true">DESIGN × ENGINEERING</span><span className="folio-stage-marker" aria-hidden="true">+<br/>+<br/>+</span>
+      </div>
+      <div className="folio-turntable-controls"><div className="folio-turntable-counter" aria-live="polite"><span>0{active+1}</span><small>/ 03<br/>SELECTED BUILDS</small></div><div className="folio-tuner"><button onClick={()=>select(active-1)} aria-label="Previous project"><ArrowLeft size={18}/></button><label className="folio-tuner-dial"><span className="folio-dial-marks" aria-hidden="true"/><span className="folio-dial-face" style={{rotate:`${-55+active*55}deg`}} aria-hidden="true"><i/></span><input type="range" min="0" max={portfolioProjects.length-1} step="1" value={active} onChange={(event)=>select(Number(event.target.value))} aria-label="Tune the project turntable" aria-valuetext={portfolioProjects[active].name}/><span className="folio-sr-only">Drag left or right, or use arrow keys, to choose a project</span></label><button onClick={()=>select(active+1)} aria-label="Next project"><ArrowRight size={18}/></button><span className="folio-tuner-help">DRAG TO TUNE</span></div><button className="folio-exhibit-view" aria-pressed={view==='notes'} onClick={()=>setView(view==='screen'?'notes':'screen')}><SlidersHorizontal size={15}/>{view==='screen'?'Under the hood':'Show the screen'}</button></div>
+      <div className="folio-exhibit-tabs" role="tablist" aria-label="Selected projects">{portfolioProjects.map((project,index)=><button key={project.id} id={`exhibit-tab-${index}`} role="tab" aria-selected={active===index} aria-controls={`exhibit-detail-${index}`} tabIndex={active===index?0:-1} onKeyDown={(event)=>keyChange(event,index)} onClick={()=>select(index)}><span>0{index+1}</span>{project.name}<ArrowUpRight size={14}/></button>)}</div>
+    </div>
+    <div className="folio-exhibit-details">{portfolioProjects.map((project,index)=><article key={project.id} id={`exhibit-detail-${index}`} role="tabpanel" aria-labelledby={`exhibit-tab-${index}`} hidden={active!==index}><div className="folio-exhibit-title"><span className="folio-mono">{project.category}</span><h3>{project.name}</h3><div className="folio-exhibit-links"><a href={projectPath(project)}>Explore the case study<ArrowUpRight size={18}/></a>{project.links.map((link)=><a key={link.id} href={link.href} target="_blank" rel="noreferrer">{link.name==='GitHub'?'Source':'Live site'}<ArrowUpRight size={14}/></a>)}</div></div><div className="folio-exhibit-description"><h4>{project.title}</h4><p>{project.description[0]}</p><div>{project.stack.map((tool)=><span key={tool}>{tool}</span>)}</div></div></article>)}</div>
+    <nav className="folio-exhibit-index" aria-label="All project case studies"><span className="folio-mono">JUST HERE FOR THE WORK?</span>{portfolioProjects.map((project,index)=><a href={projectPath(project)} key={project.id}><span>0{index+1}</span>{project.name}<ArrowUpRight size={14}/></a>)}</nav>
+  </section>;
 }

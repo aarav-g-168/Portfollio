@@ -11,6 +11,7 @@ import InteractionField from './portfolio/InteractionField';
 import BuildProcess from './portfolio/BuildProcess';
 import SectionNavigation from './portfolio/SectionNavigation';
 import usePortfolioSeo from './portfolio/usePortfolioSeo';
+import usePortfolioScroll from './portfolio/usePortfolioScroll';
 import WorkArchive from './portfolio/WorkArchive';
 import ExperienceLedger from './portfolio/ExperienceLedger';
 import './BasicPortfolio.css';
@@ -23,9 +24,7 @@ function SectionLabel({ number, children }) {
 }
 
 function Journey() {
-  return <section className="folio-section" id="journey"><SectionLabel number="02">THE HUMAN BEHIND THE CODE</SectionLabel><div className="folio-about"><motion.div {...reveal}><h2>Curious by default.<br /><em>Builder by choice.</em></h2><p>I’m Aarav, a full stack developer at VIT Vellore. I work across interfaces, APIs, and databases—and enjoy the details that make them feel like one thing.</p><a className="folio-text-link" href="/resume" target="_blank" rel="noreferrer">The résumé version <ArrowUpRight size={18} /></a></motion.div><motion.div {...reveal} className="folio-portrait"><img src="/preview/aarav-640.webp" alt="Aarav Gupta at an event" width="300" height="340" loading="lazy" /><span>OFF THE KEYBOARD / ON THE GROUND</span><div className="folio-portrait-stamp" aria-hidden="true">AG<br /><span>ALWAYS BUILDING</span></div></motion.div></div>
-    <ExperienceLedger />
-  </section>;
+  return <section className="folio-section folio-team-section" id="journey"><SectionLabel number="02">EXPERIENCE, WITH PEOPLE</SectionLabel><div className="folio-team-heading"><h2>Good work<br /><em>isn’t a solo act.</em></h2><div><img src="/preview/aarav-640.webp" alt="Aarav Gupta" width="64" height="64" loading="lazy"/><p>I’m Aarav, a full stack developer at VIT Vellore. These are the teams I’m learning with, and the work I’m contributing to.</p></div></div><ExperienceLedger /></section>;
 }
 
 function Toolbench() {
@@ -53,18 +52,14 @@ function Contact() {
 }
 
 export default function BasicPortfolio() {
-  const scrollRef = useRef(null), restored = useRef(false);
+  const { scrollRef, contentRef } = usePortfolioScroll({ restoreKey: 'portfolio-scroll' });
   const reduce = useReducedMotion();
   const [animateIntro] = useState(() => typeof document !== 'undefined' && document.getElementById('root')?.dataset.prerendered !== 'true');
   usePortfolioSeo();
-  useEffect(() => {
-    if (restored.current) return; restored.current = true;
-    try { const saved = sessionStorage.getItem('portfolio-scroll'); if (saved !== null) { scrollRef.current.scrollTop = Number(saved); sessionStorage.removeItem('portfolio-scroll'); } } catch { /* Optional navigation memory. */ }
-  }, []);
-  return <MotionConfig reducedMotion="user"><main className="folio" ref={scrollRef}><a className="folio-skip" href="#selected-work">Skip to projects</a>
+  return <MotionConfig reducedMotion="user"><main className="folio" ref={scrollRef}><div className="folio-scroll-content" ref={contentRef}><a className="folio-skip" href="#selected-work">Skip to projects</a>
     <header className="folio-header"><a className="folio-brand" href="#intro">ag<span>AARAV GUPTA<br /><small>DEVELOPER & CURIOUS HUMAN</small></span></a><nav aria-label="Portfolio navigation"><a href="#selected-work">Work<span>01</span></a><a href="#journey">About<span>02</span></a><a href="#connect">Contact<span>05</span></a><a href="/resume" target="_blank" rel="noreferrer">Résumé <ArrowUpRight size={15} /></a></nav><a href="#connect" className="folio-header-hello">Say hello <ArrowUpRight size={17} /></a></header>
     <section id="intro" className="folio-hero"><div className="folio-hero-top"><span className="folio-mono"><span className="folio-status-dot" /> FULL STACK DEVELOPER</span><span className="folio-mono">BASED IN INDIA ↗ BUILDING FOR THE WEB</span></div><div className="folio-hero-stage"><div className="folio-hero-type"><h1 aria-label="Aarav Gupta, full stack developer. Serious about play."><span className="folio-sr-only">Aarav Gupta — Full Stack Developer</span>{['SERIOUS', 'ABOUT', 'PLAY.'].map((word, index) => <span className={`folio-title-line line-${index}`} key={word} aria-hidden="true"><motion.span initial={reduce || !animateIntro ? false : { y: '110%', rotate: 4 }} animate={{ y: 0, rotate: 0 }} transition={{ duration: 0.85, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}>{word}</motion.span></span>)}</h1><div className="folio-hero-annotation"><span aria-hidden="true">↳</span>Good engineering.<br />A little unexpected.</div></div><div className="folio-hero-object" aria-hidden="true" onPointerMove={(event)=>{ if(reduce || event.pointerType!=="mouse") return; const box=event.currentTarget.getBoundingClientRect(); event.currentTarget.style.setProperty("--hero-x",`${(event.clientX-box.left-box.width/2)/18}px`); event.currentTarget.style.setProperty("--hero-y",`${(event.clientY-box.top-box.height/2)/18}px`); }} onPointerLeave={(event)=>{event.currentTarget.style.setProperty("--hero-x","0px");event.currentTarget.style.setProperty("--hero-y","0px");}}><div className="folio-object-grid" /><div className="folio-orbit orbit-one" /><div className="folio-orbit orbit-two" /><motion.div className="folio-orange-object" ><svg viewBox="0 0 300 300"><defs><linearGradient id="object-face" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#ffb18b" /><stop offset=".5" stopColor="#ff5b21" /><stop offset="1" stopColor="#b52e0a" /></linearGradient></defs><path d="M150 12 184 83 261 58 236 136 298 175 217 194 219 275 150 231 83 287 82 204 5 181 67 132 39 58 117 82Z" fill="url(#object-face)" stroke="#ff8757" strokeWidth="2" /><path d="m150 12 0 219M39 58l178 136M5 181l231-45M83 287l101-204M261 58 82 204" fill="none" stroke="#ffa375" strokeOpacity=".55" /><circle cx="150" cy="150" r="44" fill="#eb4415" stroke="#ffac79" /><path d="m139 139-12 11 12 11m22-22 12 11-12 11m-9-27-8 33" fill="none" stroke="#ffdabf" strokeWidth="4" strokeLinecap="round" /></svg></motion.div><span className="folio-object-coordinate">CRAFT / CODE / CURIOSITY</span><span className="folio-object-index">FIG. 01</span><motion.span className="folio-floating-chip chip-one" drag={!reduce} dragConstraints={{ left: -30, right: 30, top: -30, bottom: 30 }} dragSnapToOrigin><Command size={14} /> a little extra.</motion.span><span className="folio-floating-chip chip-two"><Code2 size={15} /> ideas, made tangible.</span></div></div><div className="folio-hero-bottom"><p>I’m Aarav. I build full stack experiences<br />with a thing for <strong>the little details.</strong></p><Magnet disabled={reduce} padding={30} magnetStrength={6} maxOffset={10}><a className="folio-primary" href="#selected-work">Explore the work <ArrowDown size={20} /></a></Magnet><a className="folio-hero-scroll" href="#selected-work"><span>SCROLL TO DISCOVER</span><ArrowDown size={17} /></a></div></section>
     <div className="folio-ticker" aria-hidden="true"><span>THOUGHTFULLY ENGINEERED</span><i>✳</i><span>PLAYFULLY CRAFTED</span><i>✳</i><span>BUILT FOR THE WEB</span><i>✳</i><span>THOUGHTFULLY ENGINEERED</span><i>✳</i></div>
     <InteractionField scrollRef={scrollRef} /><SectionNavigation scrollRef={scrollRef} /><WorkArchive /><Journey /><DesktopPortal scrollRef={scrollRef} /><Toolbench /><Contact />
-  </main></MotionConfig>;
+  </div></main></MotionConfig>;
 }
