@@ -6,13 +6,14 @@ Preview-only creative portfolio. The published MacFolio route stays independent.
 
 Editorial composition: warm paper (#f4f1e9), near-black olive ink (#23251f), accessible functional orange (#bc3c12), brighter orange artwork (#d84617), neutral dividers (#d6d5ca). Self-hosted Archivo for oversized display typography, self-hosted Space Grotesk for readable content, system monospace for small metadata. Use Georgia italics as a deliberate editorial counterpoint in section headings.
 
-Keep large type, generous space, asymmetric hero composition and visible rules. Project screenshots carry the color in the work section. The dark olive laptop showroom is the single cinematic section. Avoid adding unrelated neon, glass cards, or extra competing background effects.
+Keep large type, generous space, asymmetric hero composition and visible rules. Project screenshots carry the color in the work section. The project turntable and laptop showroom use the same dark olive stage language; the surrounding content stays light and editorial. Avoid adding unrelated neon, glass cards, or extra competing background effects.
 
 ## Interaction
 
 Motion supports the hierarchy: clipped title reveal, restrained magnetic primary action, gentle project tilt, project crossfades, build-note dialogs, expandable experience and skill category selection. Never hide essential information behind hover. Respect reduced motion, native dialog focus, visible focus rings and semantic controls.
 
-Use stacking project sheets with inline inspectors, the internship/leadership field notebook, skills patchboard and physical build machine to explain the work. Keep case-study, live-site and source links inside the sheet content, away from the overlapping stack edges. Preserve the approved MacBook showroom and everything below it when refining work and experience. Add responsive press states, icon movement, contextual pointer notes, field-focus feedback and portrait reactions. Keep gestures reversible, controls native, and pointer effects out of touch and reduced-motion modes. Keep full case studies directly linked and pre-rendered. Add purposeful components without compromising the established visual language or SEO requirements.
+Use the dimensional project turntable, physical role passes, skills patchboard and build machine to explain the work. The turntable has layered CSS perspective screens, a native tuning slider, arrow buttons and keyboard tabs. Keep a direct, visible link index for visitors who want case studies immediately. Role passes use Motion springs and SVG straps; dragging must not accidentally select a role, and keyboard selection must still work after a drag. Turn off pass dragging on coarse pointers, small screens and reduced motion. Preserve the approved MacBook showroom and everything below it when refining work and experience. Keep every project summary and both role details pre-rendered, with no invented outcomes or metrics.
+
 
 The laptop scroll interaction applies only within the projected laptop bounds. Forward and backward input must remain reversible before entry. Keyboard arrows, Escape, reset, direct entry and a skip link are available. The screen transitions into live MacFolio; only preview entrants get a return button.
 
