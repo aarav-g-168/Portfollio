@@ -19,7 +19,7 @@ export function normalizeRecentTracks(data, username, timestamp) {
   if (!recent?.name) return { ...base, status: 'idle', track: null };
   const artist = typeof recent.artist === 'string' ? recent.artist : recent.artist?.['#text'];
   const image = [...(Array.isArray(recent.image) ? recent.image : [])].reverse()
-    .map((entry) => safeUrl(entry?.['#text'], ['lastfm.freetls.fastly.net', 'lastfm-img2.akamaized.net']))
+    .map((entry) => safeUrl(entry?.['#text'], ['lastfm-img.freetls.fastly.net', 'lastfm.freetls.fastly.net', 'lastfm-img2.akamaized.net']))
     .find(Boolean) || null;
   const playedAt = Number(recent.date?.uts);
   const playing = recent['@attr']?.nowplaying === 'true';
