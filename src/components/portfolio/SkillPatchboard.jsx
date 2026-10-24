@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Cable, ArrowUpRight } from 'lucide-react';
-import { techStack } from '../../constants';
+import { portfolioSkills as techStack } from '../../data/portfolio-skills';
 
 export default function SkillPatchboard() {
   const [active,setActive] = useState(1);

@@ -25,6 +25,8 @@ Complete professional content, native scrolling, accessible projects and forms. 
 
 Use a professional, direct voice. Introduce Aarav by name and role; make navigation, section headings and actions explicit. Describe project purpose, implementation and responsibilities using verified details. Avoid self-congratulatory slogans, playful filler, exaggerated outcomes and invented metrics. Keep preview copy separate from the published MacFolio content.
 
+Give each hero element a distinct purpose: name, role, education/location, work focus, and complementary skill highlights. Avoid repeating the role or the same framework list across the introduction, illustration labels, and skill strip. React Native is a confirmed skill; retain the wider language, backend, database, and tooling skills as well.
+
 SEO is a non-negotiable release requirement. Follow `docs/SEO-REQUIREMENTS.md` for pre-rendering, metadata, crawlable project routes, performance budgets and measured audits when adding components.
 
 The skill dataset returned no verified match for the specific progressive-disclosure query. General implementation guidance here is to preserve complete linked project content and use native buttons/dialogs for optional details.
