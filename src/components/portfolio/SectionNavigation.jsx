@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useScroll, useSpring } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 
-const sections = [['selected-work','Work'],['journey','About'],['toolbench','Skills'],['connect','Contact']];
+const sections = [['selected-work','Projects'],['journey','Experience'],['toolbench','Skills'],['connect','Contact']];
 export default function SectionNavigation({ scrollRef }) {
   const [active,setActive] = useState('intro');
   const { scrollYProgress } = useScroll({container:scrollRef});

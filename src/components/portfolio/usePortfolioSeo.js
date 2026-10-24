@@ -11,7 +11,7 @@ export default function usePortfolioSeo(project) {
       node.content=value;
     };
     meta('name','description',seo.description); meta('name','robots',seo.robots);
-    for (const [key,value] of Object.entries({'og:title':seo.title,'og:description':seo.description,'og:type':'website','og:url':seo.canonical,'og:image':seo.image,'og:image:alt':'Aarav Gupta — full stack developer. Code, craft and a little play.'})) meta('property',key,value);
+    for (const [key,value] of Object.entries({'og:title':seo.title,'og:description':seo.description,'og:type':'website','og:url':seo.canonical,'og:image':seo.image,'og:image:alt':'Aarav Gupta — Full Stack Developer. Projects, experience, and technical skills.'})) meta('property',key,value);
     meta('name','twitter:card','summary_large_image'); meta('name','twitter:title',seo.title); meta('name','twitter:description',seo.description); meta('name','twitter:image',seo.image);
     let canonical=document.head.querySelector('link[rel="canonical"]');
     if (!canonical) { canonical=document.createElement('link'); canonical.rel='canonical'; document.head.append(canonical); }

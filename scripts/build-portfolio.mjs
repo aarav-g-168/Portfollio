@@ -36,7 +36,7 @@ for (const path of portfolioPaths) {
 <meta name="robots" content="${seo.robots}">
 <link rel="canonical" href="${seo.canonical}">
 <meta name="theme-color" content="#f4f1e9">
-${Object.entries({'og:title':seo.title,'og:description':seo.description,'og:type':'website','og:url':seo.canonical,'og:image':seo.image,'og:image:width':'1200','og:image:height':'630','og:image:alt':'Aarav Gupta — full stack developer. Code, craft and a little play.'}).map(([key,value])=>`<meta property="${key}" content="${escape(value)}">`).join('\n')}
+${Object.entries({'og:title':seo.title,'og:description':seo.description,'og:type':'website','og:url':seo.canonical,'og:image':seo.image,'og:image:width':'1200','og:image:height':'630','og:image:alt':'Aarav Gupta — Full Stack Developer. Projects, experience, and technical skills.'}).map(([key,value])=>`<meta property="${key}" content="${escape(value)}">`).join('\n')}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${escape(seo.title)}">
 <meta name="twitter:description" content="${escape(seo.description)}">
