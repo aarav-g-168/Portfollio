@@ -82,5 +82,5 @@ export const portfolioProjects = [locations.work.children[2], ...locations.work.
   links: project.children.filter((item) => item.fileType === 'url'),
 }));
 
-export const portfolioHome = import.meta.env.DEV ? '/preview' : '/';
-export const projectPath = (project) => `${import.meta.env.DEV ? '/preview' : ''}/projects/${project.slug}/`;
+export const portfolioHome = '/';
+export const projectPath = (project) => `/projects/${project.slug}/`;

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/build-portfolio.mjs --release --production",
     "build:preview": "node scripts/build-portfolio.mjs",
     "build:portfolio": "node scripts/build-portfolio.mjs --release",
     "serve:portfolio": "vite preview --mode portfolio-release --outDir dist-portfolio",

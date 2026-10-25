@@ -5,7 +5,7 @@ import { pathToFileURL } from 'node:url';
 
 const release=process.argv.includes('--release');
 const mode=release ? 'portfolio-release' : 'portfolio-preview';
-const outDir=release ? 'dist-portfolio' : 'dist-preview';
+const outDir=process.argv.includes('--production') ? 'dist' : release ? 'dist-portfolio' : 'dist-preview';
 await build({mode,build:{outDir,manifest:true}});
 await build({mode,build:{ssr:'src/entry-portfolio-server.jsx',outDir:'.portfolio-ssr',emptyOutDir:true}});
 const {renderPortfolio,portfolioPaths}=await import(pathToFileURL(resolve('.portfolio-ssr/entry-portfolio-server.js')));

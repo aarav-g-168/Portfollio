@@ -1,4 +1,4 @@
-# Aarav's macOS portfolio
+# Aarav's portfolio and MacFolio
 
 React, Vite, Tailwind CSS, GSAP, and Zustand.
 
@@ -60,7 +60,7 @@ The form includes required fields, a honeypot, a sending state, submission feedb
 
 ## Cloudflare Workers deployment
 
-The repository includes `wrangler.jsonc` and `cloudflare/worker.js`. They deploy the Vite output in `dist/` and adapt the shared `/api/music` and `/api/coding` handlers to the Workers runtime. API requests run before the SPA fallback, so they return JSON rather than `index.html`.
+The repository includes `wrangler.jsonc` and `cloudflare/worker.js`. The production build pre-renders the portfolio and case studies into `dist/`, with a separate desktop entry. They deploy this output and adapt the shared `/api/music` and `/api/coding` handlers to the Workers runtime. API requests run before asset handling, so they return JSON. Missing pages return the generated 404 page.
 
 Cloudflare Workers Builds settings:
 
@@ -80,12 +80,12 @@ npx wrangler deploy --dry-run
 
 To test the Workers runtime locally, run `npx wrangler dev` after building. For music, optionally put `LASTFM_API_KEY` in an ignored `.dev.vars` file. Keep using `.env.local` for `npm run dev`. Check `/api/music` and `/api/coding?platform=codechef` after deploying; music reports `unconfigured` until the runtime secret is present. Public coding platforms can occasionally reject upstream requests; the portfolio retains its saved stats in that case.
 
-## Direct rÈsumÈ link
+## Direct r√©sum√© link
 
-`/resume` and `/resume/` serve `public/resume.pdf` directly in Vite and Cloudflare Workers, without loading the desktop. The desktop rÈsumÈ window and download still use the same PDF.
+`/resume` and `/resume/` serve `public/resume.pdf` directly in Vite and Cloudflare Workers, without loading the desktop. The desktop r√©sum√© window and download still use the same PDF.
 
-Spotify Scrobbling follows the connected account across devices. The notch shows the last played track with ìOffline ∑ Not listeningî when Last.fm reports no current track. This is listening activity, not Spotify account presence; Last.fm can delay stop/start updates. Upstream failures show an unknown status instead of claiming the owner is offline.
+Spotify Scrobbling follows the connected account across devices. The notch shows the last played track with ‚ÄúOffline ¬∑ Not listening‚Äù when Last.fm reports no current track. This is listening activity, not Spotify account presence; Last.fm can delay stop/start updates. Upstream failures show an unknown status instead of claiming the owner is offline.
 
 ## Portfolio entry points
 
-Both `/` and `/desktop` open MacFolio directly. `/resume` remains PDF-only. The conventional portfolio source is retained for a future redesign but is not currently exposed. The laptop scroll animation is deferred.
+`/` opens the main portfolio. `/desktop` opens MacFolio with a Back to portfolio link. `/projects/hackgrid/`, `/projects/contest-manager/`, and `/projects/ios-fusion/` open the case studies. `/resume` remains PDF-only. On desktop, scroll over the laptop or select Enter MacFolio to enter. Returning restores the main page scroll position. Phones show a static preview with all professional content accessible on the main page.
