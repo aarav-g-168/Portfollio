@@ -33,3 +33,7 @@ Project case studies include a compact, pre-rendered Engineering decisions secti
 Both portfolio build modes pre-render the homepage and three project pages into full HTML. Each page has its own metadata and structured data, with responsive images and local licensed fonts. Unknown paths return a real 404. Preview pages intentionally carry `noindex`.
 
 For an indexable local release audit, run `npm run build:portfolio`, `npm run check:seo`, and `npm run serve:portfolio`. This writes `dist-portfolio/` separately and does not publish it. Run `npm run check:seo:preview` after `npm run build:preview` to verify staging metadata. The SEO requirements and measured results are in `docs/SEO-REQUIREMENTS.md` and `docs/SEO-AUDIT.md`.
+
+## Skills content
+
+The preview skills list lives in `src/data/portfolio-skills.js`, independently of the published desktop list. It covers the résumé’s languages, web/mobile, backend/API, database/ORM, authentication, UI/animation, cloud/tooling and CS fundamentals, plus previously confirmed skills. All eight categories are pre-rendered; category buttons control visibility. Mobile uses a two-column category selector above the full-width skill list. The desktop cable height follows the category count.

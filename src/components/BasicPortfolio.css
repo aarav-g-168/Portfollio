@@ -590,16 +590,18 @@
 .folio-patch-inputs button[aria-pressed=true] { color:#f2c4a5; }
 .folio-patch-inputs button[aria-pressed=true] .folio-patch-socket { border-color:#e6a075; box-shadow:0 0 0 3px #e6a07520; }
 .folio-patch-inputs button:hover .folio-patch-socket { border-color:#f5dec4; }
-.folio-patch-wire { height:300px; padding-inline:6px; }
+.folio-patch-wire { height:var(--patch-height,300px); padding-inline:6px; }
 .folio-patch-wire svg { width:100%; height:100%; overflow:visible; }
 .folio-patch-wire path { fill:none; stroke:#e6a075; stroke-width:3; vector-effect:non-scaling-stroke; transition:d .45s var(--motion-ease); filter:drop-shadow(0 4px 1px #0005); }
 .folio-patch-wire circle { fill:#f4d2a8; }
 .folio-patch-output { min-width:0; padding-top:8px; }
+.folio-patch-output[hidden] { display:none!important; }
 .folio-patch-readout { padding:14px; background:#1b2118; border:1px solid #9aab7a40; border-radius:4px; }
 .folio-patch-readout .folio-mono { color:#b3c397; display:block; font-size:7px; margin-bottom:7px; }
 .folio-patch-readout strong { font-size:16px; font-weight:500; }
 .folio-patch-tools { padding-block:13px; min-height:225px; }
 .folio-patch-tools>div { display:flex; align-items:center; gap:10px; padding:9px 4px; font-size:12px; animation:folio-tool-in .35s both; animation-delay:calc(var(--tool-order) * 30ms); }
+.folio-patch-tools>div>span:nth-child(2) { min-width:0; overflow-wrap:anywhere; }
 .folio-patch-tools small { margin-left:auto; color:#c3c9b6; font:8px Consolas,monospace; }
 .folio-patch-tool-led { width:4px; height:4px; background:#9fba73; border-radius:50%; flex-shrink:0; }
 .folio-patch-tools>div:hover { color:#efba91; }
@@ -634,7 +636,20 @@
  .folio-reel-track { flex-direction:column; min-height:0; }.folio-reel-panel,.folio-reel-panel.is-active { flex:none; display:block; }.folio-reel-selector { width:100%; height:58px; padding:15px; flex-direction:row; gap:15px; }.folio-reel-selector strong { writing-mode:horizontal-tb;rotate:0deg;font-size:17px;margin:0; }.folio-reel-plus { margin-left:auto; }
  .folio-reel-screen { height:0; transition:height .45s var(--motion-ease); }.folio-reel-panel.is-active .folio-reel-screen { height:340px; }.folio-reel-caption { left:18px;right:18px;bottom:20px; }.folio-reel-caption h3 { font-size:27px; }.folio-reel-caption p { font-size:12px; }.folio-reel>footer>.folio-mono { font-size:6px; }.folio-reel>footer>span:last-child { display:none; }
  .folio-lens { aspect-ratio:1.13; border-width:3px; }.folio-lens-blueprint header { padding:15px;font-size:7px;gap:8px; }.folio-lens-blueprint header>span:last-child { display:none; }.folio-lens-circuit { inset:20% 5% 28%;gap:12px; }.folio-lens-circuit>div { padding:8px;gap:5px; }.folio-lens-circuit strong { font-size:10px; }.folio-lens-circuit small { font-size:7px; }.folio-lens-circuit span { font-size:7px; }.folio-lens-circuit>div::after { width:12px;right:-13px; }.folio-lens-blueprint footer { font-size:7px;left:15px;bottom:21%;max-width:90%; }.folio-lens-label { font-size:8px;padding:0 10px; }.folio-lens-seam>span { width:34px;height:34px; }
- .folio-patchboard { padding:22px 18px; }.folio-patch-layout { grid-template-columns:120px 30px 1fr;min-height:370px; }.folio-patch-readout { padding:10px; }.folio-patch-readout strong { font-size:13px; }.folio-patch-tools>div { font-size:10px;gap:6px; }.folio-patch-status { font-size:7px;flex-wrap:wrap; }.folio-patch-tools { min-height:245px; }.folio-patch-inputs button { font-size:9px; }.folio-patchboard>footer { font-size:6px; }
+ .folio-patchboard { padding:22px 18px; }.folio-patchboard>footer { font-size:6px; }
+ .folio-patch-layout { grid-template-columns:1fr;min-height:0; }
+ .folio-patch-inputs { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px; }
+ .folio-patch-inputs button { min-width:0;min-height:48px;font-size:10px;line-height:1.4;gap:7px; }
+ .folio-patch-inputs button>span:nth-child(2) { min-width:0; }
+ .folio-patch-inputs button>small { font-size:7px; }
+ .folio-patch-socket { width:13px;height:13px; }
+ .folio-patch-wire { display:none; }
+ .folio-patch-output { padding-top:20px; }
+ .folio-patch-readout { padding:14px; }
+ .folio-patch-readout strong { font-size:16px; }
+ .folio-patch-tools { min-height:310px; }
+ .folio-patch-tools>div { font-size:12px;gap:10px; }
+ .folio-patch-status { font-size:9px; }
  .folio-contact .folio-postcard { padding:24px;rotate:0deg; }.folio-postcard-top>.folio-mono { font-size:7px; }.folio-postcard-stamp { width:54px;height:65px; }
  .folio-pointer-note { display:none; }
 }
