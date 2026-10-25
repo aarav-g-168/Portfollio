@@ -4,6 +4,8 @@
 .folio { --paper: #f4f1e9; --ink: #23251f; --muted: #62645c; --line: #d6d5ca; --orange: #bc3c12; --surface: #eae7dd; position: fixed; inset: 0; width: 100%; height: 100dvh; overflow: auto; overflow-x: hidden; background: var(--paper); color: var(--ink); font-family: 'Space Grotesk', sans-serif; scroll-behavior: smooth; scroll-padding-top: 28px; }
 .folio *, .folio-dialog * { box-sizing: border-box; }
 .folio-scroll-content { display: flow-root; min-height: 100%; }
+.folio { scroll-padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+.folio-scroll-content { padding-inline: env(safe-area-inset-left) env(safe-area-inset-right); }
 /* Lenis owns easing while mounted; avoid stacking CSS and wheel animations. */
 .folio.lenis { scroll-behavior: auto; }
 .folio a, .folio button, .folio-dialog a, .folio-dialog button { -webkit-tap-highlight-color: transparent; }
@@ -139,7 +141,7 @@
 .folio-coding > a:hover { color: var(--orange); }
 .folio-coding small { color: var(--muted); font-size: 10px; margin-top: 16px; }
 .folio-contact { background: #e9e5da; }
-.folio-contact .folio-section { padding-bottom: 20px; }
+.folio-contact .folio-section { padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
 .folio-contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 90px; padding-block: 70px 90px; }
 .folio-contact h2 { position: relative; font-size: clamp(40px,5.3vw,76px); line-height: 1.04; }
 .folio-contact h2 em { color: var(--orange); }
@@ -231,12 +233,12 @@
 }
 @media(max-width:700px) {
  .folio-header,.folio-hero,.folio-section { width: calc(100% - 40px); }
- .folio-header { height: 100px; gap: 10px; flex-wrap: wrap; padding: 15px 0 10px; }
+ .folio-header { height: auto; min-height: 110px; gap: 6px 10px; flex-wrap: wrap; padding: 14px 0 8px; }
  .folio-brand { font-size: 34px; letter-spacing: -4px; gap: 13px; }
  .folio-brand > span { font-size: 8px; }
  .folio-brand small { font-size: 6px; }
  .folio-header nav { width: 100%; justify-content: space-between; gap: 12px; }
- .folio-header nav a { font-size: 11px; min-height: 36px; }
+ .folio-header nav a { font-size: 11px; min-height: 44px; }
  .folio-header nav a > span { font-size: 7px; margin-top: 4px; }
  .folio-hero { padding-block: 24px 30px; }
  .folio-hero-top > span:last-child { display: none; }
@@ -376,7 +378,7 @@
 .folio-process-detail p { font-size: 13px; margin-top: 18px; }
 .folio-process-detail span { display: block; color: var(--muted); font-size: 11px; padding-left: 14px; border-left: 2px solid var(--orange); margin-top: 20px; line-height: 1.7; }
 .folio-reading-progress { position: fixed; inset: 0 0 auto; height: 3px; background: #d84617; z-index: 3000; transform-origin: left; pointer-events: none; }
-.folio-floating-nav { position: fixed; z-index: 2500; left: 50%; bottom: 18px; translate: -50% 0; display: flex; align-items: center; gap: 3px; background: #f8f6eff2; padding: 6px; border: 1px solid #cacabe; border-radius: 40px; backdrop-filter: blur(18px); box-shadow: 0 10px 35px #2222; }
+.folio-floating-nav { position: fixed; z-index: 2500; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom)); translate: -50% 0; display: flex; align-items: center; gap: 3px; background: #f8f6eff2; padding: 6px; border: 1px solid #cacabe; border-radius: 40px; backdrop-filter: blur(18px); box-shadow: 0 10px 35px #2222; }
 .folio-floating-nav a { display: inline-flex; align-items: center; justify-content: center; gap: 5px; min-height: 44px; padding: 12px 18px; border-radius: 30px; font-size: 11px; white-space: nowrap; transition: background .2s,color .2s; }
 .folio-floating-nav a[aria-current] { color: #f4f1e9; background: #252820; }
 .folio-floating-nav a:hover:not([aria-current]) { background: #e8e3d6; }
@@ -453,7 +455,7 @@
  .folio-process-tabs small { display: none; }
  .folio-process-detail { min-height: 265px; }
  .folio-process-detail h4 { font-size: 25px; }
- .folio-floating-nav { bottom: 12px; max-width: calc(100% - 20px); gap: 0; padding: 5px; }
+ .folio-floating-nav { bottom: calc(12px + env(safe-area-inset-bottom)); max-width: calc(100% - 20px - env(safe-area-inset-left) - env(safe-area-inset-right)); gap: 0; padding: 5px; }
  .folio-floating-nav a { padding: 11px 9px; font-size: 10px; }
  .folio-floating-nav a:last-child { padding-inline: 10px; }
  .folio-floating-nav a svg { display: none; }
@@ -628,6 +630,8 @@
 @keyframes folio-tool-in { from{opacity:.5;translate:8px 0} to{opacity:1;translate:0 0} }
 @keyframes folio-send-fly { 50%{translate:4px -4px} }
 @media(max-width:1000px) {
+ .folio-tool-grid { grid-template-columns: minmax(0,1fr); gap: 24px; }
+ .folio-contact input,.folio-contact textarea { font-size: 16px; }
  .folio-patchboard { padding:22px; }.folio-patch-layout { grid-template-columns:125px 35px 1fr; }.folio-patch-inputs button { font-size:9px; gap:6px; }
  .folio-reel-selector { flex-basis:68px;width:68px; }.folio-reel-panel { flex-basis:70px; }.folio-reel-caption { left:22px;right:22px; }
 }
@@ -652,6 +656,9 @@
  .folio-patch-status { font-size:9px; }
  .folio-contact .folio-postcard { padding:24px;rotate:0deg; }.folio-postcard-top>.folio-mono { font-size:7px; }.folio-postcard-stamp { width:54px;height:65px; }
  .folio-pointer-note { display:none; }
+}
+@media(max-width:360px) {
+ .folio-header nav a>span { display:none; }
 }
 @media(prefers-reduced-motion:reduce) {
  .folio *, .folio *::before, .folio *::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; }

@@ -175,4 +175,11 @@
 .folio-exhibit-screen { transition:transform .75s cubic-bezier(.22,.85,.25,1.04),opacity .45s ease; }
 .folio-role-pass { cursor:pointer!important; }
 .folio-role-pass.is-draggable { cursor:grab!important; }
+@media(max-width:360px) {
+ .folio-turntable-controls { grid-template-columns: 1fr auto; }
+ .folio-turntable-counter { grid-column: 1; grid-row: 1; }
+ .folio-exhibit-view { grid-column: 2; grid-row: 1; }
+ .folio-tuner { grid-column: 1/-1; grid-row: 2; gap: 12px; }
+ .folio-tuner>button { flex-shrink: 0; }
+}
 @media(prefers-reduced-motion:reduce) { .folio-exhibit-screen { transition:none!important; } }
