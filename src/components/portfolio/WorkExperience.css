@@ -182,4 +182,50 @@
  .folio-tuner { grid-column: 1/-1; grid-row: 2; gap: 12px; }
  .folio-tuner>button { flex-shrink: 0; }
 }
+@media(max-width:700px) {
+ .folio-exhibit-heading>p,.folio-team-heading>div>p { font-size:15px; }
+ .folio-exhibit-scene { height:auto; padding:20px 14px 30px; }
+ .folio-exhibit-screens { position:relative; perspective:none; translate:none; }
+ .folio-exhibit-screen { display:none; }
+ .folio-exhibit-screen.is-selected { display:block; position:relative; left:auto; top:auto; width:100%; transform:none!important; }
+ .folio-exhibit-windowbar { font-size:9px; min-height:30px; }
+ .folio-exhibit-image { aspect-ratio:1.6; }
+ .folio-exhibit-image:has(.folio-exhibit-overlay) { aspect-ratio:auto; }
+ .folio-exhibit-image:has(.folio-exhibit-overlay)>img { display:none; }
+ .folio-exhibit-overlay { position:relative; padding:18px 14px; gap:14px; }
+ .folio-exhibit-overlay>.folio-mono { font-size:10px; }
+ .folio-exhibit-features>span { font-size:13px; line-height:1.6; padding:10px 0; align-items:flex-start; }
+ .folio-exhibit-features small { font-size:10px; padding-top:3px; }
+ .folio-exhibit-screen-foot { font-size:12px; padding:12px; }
+ .folio-exhibit-screen-foot>span:last-child { font-size:10px; }
+ .folio-turntable-controls { grid-template-columns:1fr auto; gap:16px; }
+ .folio-turntable-counter { grid-column:1; grid-row:1; }
+ .folio-turntable-counter>small { font-size:9px; }
+ .folio-exhibit-view { grid-column:2; grid-row:1; font-size:11px!important; }
+ .folio-tuner { grid-column:1/-1; grid-row:2; gap:24px; }
+ .folio-tuner>button { flex-shrink:0; }
+ .folio-tuner-help { font-size:8px; }
+ .folio-exhibit-tabs>button { flex-direction:column; align-items:flex-start; justify-content:center; font-size:11px!important; padding:12px 10px; overflow-wrap:anywhere; }
+ .folio-exhibit-tabs>button>span { font-size:9px; }
+ .folio-exhibit-description p,.folio-role-work p { font-size:15px; }
+ .folio-exhibit-description>div>span,.folio-role-tools>div>span { font-size:11px; }
+ .folio-exhibit-links>a,.folio-exhibit-index>a { font-size:12px; }
+ .folio-exhibit-index>.folio-mono { font-size:9px; }
+ .folio-credential-rail,.folio-pass-rope,.folio-rig-caption,.folio-pass-slot { display:none; }
+ .folio-role-passes { display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:8px 0; }
+ .folio-role-rig { width:auto; aspect-ratio:auto; min-width:0; }
+ .folio-role-pass { position:relative; top:auto; left:auto; width:100%; aspect-ratio:auto; height:100%; }
+ .folio-pass-stock,.folio-role-rig:nth-child(2) .folio-pass-stock { position:relative; inset:auto; min-height:244px; height:100%; padding:18px 12px; rotate:0deg; gap:18px; }
+ .folio-pass-type { font-size:10px; }
+ .folio-pass-wordmark { font-size:30px; margin:0; }
+ .folio-role-rig:nth-child(2) .folio-pass-wordmark { font-size:36px; }
+ .folio-pass-wordmark>span { display:none; }
+ .folio-pass-person { margin-top:auto; }
+ .folio-pass-person>strong { font-size:12px; }
+ .folio-pass-person>span { font-size:11px; }
+ .folio-pass-bottom { font-size:10px; line-height:1.5; margin-top:0; }
+ .folio-pass-hint { font-size:11px!important; line-height:1.6; }
+ .folio-role-meta { font-size:12px; }
+ .folio-role-story h3 { font-size:clamp(28px,8vw,38px); overflow-wrap:anywhere; }
+}
 @media(prefers-reduced-motion:reduce) { .folio-exhibit-screen { transition:none!important; } }

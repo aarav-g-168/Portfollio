@@ -630,6 +630,7 @@
 @keyframes folio-tool-in { from{opacity:.5;translate:8px 0} to{opacity:1;translate:0 0} }
 @keyframes folio-send-fly { 50%{translate:4px -4px} }
 @media(max-width:1000px) {
+ .folio-ticker { flex-wrap:wrap; justify-content:center; gap:16px 24px; }
  .folio-tool-grid { grid-template-columns: minmax(0,1fr); gap: 24px; }
  .folio-contact input,.folio-contact textarea { font-size: 16px; }
  .folio-patchboard { padding:22px; }.folio-patch-layout { grid-template-columns:125px 35px 1fr; }.folio-patch-inputs button { font-size:9px; gap:6px; }
@@ -659,6 +660,37 @@
 }
 @media(max-width:360px) {
  .folio-header nav a>span { display:none; }
+}
+/* Phone layouts reflow content rather than shrinking desktop instruments. */
+@media(max-width:700px) {
+ .folio-header nav { gap:6px; }
+ .folio-header nav a { font-size:12px; }
+ .folio-header nav a>span { display:none; }
+ .folio-hero h1 { font-size:clamp(52px,18vw,112px); line-height:1; }
+ .folio-title-line { overflow:visible; }
+ .folio-hero-stage { padding-block:28px 20px; }
+ .folio-hero-object { top:28px; width:40px; height:40px; }
+ .folio-hero-bottom p { font-size:15px; }
+ .folio-hero-bottom p br,.folio-section-title p br,.folio-contact-grid>div>p br { display:none; }
+ .folio-ticker { flex-wrap:wrap; justify-content:center; gap:12px 20px; padding:18px 20px; white-space:normal; font-size:10px; }
+ .folio-ticker i { display:none; }
+ .folio-section-title p,.folio-mobile-desktop p,.folio-coding p { font-size:15px; }
+ .folio-patch-inputs { gap:8px; }
+ .folio-patch-inputs button { font-size:12px; padding:8px 0; }
+ .folio-patch-inputs button>small { display:none; }
+ .folio-patch-tools>div { font-size:14px; }
+ .folio-patchboard>footer { font-size:9px; line-height:1.6; flex-wrap:wrap; }
+ .folio-floating-nav { width:calc(100% - 24px); display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); }
+ .folio-floating-nav a,.folio-floating-nav a:last-child { padding:10px 2px; font-size:10px; min-width:0; }
+ .folio-contact .folio-postcard { min-width:0; padding:22px 18px; }
+ .folio-footer { gap:20px; }
+ .folio-case-intro h1 { font-size:clamp(34px,10vw,46px); overflow-wrap:anywhere; }
+ .folio-system-nodes button { height:auto; min-height:112px; }
+ .folio-system-nodes button small { font-size:10px; line-height:1.5; }
+ .folio-system-detail { min-height:0; }
+ .folio-system-detail p { font-size:14px; }
+ .folio-next-project { min-width:0; gap:14px; }
+ .folio-next-project strong { overflow-wrap:anywhere; }
 }
 @media(prefers-reduced-motion:reduce) {
  .folio *, .folio *::before, .folio *::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; }

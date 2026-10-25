@@ -20,3 +20,15 @@ Scope: the new portfolio and all three project case studies, using the local pre
 - `npm run lint`, `npm run build:portfolio`, and `npm run check:seo` passed.
 
 These are browser viewport and interaction checks, rather than tests on physical devices.
+
+## Follow-up mobile layout improvements
+
+The initial bounds audit missed intentional desktop cropping and text that fitted but was too small on phones. The follow-up adapts the components instead:
+
+- The skills strip wraps so every label is visible, including at tablet widths.
+- Phones show one complete project preview; feature lists have their own natural height and readable text instead of fitting inside a miniature screenshot.
+- Project controls use two rows across all phone widths; tabs, links, and technology labels use larger text.
+- Experience passes become upright cards with readable roles and dates, without cropped straps or rotated edges.
+- Hero copy, long skill names, contact fields, and case-study diagrams reflow; bottom navigation uses five equal columns.
+
+Follow-up browser checks covered homepage widths 320, 360, 390, 430, 600, 768, 1024, and 1440px, plus all three case studies at 320, 430, and 768px. Checked project feature toggles, project selection, experience selection, CS Fundamentals labels, and contact focus. No horizontal page overflow was observed. Native phone keyboards and physical-device rendering still need device testing.
