@@ -12,6 +12,12 @@ const editorial = {
       'Used Next.js and TypeScript for the interface, Express for the backend, PostgreSQL with Drizzle ORM for persistence, and Firebase Authentication for user accounts and personalized tracking.',
     ],
     features: ['CLIST API integration', 'Timezone-aware countdowns', 'Authenticated contest tracking'],
+    engineeringDecision: {
+      title: 'A shared source for contest schedules',
+      problem: 'Contest schedules are spread across multiple platforms and need consistent time-based filtering.',
+      implementation: 'Fetch schedules from CLIST on the server, filter them to the selected time window, and present them with timezone-aware countdowns.',
+      tradeOff: 'Contest coverage and freshness depend on the upstream CLIST feed.',
+    },
     nodes: [
       { label: 'CLIST API', caption: 'Contest source', detail: 'Upcoming competitive programming contests are collected through the CLIST API.' },
       { label: 'Server fetching', caption: 'Next.js · Express', detail: 'Server-side fetching and filtering keep contest data organized within the selected time window.' },
@@ -30,6 +36,12 @@ const editorial = {
       'Presented the event’s iOS development and machine learning tracks, including HealthTech, AgriTech, Smart Mobility, sustainability, FinTech, and Open Innovation.',
     ],
     features: ['CSS MacBook experience', 'Event discovery and timeline', 'Workshops, speakers and tracks'],
+    engineeringDecision: {
+      title: 'An interactive landing page with direct access to event information',
+      problem: 'Visitors need to find workshops, speakers, the timeline, and registration alongside the interactive introduction.',
+      implementation: 'Pair a custom CSS MacBook interaction with dedicated sections for the event information and registration links.',
+      tradeOff: 'The custom device visual adds responsive layout and interaction details to maintain alongside the event content.',
+    },
     nodes: [
       { label: 'Discover', caption: 'Event landing', detail: 'A custom CSS-built MacBook introduces the event through an interactive landing experience.' },
       { label: 'Explore', caption: 'Workshops · Appathon', detail: 'Dedicated sections introduce the workshops, Appathon and competition tracks.' },
@@ -48,6 +60,12 @@ const editorial = {
       'Implemented the application with Next.js, TypeScript, React, Tailwind CSS, Prisma, Neon PostgreSQL, Firebase Authentication, and REST APIs.',
     ],
     features: ['Team and auction management', 'Organizer and judge interfaces', 'Structured project evaluation'],
+    engineeringDecision: {
+      title: 'Shared event data across organizer and judge interfaces',
+      problem: 'Team allocation, auction settlements, and evaluation need to stay coordinated across organizers and judges.',
+      implementation: 'Connect dedicated organizer and judge interfaces to shared REST API workflows, with Prisma and Neon PostgreSQL handling persistence.',
+      tradeOff: 'Changes to the event format can require updates across the API, database model, and role-specific interfaces.',
+    },
     nodes: [
       { label: 'Organizers & judges', caption: 'Next.js · React', detail: 'Dedicated interfaces provide team search, auction settlement tracking and project evaluation.' },
       { label: 'REST APIs', caption: 'Application workflows', detail: 'Backend workflows coordinate team management, problem allocation, auction settlements and judging.' },

@@ -396,8 +396,13 @@
 .folio-case-features article { padding: 25px; background: #e9e5d9; border: 1px solid var(--line); border-radius: 5px; }
 .folio-case-features h3 { font-size: 18px; font-weight: 500; margin-top: 22px; }
 .folio-case-decisions { padding-block: 65px 30px; }
-.folio-case-decisions > div { display: flex; gap: 35px; padding-block: 22px; border-top: 1px solid var(--line); }
-.folio-case-decisions > div span { color: var(--orange); padding-top: 6px; }
+.folio-case .folio-decision-context { font-size: 17px; color: var(--ink); }
+.folio-decision-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); margin: 26px 0 0; border-block: 1px solid var(--line); }
+.folio-decision-grid > div { min-width: 0; padding: 25px 25px 28px 0; }
+.folio-decision-grid > div + div { padding-left: 25px; border-left: 1px solid var(--line); }
+.folio-decision-grid dt { display: flex; align-items: center; gap: 12px; font: 11px 'SFMono-Regular',Consolas,monospace; text-transform: uppercase; letter-spacing: .06em; }
+.folio-decision-grid dt span { color: var(--orange); font-size: 9px; }
+.folio-decision-grid dd { margin: 16px 0 0; color: var(--muted); font-size: 14px; line-height: 1.75; overflow-wrap: anywhere; }
 .folio-case-links { display: flex; gap: 20px; flex-wrap: wrap; padding-block: 20px 60px; }
 .folio-case-links a { display: flex; gap: 15px; align-items: center; padding: 16px 22px; border: 1px solid var(--line); border-radius: 30px; font-size: 13px; }
 .folio-case-links a:hover { background: var(--ink); color: var(--paper); }
@@ -463,8 +468,11 @@
  .folio-case-features article { padding: 20px; }
  .folio-case-features h3 { margin-top: 12px; font-size: 17px; }
  .folio-case-decisions { padding-top: 45px; }
- .folio-case-decisions>div { gap: 20px; }
- .folio-case-decisions p { font-size: 13px; }
+ .folio-case .folio-decision-context { font-size: 15px; }
+ .folio-decision-grid { grid-template-columns: 1fr; margin-top: 20px; }
+ .folio-decision-grid > div, .folio-decision-grid > div + div { padding: 22px 0; border-left: 0; }
+ .folio-decision-grid > div + div { border-top: 1px solid var(--line); }
+ .folio-decision-grid dd { margin-top: 12px; font-size: 14px; }
  .folio-case-links { gap: 12px; padding-bottom: 35px; }
  .folio-case-links a { font-size: 12px; padding: 14px 18px; }
  .folio-next-project { padding: 25px; }
@@ -599,42 +607,6 @@
 .folio-patch-status { display:flex; align-items:center; gap:8px; font-size:8px; color:#c9cebe; }
 .folio-patch-status>svg { margin-left:auto; }
 .folio-patchboard>footer { display:flex; justify-content:space-between; gap:12px; padding-top:20px; border-top:1px solid #ffffff20; margin-top:20px; font:7px Consolas,monospace; color:#c4cab7; }
-/* Build machine: physical keys, a quiet display, a printed takeaway. */
-.folio-machine { display:grid; grid-template-columns:1fr 1.1fr; gap:80px; align-items:start; margin-top:85px; }
-.folio-machine-intro { padding-top:35px; }
-.folio-machine-intro h3 { font-size:clamp(35px,4vw,58px); line-height:1.1; letter-spacing:-.06em; font-weight:500; margin:22px 0; }
-.folio-machine-intro h3 em { font-family:Georgia,serif; font-weight:400; }
-.folio-machine-intro p { font-size:14px; }
-.folio-machine-console { background:#dedbce; border:1px solid #b8b8a7; border-radius:18px; padding:25px 28px 0; box-shadow:inset 0 2px 0 #fff9,0 4px 0 #b9b9a8,0 20px 35px #383c2212; position:relative; }
-.folio-machine-console>header { display:flex; align-items:center; justify-content:space-between; gap:12px; font:8px Consolas,monospace; }
-.folio-machine-console>header>span { display:flex; align-items:center; gap:9px; }
-.folio-machine-console>header i { width:5px; height:5px; border-radius:50%; background:#52704e; }
-.folio-machine-console>header button { display:flex; align-items:center; gap:6px; font:8px Consolas,monospace; min-height:44px; }
-.folio-machine-controls { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-block:20px; }
-.folio-machine-controls button { min-height:90px; padding:0; }
-.folio-machine-key { display:flex; align-items:center; justify-content:space-between; padding:16px 18px; border-radius:8px; color:#414536; background:linear-gradient(#f9f6eb,#e8e4d7); border:1px solid #bbbca9; box-shadow:0 5px 0 #a4a895,0 8px 10px #0001,inset 0 2px 0 #fff; translate:0 -3px; transition:translate .16s,box-shadow .16s,background .16s; }
-.folio-machine-key>span { font:20px 'Archivo',sans-serif; }
-.folio-machine-key i { width:5px; height:5px; border-radius:50%; background:#8c9180; }
-.folio-machine-controls button[aria-pressed=true] .folio-machine-key { translate:0 1px; background:#edb18c; box-shadow:0 1px 0 #a17b5b,inset 0 1px 0 #f8d5b9; border-color:#b18b6b; }
-.folio-machine-controls button[aria-pressed=true] i { background:#8b310a; box-shadow:0 0 8px #a6401b50; }
-.folio-machine-controls button:active .folio-machine-key { translate:0 2px; box-shadow:0 0 0 #a4a895; }
-.folio-machine-controls small { display:block; font:8px Consolas,monospace; margin-top:13px; }
-.folio-machine-display { background:#242d22; color:#e3ebd4; padding:24px; border-radius:8px; box-shadow:inset 0 2px 7px #0006; min-height:265px; }
-.folio-machine-display-top { display:flex; justify-content:space-between; gap:15px; font:8px Consolas,monospace; color:#c1cfb0; padding-bottom:20px; border-bottom:1px solid #a0b17a30; }
-.folio-machine-display h4 { font-size:23px; font-weight:500; letter-spacing:-.04em; line-height:1.2; margin:20px 0 14px; }
-.folio-machine-display p { color:#d0d8c4; font-size:12px; }
-.folio-machine-meter { display:flex; gap:4px; margin-top:24px; }
-.folio-machine-meter i { height:13px; flex:1; background:#ffffff15; transition:background .3s; }
-.folio-machine-meter i.lit { background:#b7cb92; }
-.folio-machine-slot { height:8px; background:#31352c; border-radius:4px; margin:25px -5px 0; box-shadow:inset 0 2px 3px #0005; }
-.folio-machine-ticket { background:#faf7ed; position:relative; margin:0 12px -25px; padding:24px; box-shadow:0 12px 18px #0001; display:grid; grid-template-columns:1fr auto; gap:12px; animation:folio-ticket-print .45s var(--motion-ease); }
-.folio-machine-ticket::after { content:''; position:absolute; bottom:-8px; left:0; width:100%; height:8px; background:linear-gradient(135deg,#faf7ed 25%,transparent 25%) -8px 0,linear-gradient(225deg,#faf7ed 25%,transparent 25%) -8px 0; background-size:16px 16px; }
-.folio-machine-ticket>div:first-child { display:flex; align-items:center; gap:12px; border-bottom:1px dashed #a4aa95; padding-bottom:17px; grid-column:1/-1; }
-.folio-machine-ticket .folio-mono { font-size:8px; }
-.folio-ticket-input { font-size:11px; color:#62645c; align-self:center; }
-.folio-machine-ticket strong { grid-column:1/-1; font-size:18px; font-weight:500; letter-spacing:-.03em; }
-.folio-machine-ticket p { grid-column:1/-1; font-size:11px; }
-.folio-ticket-barcode { grid-column:1/-1; width:110px; height:18px; margin-top:6px; background:repeating-linear-gradient(90deg,#23251f 0 2px,transparent 2px 4px,#23251f 4px 5px,transparent 5px 8px,#23251f 8px 12px,transparent 12px 15px); }
 /* An actual working contact form, dressed as a postcard. */
 .folio-contact .folio-postcard { padding:28px 32px; background:#f7f4eb; border:1px solid #d1cebf; border-radius:6px; box-shadow:8px 8px 0 #d8d4c750; rotate:1deg; transition:rotate .4s,box-shadow .4s; }
 .folio-postcard:focus-within { rotate:0deg; box-shadow:0 15px 35px #3c3a2312; }
@@ -652,11 +624,10 @@
 .folio-send.is-sending>svg { animation:folio-send-fly .8s ease-in-out infinite; }
 @keyframes folio-scan { 0%{top:0;opacity:0} 20%{opacity:.6} 100%{top:100%;opacity:0} }
 @keyframes folio-tool-in { from{opacity:.5;translate:8px 0} to{opacity:1;translate:0 0} }
-@keyframes folio-ticket-print { from{opacity:.3;translate:0 -14px} to{opacity:1;translate:0 0} }
 @keyframes folio-send-fly { 50%{translate:4px -4px} }
 @media(max-width:1000px) {
  .folio-patchboard { padding:22px; }.folio-patch-layout { grid-template-columns:125px 35px 1fr; }.folio-patch-inputs button { font-size:9px; gap:6px; }
- .folio-machine { gap:40px; }.folio-reel-selector { flex-basis:68px;width:68px; }.folio-reel-panel { flex-basis:70px; }.folio-reel-caption { left:22px;right:22px; }
+ .folio-reel-selector { flex-basis:68px;width:68px; }.folio-reel-panel { flex-basis:70px; }.folio-reel-caption { left:22px;right:22px; }
 }
 @media(max-width:700px) {
  .folio-reel { padding:20px 15px; margin-top:45px; }.folio-reel>header { flex-wrap:wrap; gap:10px; padding-bottom:20px; }.folio-reel>header p { order:3;width:100%;font-size:11px; }.folio-reel>header>.folio-mono { font-size:8px; }.folio-reel-counter { font-size:22px; }
@@ -664,7 +635,6 @@
  .folio-reel-screen { height:0; transition:height .45s var(--motion-ease); }.folio-reel-panel.is-active .folio-reel-screen { height:340px; }.folio-reel-caption { left:18px;right:18px;bottom:20px; }.folio-reel-caption h3 { font-size:27px; }.folio-reel-caption p { font-size:12px; }.folio-reel>footer>.folio-mono { font-size:6px; }.folio-reel>footer>span:last-child { display:none; }
  .folio-lens { aspect-ratio:1.13; border-width:3px; }.folio-lens-blueprint header { padding:15px;font-size:7px;gap:8px; }.folio-lens-blueprint header>span:last-child { display:none; }.folio-lens-circuit { inset:20% 5% 28%;gap:12px; }.folio-lens-circuit>div { padding:8px;gap:5px; }.folio-lens-circuit strong { font-size:10px; }.folio-lens-circuit small { font-size:7px; }.folio-lens-circuit span { font-size:7px; }.folio-lens-circuit>div::after { width:12px;right:-13px; }.folio-lens-blueprint footer { font-size:7px;left:15px;bottom:21%;max-width:90%; }.folio-lens-label { font-size:8px;padding:0 10px; }.folio-lens-seam>span { width:34px;height:34px; }
  .folio-patchboard { padding:22px 18px; }.folio-patch-layout { grid-template-columns:120px 30px 1fr;min-height:370px; }.folio-patch-readout { padding:10px; }.folio-patch-readout strong { font-size:13px; }.folio-patch-tools>div { font-size:10px;gap:6px; }.folio-patch-status { font-size:7px;flex-wrap:wrap; }.folio-patch-tools { min-height:245px; }.folio-patch-inputs button { font-size:9px; }.folio-patchboard>footer { font-size:6px; }
- .folio-machine { grid-template-columns:1fr;gap:30px;margin-top:45px;margin-bottom:35px; }.folio-machine-intro { padding-top:0; }.folio-machine-intro h3 { font-size:40px; }.folio-machine-console { padding:15px 18px 0; }.folio-machine-key { padding:14px; }.folio-machine-controls { gap:10px; }.folio-machine-controls small { font-size:7px; }.folio-machine-display { padding:20px;min-height:285px; }.folio-machine-display h4 { font-size:22px; }.folio-machine-ticket { padding:20px;margin-inline:6px; }.folio-machine-ticket strong { font-size:17px; }
  .folio-contact .folio-postcard { padding:24px;rotate:0deg; }.folio-postcard-top>.folio-mono { font-size:7px; }.folio-postcard-stamp { width:54px;height:65px; }
  .folio-pointer-note { display:none; }
 }

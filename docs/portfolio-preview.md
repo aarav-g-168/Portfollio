@@ -16,7 +16,7 @@ Normal production builds use `npm run build` and the existing `wrangler.jsonc`; 
 
 ## Creative portfolio
 
-The preview has an editorial hero, a dimensional project turntable with a tuning dial, direct case-study/live/source links, and draggable internship/leadership role passes with spring-loaded SVG straps, a cable-driven skills patchboard, a tactile build machine with printed receipts, section navigation, and a working postcard-style contact form.
+The preview has an editorial hero, a dimensional project turntable with a tuning dial, direct case-study/live/source links, and draggable internship/leadership role passes with spring-loaded SVG straps, a cable-driven skills patchboard, section navigation, and a working postcard-style contact form.
 
 The portfolio and case-study pages use Lenis for gentle wheel easing and section-link transitions inside their own scroll container. Touch scrolling, keyboard scrolling, form controls and browser zoom retain native behavior. Reduced-motion preferences disable the smoothing, including when changed during a visit. Anchor links preserve URL history and move focus to the destination. Returning from MacFolio restores the previous position immediately.
 
@@ -25,6 +25,8 @@ The desktop showroom lazy-loads a lightweight original laptop model. Scroll only
 Touch devices and screens under 1024px show a static MacFolio preview without an entry button. Reduced-motion desktop users get direct entry without the scroll interaction. All professional content is available without entering MacFolio.
 
 Regenerate the original GLB with `node scripts/create-preview-laptop.mjs` if needed. It uses no external model. The display texture is an actual MacFolio screenshot.
+
+Project case studies include a compact, pre-rendered Engineering decisions section with the problem, implementation choice, and trade-off. The homepage does not include a separate generic development-workflow section. Trade-offs describe implications of the documented architecture, without invented metrics or claims about alternatives considered.
 
 ## SEO and release checks
 

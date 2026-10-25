@@ -8,7 +8,6 @@ import Magnet from './portfolio/vendor/Magnet';
 import DesktopPortal from './portfolio/DesktopPortal';
 import SkillPatchboard from './portfolio/SkillPatchboard';
 import InteractionField from './portfolio/InteractionField';
-import BuildProcess from './portfolio/BuildProcess';
 import SectionNavigation from './portfolio/SectionNavigation';
 import usePortfolioSeo from './portfolio/usePortfolioSeo';
 import usePortfolioScroll from './portfolio/usePortfolioScroll';
@@ -28,7 +27,7 @@ function Journey() {
 }
 
 function Toolbench() {
-  return <section className="folio-section" id="toolbench"><SectionLabel number="04">SKILLS</SectionLabel><motion.div {...reveal} className="folio-section-title"><h2>Technical<br /><em>skills.</em></h2><p>Languages, frameworks, and tools<br />I use across my projects.</p></motion.div><div className="folio-tool-grid"><SkillPatchboard /><div className="folio-coding"><span className="folio-mono">COMPETITIVE PROGRAMMING</span><h3>Data structures<br />&amp; algorithms.</h3><p>I practise problem solving and participate in programming contests on CodeChef, Codeforces, and LeetCode.</p>{['codechef', 'codeforces', 'leetcode'].map((platform, index) => <a key={platform} href={snapshot[platform].url} target="_blank" rel="noreferrer"><span className="folio-mono">0{index + 1}</span><span>{['CodeChef', 'Codeforces', 'LeetCode'][index]}</span><ArrowUpRight size={19} /></a>)}<small>Open a profile for current ratings and activity.</small></div></div><BuildProcess /></section>;
+  return <section className="folio-section" id="toolbench"><SectionLabel number="04">SKILLS</SectionLabel><motion.div {...reveal} className="folio-section-title"><h2>Technical<br /><em>skills.</em></h2><p>Languages, frameworks, and tools<br />I use across my projects.</p></motion.div><div className="folio-tool-grid"><SkillPatchboard /><div className="folio-coding"><span className="folio-mono">COMPETITIVE PROGRAMMING</span><h3>Data structures<br />&amp; algorithms.</h3><p>I practise problem solving and participate in programming contests on CodeChef, Codeforces, and LeetCode.</p>{['codechef', 'codeforces', 'leetcode'].map((platform, index) => <a key={platform} href={snapshot[platform].url} target="_blank" rel="noreferrer"><span className="folio-mono">0{index + 1}</span><span>{['CodeChef', 'Codeforces', 'LeetCode'][index]}</span><ArrowUpRight size={19} /></a>)}<small>Open a profile for current ratings and activity.</small></div></div></section>;
 }
 
 function Contact() {
