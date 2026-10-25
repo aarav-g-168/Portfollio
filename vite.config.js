@@ -27,8 +27,13 @@ function portfolioApi(env) {
   return { name: 'portfolio-api', configureServer: configure, configurePreviewServer: configure };
 }
 
+function portfolioEntry(mode) {
+  return { name: 'portfolio-entry', transformIndexHtml: { order:'pre', handler(html) { return mode.startsWith('portfolio-') ? html.replace('/src/main.jsx','/src/portfolio-main.jsx') : html; } } };
+}
+
 export default defineConfig(({ mode }) => ({
-  plugins: [react(), tailwindcss(), portfolioApi(loadEnv(mode, process.cwd(), ''))],
+  appType: mode.startsWith('portfolio-') ? 'mpa' : 'spa',
+  plugins: [react(), tailwindcss(), portfolioEntry(mode), portfolioApi(loadEnv(mode, process.cwd(), ''))],
   resolve: {
     alias: {
       "@": resolve(fileURLToPath(new URL('.', import.meta.url)), "src"),

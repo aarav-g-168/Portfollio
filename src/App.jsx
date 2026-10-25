@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar'
+import './index.css'
 import Welcome from './components/Welcome'
 import Dock from './components/Dock'
 import TerminalWindow from './windows/Terminal'

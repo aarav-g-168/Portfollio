@@ -9,6 +9,9 @@ lerna-debug.log*
 
 node_modules
 dist
+dist-preview
+dist-portfolio
+.portfolio-ssr/
 dist-ssr
 .wrangler/
 .dev.vars
@@ -17,6 +20,8 @@ dist-ssr
 .env
 .env.*
 !.env.example
+!.env.portfolio-preview
+!.env.portfolio-release
 
 # Editor directories and files
 .vscode/*

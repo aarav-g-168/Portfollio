@@ -1,52 +1,64 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowDown, ArrowUpRight, Download, Mail, Monitor } from 'lucide-react';
-import { experiences, locations, socials, techStack } from '../constants';
+import { MotionConfig, motion, useReducedMotion } from 'motion/react';
+import { ArrowDown, ArrowUpRight, Code2, Send, Copy, Check, Smartphone } from 'lucide-react';
+import { socials } from '../constants';
 import { contactEmail, submitContactMessage } from '../lib/contact';
+import snapshot from '../data/coding-snapshot.json';
+import Magnet from './portfolio/vendor/Magnet';
+import DesktopPortal from './portfolio/DesktopPortal';
+import SkillPatchboard from './portfolio/SkillPatchboard';
+import InteractionField from './portfolio/InteractionField';
+import SectionNavigation from './portfolio/SectionNavigation';
+import usePortfolioSeo from './portfolio/usePortfolioSeo';
+import usePortfolioScroll from './portfolio/usePortfolioScroll';
+import WorkArchive from './portfolio/WorkArchive';
+import ExperienceLedger from './portfolio/ExperienceLedger';
 import './BasicPortfolio.css';
+import './portfolio/WorkExperience.css';
 
-export default function BasicPortfolio() {
-  const scrollRef = useRef(null);
-  const restoredRef = useRef(false);
+const reveal = { initial: false, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.15 }, transition: { duration: 0.55 } };
+
+function SectionLabel({ number, children }) {
+  return <div className="folio-section-label"><span>{number}</span><span>{children}</span><span aria-hidden="true">↗</span></div>;
+}
+
+function Journey() {
+  return <section className="folio-section folio-team-section" id="journey"><SectionLabel number="02">EXPERIENCE</SectionLabel><div className="folio-team-heading"><h2>Internship &amp;<br /><em>leadership.</em></h2><div><img src="/preview/aarav-640.webp" alt="Aarav Gupta" width="64" height="64" loading="lazy"/><p>Alongside my studies at VIT Vellore, I contribute to product development at Solder Labs and web development at ADG.</p></div></div><ExperienceLedger /></section>;
+}
+
+function Toolbench() {
+  return <section className="folio-section" id="toolbench"><SectionLabel number="04">SKILLS</SectionLabel><motion.div {...reveal} className="folio-section-title"><h2>Technical<br /><em>skills.</em></h2><p>Languages, frameworks, and tools<br />I use across my projects.</p></motion.div><div className="folio-tool-grid"><SkillPatchboard /><div className="folio-coding"><span className="folio-mono">COMPETITIVE PROGRAMMING</span><h3>Data structures<br />&amp; algorithms.</h3><p>I practise problem solving and participate in programming contests on CodeChef, Codeforces, and LeetCode.</p>{['codechef', 'codeforces', 'leetcode'].map((platform, index) => <a key={platform} href={snapshot[platform].url} target="_blank" rel="noreferrer"><span className="folio-mono">0{index + 1}</span><span>{['CodeChef', 'Codeforces', 'LeetCode'][index]}</span><ArrowUpRight size={19} /></a>)}<small>Open a profile for current ratings and activity.</small></div></div></section>;
+}
+
+function Contact() {
   const [sending, setSending] = useState(false);
   const [feedback, setFeedback] = useState('');
-  useEffect(() => {
-    document.title = 'Aarav Gupta — Full Stack Developer';
-    if (restoredRef.current) return;
-    restoredRef.current = true;
-    try {
-      const saved = sessionStorage.getItem('portfolio-scroll');
-      if (saved !== null) scrollRef.current.scrollTop = Number(saved);
-      sessionStorage.removeItem('portfolio-scroll');
-    } catch { /* Optional scroll memory. */ }
-  }, []);
-  const enterDesktop = () => {
-    try { sessionStorage.setItem('portfolio-scroll', String(scrollRef.current.scrollTop)); } catch { /* Navigation still works. */ }
-  };
+  const [copied, setCopied] = useState(false);
+  const copyTimer = useRef(null), pending = useRef(false);
+  useEffect(() => () => clearTimeout(copyTimer.current), []);
   const submit = async (event) => {
-    event.preventDefault();
-    const form = event.currentTarget;
+    event.preventDefault(); const form = event.currentTarget;
     const fields = Object.fromEntries(new FormData(form));
-    if (fields._honey || sending) return;
+    if (fields._honey || pending.current) return;
     if (!fields.name.trim() || fields.message.trim().length < 10) { setFeedback('Please enter your name and a message of at least 10 characters.'); return; }
-    setSending(true); setFeedback('');
-    try { await submitContactMessage({ ...fields, name: fields.name.trim(), email: fields.email.trim(), message: fields.message.trim() }); setFeedback('Message submitted. Thanks for getting in touch!'); form.reset(); }
+    pending.current = true; setSending(true); setFeedback('');
+    try { await submitContactMessage({ ...fields, name: fields.name.trim(), email: fields.email.trim(), message: fields.message.trim() }); setFeedback('Your message has been submitted. Thank you for getting in touch.'); form.reset(); }
     catch (error) { setFeedback(error.message); }
-    finally { setSending(false); }
+    finally { pending.current = false; setSending(false); }
   };
-  return <main className="basic-portfolio" ref={scrollRef}>
-    <a className="basic-skip" href="#selected-work">Skip to projects</a>
-    <header className="basic-header"><a href="#intro" className="basic-brand">Aarav Gupta<span>Full Stack Developer</span></a><nav aria-label="Portfolio navigation"><a href="#selected-work">Projects</a><a href="#journey">Experience</a><a href="#connect">Contact</a><a href="/resume" target="_blank" rel="noopener noreferrer">Résumé <ArrowUpRight size={13} /></a></nav></header>
-    <section id="intro" className="basic-intro basic-section"><div><span className="basic-eyebrow">HELLO, I’M AARAV</span><h1>Building useful things<br />for the web.</h1><p>I’m a full stack developer working with React, Next.js, TypeScript, and the tools behind them. I enjoy turning ideas into applications people can actually use.</p><div className="basic-actions"><a className="basic-button primary" href="#selected-work">View projects <ArrowDown size={16} /></a><a className="basic-button" href="/resume" target="_blank" rel="noopener noreferrer">Read my résumé <ArrowUpRight size={16} /></a></div></div><img src="/images/aarav.jpeg" alt="Aarav Gupta" width="280" height="320" /></section>
-    <section id="selected-work" className="basic-section"><div className="basic-section-heading"><div><span className="basic-eyebrow">SELECTED WORK</span><h2>Projects</h2></div><p>A few things I’ve helped bring to life.</p></div><div className="basic-project-grid">{locations.work.children.map((project, index) => {
-      const summary = project.children.find((item) => item.fileType === 'txt');
-      const image = project.children.find((item) => item.fileType === 'img');
-      const links = project.children.filter((item) => item.fileType === 'url');
-      return <article className="basic-project" key={project.id}><img src={image.imageUrl} alt={`${project.name} preview`} loading="lazy" width="640" height="400" /><div><span className="basic-eyebrow">0{index + 1}</span><h3>{project.name}</h3><p>{summary.description[0]}</p><div className="basic-project-links">{links.map((link) => <a key={link.id} href={link.href} target="_blank" rel="noopener noreferrer">{link.name === 'GitHub' ? 'Source code' : 'Visit website'} <ArrowUpRight size={15} /></a>)}</div></div></article>;
-    })}</div></section>
-    <section id="journey" className="basic-section"><span className="basic-eyebrow">MY JOURNEY</span><h2>Experience</h2><div className="basic-experiences">{experiences.map((entry) => <article key={entry.id}><div><span className="basic-eyebrow">{entry.type}</span><h3>{entry.organization}</h3><p>{entry.dates} · {entry.location}</p></div><div><h4>{entry.role}</h4><ul>{entry.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}</ul><div className="basic-tags">{entry.skills.map((skill) => <span key={skill}>{skill}</span>)}</div></div></article>)}</div></section>
-    <section id="skills" className="basic-section"><span className="basic-eyebrow">TOOLS & PRACTICE</span><h2>Skills & problem solving</h2><div className="basic-skills">{techStack.map((group) => <article key={group.category}><h3>{group.category}</h3><p>{group.items.join(' · ')}</p></article>)}</div><div className="basic-coding"><h3>Competitive programming</h3><p>Contest profiles and problem-solving practice.</p><div className="basic-project-links"><a href="https://www.codechef.com/users/aaravgupta1608" target="_blank" rel="noopener noreferrer">CodeChef <ArrowUpRight size={15} /></a><a href="https://codeforces.com/profile/aarav_g_168" target="_blank" rel="noopener noreferrer">Codeforces <ArrowUpRight size={15} /></a><a href="https://leetcode.com/u/aarav_g_168/" target="_blank" rel="noopener noreferrer">LeetCode <ArrowUpRight size={15} /></a></div></div></section>
-    <section id="desktop-preview" className="basic-section basic-desktop"><div><span className="basic-eyebrow">A DIFFERENT WAY TO EXPLORE</span><h2>Welcome to my desktop.</h2><p>Projects, music, photos, and a few small surprises inside an interactive macOS-inspired portfolio. Explore at your own pace.</p><a className="basic-button primary" href="/desktop" onClick={enterDesktop}>Enter MacFolio <Monitor size={16} /></a><small>You can return to this portfolio at any time.</small></div><a href="/desktop" onClick={enterDesktop} className="basic-laptop" aria-label="Enter MacFolio desktop"><div className="basic-laptop-screen"><div className="basic-laptop-menubar"><span>Aarav’s MacFolio</span><span>Projects · Experience</span></div><strong>Portfolio</strong><span className="basic-laptop-enter">Enter my desktop <ArrowUpRight size={13} /></span><div className="basic-laptop-dock" aria-hidden="true">{['finder.png','build-notes.svg','photos.png','contact.png','terminal.png'].map((image) => <img key={image} src={`/images/${image}`} alt="" />)}</div></div><div className="basic-laptop-base" /></a></section>
-    <section id="connect" className="basic-section basic-contact"><div><span className="basic-eyebrow">GET IN TOUCH</span><h2>Let’s make something useful.</h2><p>Have an opportunity, a project, or a question? I’d love to hear from you.</p><a className="basic-email" href={`mailto:${contactEmail}`}><Mail size={17} />{contactEmail}</a><div className="basic-project-links">{socials.map((social) => <a key={social.id} href={social.link} target="_blank" rel="noopener noreferrer">{social.text} <ArrowUpRight size={14} /></a>)}</div><a className="basic-button" href="/resume.pdf" download>Download résumé <Download size={16} /></a></div><form onSubmit={submit}><label>Your name<input name="name" required autoComplete="name" maxLength={100} /></label><label>Email address<input name="email" type="email" required autoComplete="email" maxLength={254} /></label><input name="subject" type="hidden" value="Portfolio enquiry" /><div className="basic-honey" aria-hidden="true"><input name="_honey" tabIndex={-1} autoComplete="off" /></div><label>Message<textarea name="message" required minLength={10} maxLength={5000} rows={5} /></label><button className="basic-button primary" disabled={sending} type="submit">{sending ? 'Sending…' : 'Send message'} <ArrowUpRight size={16} /></button>{feedback && <p role="status" className="basic-feedback">{feedback}</p>}</form></section>
-    <footer className="basic-footer"><span>© {new Date().getFullYear()} Aarav Gupta</span><a href="#intro">Back to top ↑</a></footer>
-  </main>;
+  const copy = async () => { try { await navigator.clipboard.writeText(contactEmail); setCopied(true); clearTimeout(copyTimer.current); copyTimer.current = setTimeout(() => setCopied(false), 2000); } catch { setFeedback('Copy unavailable. You can select the email address or use the email link.'); } };
+  return <section className="folio-contact" id="connect"><div className="folio-section"><SectionLabel number="05">CONTACT</SectionLabel><div className="folio-contact-grid"><div><motion.h2 {...reveal}>Let’s<br /><em>connect.</em><ArrowUpRight aria-hidden="true" /></motion.h2><p>Have a role, project, or collaboration in mind?<br />Send a message or contact me by email.</p><div className="folio-email"><a href={`mailto:${contactEmail}`}>{contactEmail}</a><button onClick={copy} aria-label={copied ? 'Email copied' : 'Copy email address'}>{copied ? <Check size={18} /> : <Copy size={18} />}</button><span role="status" className="folio-sr-only">{copied ? 'Email copied' : ''}</span></div><div className="folio-socials">{socials.slice(0, 3).map((social) => <a key={social.id} href={social.link} target="_blank" rel="noreferrer">{social.text === 'Github' ? 'GitHub' : social.text}<ArrowUpRight size={15} /></a>)}</div></div><form className="folio-postcard" onSubmit={submit} aria-label="Send Aarav a message"><div className="folio-postcard-top"><span className="folio-mono">CONTACT FORM</span><span className="folio-postcard-stamp" aria-hidden="true"><Send size={22}/><small>AG / CONTACT</small></span></div><label>Your name <span>*</span><input name="name" required autoComplete="name" maxLength={100} placeholder="Your full name" /></label><label>Email address <span>*</span><input name="email" type="email" required autoComplete="email" maxLength={254} placeholder="you@company.com" /></label><label>Message <span>*</span><textarea name="message" required minLength={10} maxLength={5000} rows={3} placeholder="Tell me about the role, project, or enquiry." /></label><input name="subject" type="hidden" value="Portfolio enquiry" /><div className="folio-honey" aria-hidden="true"><input name="_honey" tabIndex={-1} autoComplete="off" /></div><button className={`folio-send ${sending ? "is-sending" : ""}`} disabled={sending} type="submit">{sending ? 'Sending…' : 'Send message'}<Send size={18} /></button><p role="status" className="folio-form-feedback">{feedback}</p></form></div><footer className="folio-footer"><a href="#intro" aria-label="Back to top">ag<span>© {new Date().getFullYear()} Aarav Gupta</span></a><span>AARAV GUPTA / FULL STACK DEVELOPER</span><a href="#intro">BACK TO TOP <ArrowUpRight size={16} /></a></footer></div></section>;
+}
+
+export default function BasicPortfolio() {
+  const { scrollRef, contentRef } = usePortfolioScroll({ restoreKey: 'portfolio-scroll' });
+  const reduce = useReducedMotion();
+  const [animateIntro] = useState(() => typeof document !== 'undefined' && document.getElementById('root')?.dataset.prerendered !== 'true');
+  usePortfolioSeo();
+  return <MotionConfig reducedMotion="user"><main className="folio" ref={scrollRef}><div className="folio-scroll-content" ref={contentRef}><a className="folio-skip" href="#selected-work">Skip to projects</a>
+    <header className="folio-header"><a className="folio-brand" href="#intro">ag<span>AARAV GUPTA<br /><small>PORTFOLIO</small></span></a><nav aria-label="Portfolio navigation"><a href="#selected-work">Projects<span>01</span></a><a href="#journey">Experience<span>02</span></a><a href="#connect">Contact<span>05</span></a><a href="/resume" target="_blank" rel="noreferrer">Résumé <ArrowUpRight size={15} /></a></nav><a href="#connect" className="folio-header-hello">Contact me <ArrowUpRight size={17} /></a></header>
+    <section id="intro" className="folio-hero"><div className="folio-hero-top"><span className="folio-mono"><span className="folio-status-dot" /> FULL STACK DEVELOPER</span><span className="folio-mono">VIT VELLORE / INDIA</span></div><div className="folio-hero-stage"><div className="folio-hero-type"><h1 aria-label="Aarav Gupta — Full Stack Developer"><span className="folio-sr-only">Aarav Gupta — Full Stack Developer</span>{['AARAV', 'GUPTA.'].map((word, index) => <span className={`folio-title-line line-${index}`} key={word} aria-hidden="true"><motion.span initial={reduce || !animateIntro ? false : { y: '110%', rotate: 4 }} animate={{ y: 0, rotate: 0 }} transition={{ duration: 0.85, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}>{word}</motion.span></span>)}</h1></div><div className="folio-hero-object" aria-hidden="true" onPointerMove={(event)=>{ if(reduce || event.pointerType!=="mouse") return; const box=event.currentTarget.getBoundingClientRect(); event.currentTarget.style.setProperty("--hero-x",`${(event.clientX-box.left-box.width/2)/18}px`); event.currentTarget.style.setProperty("--hero-y",`${(event.clientY-box.top-box.height/2)/18}px`); }} onPointerLeave={(event)=>{event.currentTarget.style.setProperty("--hero-x","0px");event.currentTarget.style.setProperty("--hero-y","0px");}}><div className="folio-object-grid" /><div className="folio-orbit orbit-one" /><div className="folio-orbit orbit-two" /><motion.div className="folio-orange-object" ><svg viewBox="0 0 300 300"><defs><linearGradient id="object-face" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#ffb18b" /><stop offset=".5" stopColor="#ff5b21" /><stop offset="1" stopColor="#b52e0a" /></linearGradient></defs><path d="M150 12 184 83 261 58 236 136 298 175 217 194 219 275 150 231 83 287 82 204 5 181 67 132 39 58 117 82Z" fill="url(#object-face)" stroke="#ff8757" strokeWidth="2" /><path d="m150 12 0 219M39 58l178 136M5 181l231-45M83 287l101-204M261 58 82 204" fill="none" stroke="#ffa375" strokeOpacity=".55" /><circle cx="150" cy="150" r="44" fill="#eb4415" stroke="#ffac79" /><path d="m139 139-12 11 12 11m22-22 12 11-12 11m-9-27-8 33" fill="none" stroke="#ffdabf" strokeWidth="4" strokeLinecap="round" /></svg></motion.div><span className="folio-object-index">FIG. 01</span><motion.span className="folio-floating-chip chip-one" drag={!reduce} dragConstraints={{ left: -30, right: 30, top: -30, bottom: 30 }} dragSnapToOrigin><Smartphone size={14} /> React Native</motion.span><span className="folio-floating-chip chip-two"><Code2 size={15} /> Java · C++ · Python</span></div></div><div className="folio-hero-bottom"><p>I build web and mobile applications, from the interface<br />to the <strong>APIs and data behind it.</strong></p><Magnet disabled={reduce} padding={30} magnetStrength={6} maxOffset={10}><a className="folio-primary" href="#selected-work">View projects <ArrowDown size={20} /></a></Magnet><a className="folio-hero-scroll" href="#selected-work"><span>SCROLL TO PROJECTS</span><ArrowDown size={17} /></a></div></section>
+    <div className="folio-ticker" aria-hidden="true"><span>TYPESCRIPT</span><i>✳</i><span>NODE.JS</span><i>✳</i><span>MONGODB</span><i>✳</i><span>FIREBASE</span><i>✳</i><span>GIT</span><i>✳</i></div>
+    <InteractionField scrollRef={scrollRef} /><SectionNavigation scrollRef={scrollRef} /><WorkArchive /><Journey /><DesktopPortal scrollRef={scrollRef} /><Toolbench /><Contact />
+  </div></main></MotionConfig>;
 }

@@ -26,7 +26,7 @@ const WindowWrapper = (Component, windowKey) => {
             const el = ref.current;
             if (!el) return;
 
-            if (!isOpen || genieAnimating || maximized) {
+            if (!isOpen || genieAnimating || maximized) {    
                 // Kill draggable when maximized
                 if (draggableRef.current) {
                     draggableRef.current.kill();
