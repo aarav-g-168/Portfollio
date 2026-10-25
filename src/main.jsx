@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
-import './index.css'
+import './components/portfolio/portfolio-base.css'
 import PortfolioRouter from './components/PortfolioRouter.jsx'
 
 const app = (

@@ -27,7 +27,7 @@ export default function DesktopPortal({ scrollRef }) {
   const hitArea = useCallback((rect) => { interactionRect.current = rect; },[]);
   const update = useCallback((value) => { if (entering.current) return; progressRef.current = Math.max(0,Math.min(1,value)); setProgress(progressRef.current); },[]);
   const remember = useCallback(() => { try { sessionStorage.setItem('portfolio-scroll',String(scrollRef.current.scrollTop)); } catch { /* Optional navigation memory. */ } },[scrollRef]);
-  const go = useCallback(() => { remember(); window.history.pushState(null,'','/desktop?from=preview'); window.dispatchEvent(new PopStateEvent('popstate')); },[remember]);
+  const go = useCallback(() => { remember(); window.history.pushState(null,'','/desktop'); window.dispatchEvent(new PopStateEvent('popstate')); },[remember]);
   useEffect(() => { if (progress > .1) void import('../../App.jsx'); },[progress]);
   const arrive = useCallback(() => {
     if (progressRef.current < 1 || entering.current) return;

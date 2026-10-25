@@ -8,13 +8,13 @@ const routeSnapshot = () => window.location.pathname + window.location.search;
 
 export default function PortfolioRouter() {
   const route = useSyncExternalStore(subscribeToRoute, routeSnapshot, routeSnapshot);
-  const [path, search = ''] = route.split('?');
+  const [path] = route.split('?');
   if (/^\/resume\/?$/.test(path)) return <iframe className="resume-only" src="/resume.pdf" title="Aarav Gupta’s résumé" />;
-  const previewHome = import.meta.env.VITE_PORTFOLIO_PREVIEW === 'true' && /^\/$/.test(path);
+  const portfolioHome = /^\/$/.test(path);
   const localPreview = import.meta.env.DEV && /^\/preview\/?$/.test(path);
   const projectMatch = path.match(/^\/(?:preview\/)?projects\/(hackgrid|contest-manager|ios-fusion)\/?$/);
-  if (projectMatch && (import.meta.env.DEV || import.meta.env.VITE_PORTFOLIO_PREVIEW === 'true')) return <Suspense fallback={<p className="resume-loading" role="status">Opening project…</p>}><CaseStudy slug={projectMatch[1]} /></Suspense>;
-  if (previewHome || localPreview) return <Suspense fallback={<p className="resume-loading" role="status">Opening portfolio…</p>}><BasicPortfolio /></Suspense>;
-  const returnToPreview = (import.meta.env.DEV || import.meta.env.VITE_PORTFOLIO_PREVIEW === 'true') && /^\/desktop\/?$/.test(path) && new URLSearchParams(search).get('from') === 'preview';
-  return <Suspense fallback={<p className="resume-loading" role="status">Opening desktop…</p>}><Desktop />{returnToPreview && <a className="preview-desktop-return" href={import.meta.env.DEV ? '/preview#desktop-preview' : '/#desktop-preview'}>← Back to portfolio</a>}</Suspense>;
+  if (projectMatch) return <Suspense fallback={<p className="resume-loading" role="status">Opening project…</p>}><CaseStudy slug={projectMatch[1]} /></Suspense>;
+  if (portfolioHome || localPreview) return <Suspense fallback={<p className="resume-loading" role="status">Opening portfolio…</p>}><BasicPortfolio /></Suspense>;
+  if (/^\/desktop\/?$/.test(path)) return <Suspense fallback={<p className="resume-loading" role="status">Opening desktop…</p>}><Desktop /><a className="preview-desktop-return" href="/#desktop-preview">← Back to portfolio</a></Suspense>;
+  return <main className="resume-loading"><h1>Page not found.</h1><a href="/">Back to portfolio</a></main>;
 }
