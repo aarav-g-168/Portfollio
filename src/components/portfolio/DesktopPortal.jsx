@@ -28,7 +28,8 @@ export default function DesktopPortal({ scrollRef }) {
   const update = useCallback((value) => { if (entering.current) return; progressRef.current = Math.max(0,Math.min(1,value)); setProgress(progressRef.current); },[]);
   const remember = useCallback(() => { try { sessionStorage.setItem('portfolio-scroll',String(scrollRef.current.scrollTop)); } catch { /* Optional navigation memory. */ } },[scrollRef]);
   const go = useCallback(() => { remember(); window.history.pushState(null,'','/desktop'); window.dispatchEvent(new PopStateEvent('popstate')); },[remember]);
-  useEffect(() => { if (progress > .1) void import('../../App.jsx'); },[progress]);
+  // Prefetch is optional: a transient chunk failure must not reject globally.
+  useEffect(() => { if (progress > .1) void import('../../App.jsx').catch(() => {}); },[progress]);
   const arrive = useCallback(() => {
     if (progressRef.current < 1 || entering.current) return;
     const stage = stageRef.current.getBoundingClientRect(), rect = screenRect.current;

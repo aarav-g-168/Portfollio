@@ -90,7 +90,9 @@ export default function usePortfolioScroll({ restoreKey } = {}) {
         saved = restoreKey ? sessionStorage.getItem(restoreKey) : null;
         if (saved !== null && restoreKey) sessionStorage.removeItem(restoreKey);
       } catch { /* Navigation memory is optional. */ }
-      if (saved != null && Number.isFinite(Number(saved)) && Number(saved) >= 0) {
+      // Explicit links such as /#connect take priority over an older desktop visit.
+      const explicitSection = location.hash && location.hash !== '#desktop-preview' && hashTarget(location.hash);
+      if (!explicitSection && saved != null && Number.isFinite(Number(saved)) && Number(saved) >= 0) {
         if (controller) controller.scrollTo(Number(saved), { immediate: true });
         else wrapper.scrollTo({ top: Number(saved), behavior: 'instant' });
       } else followHash();

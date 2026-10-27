@@ -384,7 +384,7 @@
 .folio-floating-nav a { display: inline-flex; align-items: center; justify-content: center; gap: 5px; min-height: 44px; padding: 12px 18px; border-radius: 30px; font-size: 11px; white-space: nowrap; transition: background .2s,color .2s; }
 .folio-floating-nav a[aria-current] { color: #f4f1e9; background: #252820; }
 .folio-floating-nav a:hover:not([aria-current]) { background: #e8e3d6; }
-.folio-contact .folio-section { padding-bottom: 100px; }
+.folio-contact .folio-section { padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
 .folio-case { width: min(1100px,calc(100% - 80px)); margin: auto; padding-bottom: 80px; }
 .folio-case-nav { display: flex; justify-content: space-between; gap: 30px; align-items: center; padding-block: 30px; border-bottom: 1px solid var(--line); }
 .folio-case-nav a { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; font-size: 12px; }
@@ -414,7 +414,7 @@
 .folio-next-project > span { grid-column: 1/-1; color: #e1a280; }
 .folio-next-project strong { font-size: 36px; letter-spacing: -.05em; font-weight: 500; }
 .folio-case > footer { padding-top: 40px; }
-.folio-case > footer a { display: inline-flex; gap: 16px; align-items: center; font-size: 13px; }
+.folio-case > footer a { display: inline-flex; gap: 16px; align-items: center; min-height:44px; font-size: 13px; }
 @media(max-width:900px) { .folio-project-visual { padding-inline: 25px; } .folio-system-nodes { gap: 20px; } .folio-system-nodes button { padding: 10px; } .folio-node-arrow { right: -20px; width: 16px; } .folio-collection-card-copy { padding: 18px; } .folio-collection-card h3 { font-size: 20px; } .folio-collection-card-copy>.folio-mono { font-size: 7px; } .folio-process { gap: 20px; } }
 @media(max-width:700px) {
  .folio-project-visual { padding-inline: 12px; }

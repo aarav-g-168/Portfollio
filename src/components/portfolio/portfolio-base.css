@@ -15,4 +15,10 @@ ul { margin:0; padding:0; }
 }
 .resume-only { position:fixed; inset:0; width:100%; height:100dvh; border:0; background:white; }
 .resume-loading { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); padding:20px; border-radius:15px; background:#f4f1e9; font:14px system-ui,sans-serif; }
+.route-error { width:min(420px,calc(100% - 40px)); color:#23251f; border:1px solid #d6d5ca; }
+.route-error h1 { font-size:24px; margin-bottom:16px; }
+.route-error p { line-height:1.7; margin-bottom:20px; }
+.route-error button,.route-error a { display:inline-flex; align-items:center; min-height:44px; padding:10px 14px; border-radius:8px; }
+.route-error button { background:#23251f; color:#f4f1e9; cursor:pointer; margin-right:8px; }
+.route-error :is(button,a):focus-visible { outline:2px solid #bc3c12; outline-offset:3px; }
 .preview-desktop-return { position:fixed; left:18px; bottom:24px; z-index:2100; padding:12px 18px; background:#f4f1e9f2; color:#23251f; border:1px solid #c8c6ba; border-radius:30px; font:12px system-ui,sans-serif; }

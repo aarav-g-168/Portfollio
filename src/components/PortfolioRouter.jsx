@@ -1,4 +1,5 @@
 import { lazy, Suspense, useSyncExternalStore } from 'react';
+import RouteBoundary from './RouteBoundary';
 
 const Desktop = lazy(() => import('../App.jsx'));
 const BasicPortfolio = lazy(() => import('./BasicPortfolio.jsx'));
@@ -6,8 +7,7 @@ const CaseStudy = lazy(() => import('./portfolio/CaseStudy.jsx'));
 const subscribeToRoute = (callback) => { window.addEventListener('popstate', callback); return () => window.removeEventListener('popstate', callback); };
 const routeSnapshot = () => window.location.pathname + window.location.search;
 
-export default function PortfolioRouter() {
-  const route = useSyncExternalStore(subscribeToRoute, routeSnapshot, routeSnapshot);
+function RouteContent({ route }) {
   const [path] = route.split('?');
   if (/^\/resume\/?$/.test(path)) return <iframe className="resume-only" src="/resume.pdf" title="Aarav Gupta’s résumé" />;
   const portfolioHome = /^\/$/.test(path);
@@ -17,4 +17,9 @@ export default function PortfolioRouter() {
   if (portfolioHome || localPreview) return <Suspense fallback={<p className="resume-loading" role="status">Opening portfolio…</p>}><BasicPortfolio /></Suspense>;
   if (/^\/desktop\/?$/.test(path)) return <Suspense fallback={<p className="resume-loading" role="status">Opening desktop…</p>}><Desktop /><a className="preview-desktop-return" href="/#desktop-preview">← Back to portfolio</a></Suspense>;
   return <main className="resume-loading"><h1>Page not found.</h1><a href="/">Back to portfolio</a></main>;
+}
+
+export default function PortfolioRouter() {
+  const route = useSyncExternalStore(subscribeToRoute, routeSnapshot, routeSnapshot);
+  return <RouteBoundary key={route.split('?')[0]}><RouteContent route={route} /></RouteBoundary>;
 }
