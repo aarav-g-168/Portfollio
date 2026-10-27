@@ -54,7 +54,6 @@ const WindowControls = ({ windowKey }) => {
         toggleMaximize(windowKey);
     };
 
-    // On macOS the green button shows "+" when windowed, and "⤢" (two arrows) when maximized
     const isMaximized = windowState?.maximized;
 
     return (
